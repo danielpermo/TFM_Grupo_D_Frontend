@@ -79,4 +79,4 @@ export const alumnos: any[] = [
         borrado: '0',
         usuario_id: 10
     }
-]
+];
