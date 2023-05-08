@@ -26,6 +26,48 @@ export const usuarios: any[] = [
         email: 'usuario4@example.com',
         password: 'password4',
         rol: 'alum'
+    },
+    {
+        id: 5,
+        username: 'usuario5',
+        email: 'usuario5@example.com',
+        password: 'password5',
+        rol: 'profe'
+    },
+    {
+        id: 6,
+        username: 'usuario6',
+        email: 'usuario6@example.com',
+        password: 'password6',
+        rol: 'profe'
+    },
+    {
+        id: 7,
+        username: 'usuario7',
+        email: 'usuario7@example.com',
+        password: 'password7',
+        rol: 'alum'
+    },
+    {
+        id: 8,
+        username: 'usuario8',
+        email: 'usuario8@example.com',
+        password: 'password8',
+        rol: 'alum'
+    },
+    {
+        id: 9,
+        username: 'usuario9',
+        email: 'usuario9@example.com',
+        password: 'password9',
+        rol: 'profe'
+    },
+    {
+        id: 10,
+        username: 'usuario10',
+        email: 'usuario10@example.com',
+        password: 'password10',
+        rol: 'alum'
     }
 ];
 
