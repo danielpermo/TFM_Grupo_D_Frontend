@@ -10,7 +10,7 @@ import { C404Component } from './components/c404/c404.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    C404Component
+    C404Component,
   ],
   imports: [
     BrowserModule,
