@@ -14,11 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomeComponent,
     C404Component,
-<<<<<<< HEAD
-=======
-    RegistroComponent,
-    LoginComponent
->>>>>>> feature_formulario
   ],
   imports: [
     BrowserModule,
