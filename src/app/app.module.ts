@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { C404Component } from './components/c404/c404.component';
-import { RegistroComponent } from './components/formularios/registro/registro.component';
-import { LoginComponent } from './components/formularios/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
