@@ -1,4 +1,4 @@
-const profesores: any[] = [
+export const profesores: any[] = [
     {
         id: 1,
         nombre: 'Juan',
