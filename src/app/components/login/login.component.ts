@@ -37,7 +37,10 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-
+  login() {
+    let user: any = this.UserForm.value;
+    console.log(user);
+  }
 
 
 
