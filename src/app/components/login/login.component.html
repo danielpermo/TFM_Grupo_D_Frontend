@@ -8,12 +8,12 @@
                 <div class="card shadow-lg">
                     <div class="card-body p-5">
                         <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
-                        <form class="container mt-4">
+                        <form class="container mt-4" [formGroup]="UserForm" (ngSubmit)="login()">
                             <div class="mb-3">
-                                <label class="mb-2 text-muted" for="username">Nombre de usuario:</label>
-                                <input type="text" class="form-control" id="username" formControlName="username">
-                                <!-- <p class="error" *ngIf="checkControl('lastname', 'required')">(*) El campo es requerido
-                                </p> -->
+                                <label class="mb-2 text-muted" for="usuario">Nombre de usuario:</label>
+                                <input type="text" class="form-control" id="usuario" formControlName="usuario">
+                                <p class="error" *ngIf="checkControl('usuario', 'required')">(*) El campo es requerido
+                                </p>
                                 <!-- <div class="invalid-feedback">
                                     Email is invalid
                                 </div> -->
@@ -21,12 +21,16 @@
 
                             <div class="mb-3">
                                 <div class="mb-2 w-100">
-                                    <label class="text-muted" for="password">Contraseña:</label>
+                                    <label class="text-muted" for="contraseña">Contraseña:</label>
                                     <!-- <a href="forgot.html" class="float-end">
                                         Forgot Password?
                                     </a> -->
                                 </div>
-                                <input type="password" class="form-control" id="password" formControlName="password">
+                                <input type="password" class="form-control" id="contraseña"
+                                    formControlName="contraseña">
+                                <p class="error" *ngIf="checkControl('contraseña', 'required')">(*) El campo es
+                                    requerido
+                                </p>
                                 <!-- <div class="invalid-feedback">
                                     Password is required
                                 </div> -->
