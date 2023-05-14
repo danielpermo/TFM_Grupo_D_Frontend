@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { C404Component } from './components/c404/c404.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     C404Component,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
