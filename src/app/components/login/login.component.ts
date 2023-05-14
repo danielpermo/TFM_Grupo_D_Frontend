@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-login',
@@ -9,22 +9,26 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  UserForm: FormGroup;
+  UserForm: FormGroup
 
-  constructor(private activatedRoute: ActivatedRoute) { //Meter a la derecha de activatedRoute el servicio (userService)
+  constructor(private activatedRoute: ActivatedRoute) {
     this.UserForm = new FormGroup({
-      username: new FormControl("", [
+      usuario: new FormControl("", [
         Validators.required
       ]),
-      password: new FormControl("", [
+      contraseña: new FormControl("", [
         Validators.required
       ])
-    })
+    }, []);
   }
 
   ngOnInit() {
+    this.activatedRoute.params.subscribe(params => {
+      console.log(params);
+    })
 
   }
+
 
   checkControl(pControlName: string, pError: string): boolean {
     if (this.UserForm.get(pControlName)?.hasError(pError) && this.UserForm.get(pControlName)?.touched) {
@@ -39,4 +43,8 @@ export class LoginComponent implements OnInit {
   }
 
 
+
 }
+
+
+
