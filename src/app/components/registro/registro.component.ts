@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
   RegistroForm: FormGroup
+  rolSelected!: string
 
   constructor(private activatedroute: ActivatedRoute) {
     this.RegistroForm = new FormGroup({
@@ -75,6 +76,10 @@ export class RegistroComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  showProfesorDivs() {
+    this.rolSelected = "profe"
   }
 
   registrar() {
