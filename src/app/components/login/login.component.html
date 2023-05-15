@@ -12,7 +12,8 @@
                             <div class="mb-3">
                                 <label class="mb-2 text-muted" for="usuario">Nombre de usuario:</label>
                                 <input type="text" class="form-control" id="usuario" formControlName="usuario">
-                                <p class="error" *ngIf="checkControl('usuario', 'required')">(*) El campo es requerido
+                                <p class="error" *ngIf="checkControl('usuario', 'required')">(*) Debes introducir
+                                    nombre de usuario.
                                 </p>
                             </div>
 
@@ -22,8 +23,8 @@
                                 </div>
                                 <input type="password" class="form-control" id="contraseña"
                                     formControlName="contraseña">
-                                <p class="error" *ngIf="checkControl('contraseña', 'required')">(*) El campo es
-                                    requerido
+                                <p class="error" *ngIf="checkControl('contraseña', 'required')">(*) Debes introducir
+                                    contraseña.
                                 </p>
                             </div>
 
