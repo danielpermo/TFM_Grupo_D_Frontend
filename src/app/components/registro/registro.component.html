@@ -183,14 +183,15 @@
                                         requerido
                                     </p>
                                 </div>
-                                <div class="col-2 mb-3">
+                                <div class="col-2 mt-2 mb-3">
                                     <label class="text-muted" for="rol">*Rol:</label>
-                                    <div class="mb-2 w-100 row">
+                                    <div class="mb-2 w-100 flex-row">
                                         <label>
                                             <input type="radio" name="rol" value="alum" checked> Alumno
                                         </label>
                                         <label>
-                                            <input type="radio" name="rol" value="profe" (change)="showProfesorDivs()">
+                                            <input class="ms-3" type="radio" name="rol" value="profe"
+                                                (change)="showProfesorDivs()">
                                             Profesor
                                         </label>
                                     </div>

@@ -38,9 +38,7 @@ export class RegistroComponent implements OnInit {
       ciudad: new FormControl("", [
         Validators.required
       ]),
-      edad: new FormControl("", [
-        Validators.required
-      ]),
+      edad: new FormControl("", []),
       fechaNacimiento: new FormControl("", [
         Validators.required
       ]),
