@@ -1,0 +1,9 @@
+.w-teacher-header {
+    border: 1px solid black;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.w-teacher {
+    border: 1px solid #cecece;
+}
