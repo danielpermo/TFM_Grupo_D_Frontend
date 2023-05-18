@@ -1,4 +1,21 @@
-<header class="p-3 mb-2 text-emphasis-danger mb-5 mb-3 d-flex justify-content-between">
-    <h1><a [routerLink]="['/home']">TeacherApp</a> </h1>
+<header class="container border-bottom shadow-sm mb-5 bg-body-tertiary justify-content-between">
+    <div class="container row d-flex align-items-center justify-content-between">
+        <div class="col-1 d-flex align-items-center">
+            <a [routerLink]="['/home']" class="text-decoration-none me-4">
+                <img src="../assets/logo_copia.png" alt="Logo de la empresa TeacherApp" class="logo">
+            </a>
+            <h1 class="m-0"><a [routerLink]="['/home']" class="text-decoration-none logo"> TeacherApp</a></h1>
+        </div>
+        <div class="col-2">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/login']">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </header>
 <router-outlet></router-outlet>
