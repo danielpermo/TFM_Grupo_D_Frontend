@@ -2,3 +2,29 @@ header {
     background-color: #7941c0;
     color: #fff;
 }
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+}
+
+a:hover {
+    color: #000000;
+}
+
+.nav-link {
+    display: block;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    font-size: 1.2rem;
+    font-weight: var(--bs-nav-link-font-weight);
+    color: #fff;
+    text-decoration: none;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+}
