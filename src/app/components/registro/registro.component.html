@@ -143,7 +143,7 @@
                                         requerido
                                     </p>
                                 </div>
-                                <div class="col-2 mb-3">
+                                <!-- <div class="col-2 mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="fechaNacimiento">*Fecha de nacimiento:</label>
                                     </div>
@@ -152,23 +152,17 @@
                                     <p class="error" *ngIf="checkControl('fechaNacimiento', 'required')">(*) El campo es
                                         requerido
                                     </p>
-                                </div>
+                                </div> -->
                                 <div class="col-2 mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="genero">*Género:</label>
                                     </div>
                                     <div class="mb-2 w-100 flex-row">
-                                        <label>
-                                            <input type="radio" name="genero" value="m" checked> M
-                                        </label>
-                                        <label>
-                                            <input class="ms-3" type="radio" name="genero" value="f">
-                                            F
-                                        </label>
-                                        <label>
-                                            <input class="ms-3" type="radio" name="genero" value="otro">
-                                            Otro
-                                        </label>
+                                        <select class="form-select form-control" id="genero" formControlName="genero">
+                                            <option value="m">Masculino</option>
+                                            <option value="f">Femenino</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
                                     </div>
                                     <p class="error" *ngIf="checkControl('genero', 'required')">(*) El campo es
                                         requerido
@@ -186,7 +180,11 @@
                                 <div class="col-2 mt-2 mb-3">
                                     <label class="text-muted" for="rol">*Rol:</label>
                                     <div class="mb-2 w-100 flex-row">
-                                        <label>
+                                        <select class="form-select form-control" id="rol" formControlName="rol">
+                                            <option value="profe" (click)="showProfesorDivs($event)">Profesor</option>
+                                            <option value="alum" (click)="showProfesorDivs($event)">Alumno</option>
+                                        </select>
+                                        <!-- <label>
                                             <input type="radio" name="rol" value="alum" checked
                                                 (change)="showProfesorDivs($event)"> Alumno
                                         </label>
@@ -194,7 +192,7 @@
                                             <input class="ms-3" type="radio" name="rol" value="profe"
                                                 (change)="showProfesorDivs($event)">
                                             Profesor
-                                        </label>
+                                        </label> -->
                                     </div>
                                     <p class="error" *ngIf="checkControl('rol', 'required')">(*) El campo es
                                         requerido

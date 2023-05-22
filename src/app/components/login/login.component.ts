@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  login() {
+  onSubmit() {
     let user: any = this.UserForm.value;
     console.log(user);
   }

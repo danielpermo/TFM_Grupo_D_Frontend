@@ -39,10 +39,10 @@ export class RegistroComponent implements OnInit {
       ciudad: new FormControl("", [
         Validators.required
       ]),
-      edad: new FormControl("", []),
-      fechaNacimiento: new FormControl("", [
+      edad: new FormControl("", [
         Validators.required
       ]),
+      fechaNacimiento: new FormControl("", []),
       genero: new FormControl("", [
         Validators.required
       ]),
@@ -66,7 +66,7 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.activatedroute.params.subscribe(params => {
-      console.log(params);
+      // console.log(params);
     })
   }
 
@@ -88,6 +88,7 @@ export class RegistroComponent implements OnInit {
 
   async onSubmit() {
     let user: any = this.RegistroForm.value;
+    console.log(user)
     const response = await this.usuariosService.registro(user)
     console.log(response);
   }
