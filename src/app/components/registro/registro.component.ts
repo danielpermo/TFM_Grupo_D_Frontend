@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-registro',
@@ -10,9 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
   RegistroForm: FormGroup
-  rolSelected!: string
+  rolSelected!: any
 
-  constructor(private activatedroute: ActivatedRoute) {
+  constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -69,6 +70,14 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  showProfesorDivs(event: any) {
+    if (event.target.value === 'profe') {
+      this.rolSelected = 'profe';
+    } else {
+      this.rolSelected = 'alum';
+    }
+  }
+
   checkControl(pControlName: string, pError: string): boolean {
     if (this.RegistroForm.get(pControlName)?.hasError(pError) && this.RegistroForm.get(pControlName)?.touched) {
       return true;
@@ -76,13 +85,11 @@ export class RegistroComponent implements OnInit {
     return false;
   }
 
-  showProfesorDivs() {
-    this.rolSelected = "profe"
-  }
 
-  registrar() {
+  async onSubmit() {
     let user: any = this.RegistroForm.value;
-    console.log(user);
+    const response = await this.usuariosService.registro(user)
+    console.log(response);
   }
 
 

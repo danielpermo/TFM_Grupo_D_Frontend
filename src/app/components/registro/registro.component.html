@@ -8,7 +8,7 @@
                 <div class="card shadow-lg">
                     <div class="card-body p-5">
                         <h1 class="fs-4 card-title fw-bold mb-4">Registro</h1>
-                        <form class="container mt-4" [formGroup]="RegistroForm" (ngSubmit)="registrar()">
+                        <form class="container mt-4" [formGroup]="RegistroForm" (ngSubmit)="onSubmit()">
                             <div class="row">
                                 <div class="col-4 mb-3">
                                     <label class="mb-2 text-muted" for="nombre">*Nombre:</label>
@@ -135,14 +135,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <div class="col-1 mb-3">
+                                <div class="col-1 mb-3">
                                     <label class="mb-2 text-muted" for="edad">*Edad:</label>
                                     <input type="number" min="18" max="120" class="form-control" id="edad"
                                         formControlName="edad">
                                     <p class="error" *ngIf="checkControl('edad', 'required')">(*) El campo es
                                         requerido
                                     </p>
-                                </div> -->
+                                </div>
                                 <div class="col-2 mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="fechaNacimiento">*Fecha de nacimiento:</label>
@@ -187,11 +187,12 @@
                                     <label class="text-muted" for="rol">*Rol:</label>
                                     <div class="mb-2 w-100 flex-row">
                                         <label>
-                                            <input type="radio" name="rol" value="alum" checked> Alumno
+                                            <input type="radio" name="rol" value="alum" checked
+                                                (change)="showProfesorDivs($event)"> Alumno
                                         </label>
                                         <label>
                                             <input class="ms-3" type="radio" name="rol" value="profe"
-                                                (change)="showProfesorDivs()">
+                                                (change)="showProfesorDivs($event)">
                                             Profesor
                                         </label>
                                     </div>
