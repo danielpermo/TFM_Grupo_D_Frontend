@@ -38,12 +38,12 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  onSubmit() {
+  async onSubmit() {
     let user: any = this.UserForm.value;
     console.log(user);
+    const response = await this.usuariosService.login(user);
+    console.log(response);
   }
-
-
 
 }
 
