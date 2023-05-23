@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +12,9 @@ export class LoginComponent implements OnInit {
 
   UserForm: FormGroup
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsuariosService) {
     this.UserForm = new FormGroup({
-      usuario: new FormControl("", [
+      email: new FormControl("", [
         Validators.required
       ]),
       contraseña: new FormControl("", [
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
     return false;
   }
 
-  login() {
+  onSubmit() {
     let user: any = this.UserForm.value;
     console.log(user);
   }

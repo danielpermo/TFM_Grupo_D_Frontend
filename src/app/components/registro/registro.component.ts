@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
   selector: 'app-registro',
@@ -10,9 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class RegistroComponent implements OnInit {
 
   RegistroForm: FormGroup
-  rolSelected!: string
+  rolSelected!: any
+  asignaturas: number[] = [];
 
-  constructor(private activatedroute: ActivatedRoute) {
+  constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -38,10 +40,10 @@ export class RegistroComponent implements OnInit {
       ciudad: new FormControl("", [
         Validators.required
       ]),
-      edad: new FormControl("", []),
-      fechaNacimiento: new FormControl("", [
+      edad: new FormControl("", [
         Validators.required
       ]),
+      fechaNacimiento: new FormControl("", []),
       genero: new FormControl("", [
         Validators.required
       ]),
@@ -65,8 +67,26 @@ export class RegistroComponent implements OnInit {
 
   ngOnInit() {
     this.activatedroute.params.subscribe(params => {
-      console.log(params);
+      // console.log(params);
     })
+  }
+
+  showProfesorDivs(event: any) {
+    if (event.target.value === 'profe') {
+      this.rolSelected = 'profe';
+    } else {
+      this.rolSelected = 'alum';
+    }
+  }
+
+  toggleCheckbox(value: number) {
+    const index = this.asignaturas.indexOf(value);
+    if (index > -1) {
+      this.asignaturas.splice(index, 1); // Eliminar asignatura si ya está seleccionada
+    } else {
+      this.asignaturas.push(value); // Agregar asignatura si no está seleccionada
+    }
+    this.RegistroForm.get('asignaturas')!.setValue(this.asignaturas)
   }
 
   checkControl(pControlName: string, pError: string): boolean {
@@ -76,13 +96,12 @@ export class RegistroComponent implements OnInit {
     return false;
   }
 
-  showProfesorDivs() {
-    this.rolSelected = "profe"
-  }
 
-  registrar() {
+  async onSubmit() {
     let user: any = this.RegistroForm.value;
-    console.log(user);
+    console.log(user)
+    const response = await this.usuariosService.registro(user)
+    console.log(response);
   }
 
 
