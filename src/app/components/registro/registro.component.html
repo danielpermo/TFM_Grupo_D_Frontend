@@ -184,15 +184,6 @@
                                             <option value="profe" (click)="showProfesorDivs($event)">Profesor</option>
                                             <option value="alum" (click)="showProfesorDivs($event)">Alumno</option>
                                         </select>
-                                        <!-- <label>
-                                            <input type="radio" name="rol" value="alum" checked
-                                                (change)="showProfesorDivs($event)"> Alumno
-                                        </label>
-                                        <label>
-                                            <input class="ms-3" type="radio" name="rol" value="profe"
-                                                (change)="showProfesorDivs($event)">
-                                            Profesor
-                                        </label> -->
                                     </div>
                                     <p class="error" *ngIf="checkControl('rol', 'required')">(*) El campo es
                                         requerido
@@ -221,12 +212,37 @@
                             </div>
                             <div class="row">
                                 <div *ngIf="rolSelected === 'profe'" class="col-12 mb-3">
-                                    <!-- <div class="mb-2 w-100">
+                                    <div class="mb-2 w-100">
                                         <label class="text-muted" for="asignaturas">*Asignaturas:</label>
                                     </div>
-                                    <input type="checkbox" class="form-control" id="asignaturas"
-                                        formControlName="asignaturas">
-                                    <label for="asignaturas">Matemáticas</label> -->
+                                    <div class="form-control row">
+                                        <label class="col-4">
+                                            <input type="checkbox" id="1" [checked]="asignaturas.includes(1)"
+                                                (change)="toggleCheckbox(1)">
+                                            Matemáticas
+                                        </label>
+                                        <label class="col-4">
+                                            <input type="checkbox" id="2" [checked]="asignaturas.includes(2)"
+                                                (change)="toggleCheckbox(2)">
+                                            Lengua y Literatura
+                                        </label>
+                                        <label class="col-4">
+                                            <input type="checkbox" id="3" [checked]="asignaturas.includes(3)"
+                                                (change)="toggleCheckbox(3)">
+                                            Física
+                                        </label>
+                                        <label class="col-4">
+                                            <input type="checkbox" id="4" [checked]="asignaturas.includes(4)"
+                                                (change)="toggleCheckbox(4)">
+                                            Historia
+                                        </label>
+                                        <label class="col-4">
+                                            <input type="checkbox" id="5" [checked]="asignaturas.includes(5)"
+                                                (change)="toggleCheckbox(5)">
+                                            Química
+                                        </label>
+
+                                    </div>
                                     <p class="error" *ngIf="checkControl('asignaturas', 'required')">(*) El campo es
                                         requerido
                                     </p>

@@ -12,6 +12,7 @@ export class RegistroComponent implements OnInit {
 
   RegistroForm: FormGroup
   rolSelected!: any
+  asignaturas: number[] = [];
 
   constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService) {
     this.RegistroForm = new FormGroup({
@@ -76,6 +77,16 @@ export class RegistroComponent implements OnInit {
     } else {
       this.rolSelected = 'alum';
     }
+  }
+
+  toggleCheckbox(value: number) {
+    const index = this.asignaturas.indexOf(value);
+    if (index > -1) {
+      this.asignaturas.splice(index, 1); // Eliminar asignatura si ya está seleccionada
+    } else {
+      this.asignaturas.push(value); // Agregar asignatura si no está seleccionada
+    }
+    this.RegistroForm.get('asignaturas')!.setValue(this.asignaturas)
   }
 
   checkControl(pControlName: string, pError: string): boolean {
