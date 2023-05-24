@@ -13,8 +13,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
-  { path: "alumno", component: AlumnoComponent },
-  { path: "profesor", component: ProfesorComponent },
+  { path: "alumno/:userId", component: AlumnoComponent },
+  { path: "profesor:/:userId", component: ProfesorComponent },
   { path: "admin", component: AdminComponent },
   { path: "**", component: C404Component }
 ];
