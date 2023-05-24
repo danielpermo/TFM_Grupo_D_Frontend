@@ -9,6 +9,10 @@ import { HomeComponent } from './components/home/home.component';
 import { C404Component } from './components/c404/c404.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { AlumnoComponent } from './components/alumno/alumno.component';
+import { ProfesorComponent } from './components/profesor/profesor.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +21,10 @@ import { RegistroComponent } from './components/registro/registro.component';
     C404Component,
     LoginComponent,
     RegistroComponent,
+    AlumnoComponent,
+    ProfesorComponent,
+    AdminComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

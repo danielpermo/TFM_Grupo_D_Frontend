@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-    })
+    // this.activatedRoute.params.subscribe(params => {
+    //   console.log(params);
+    // })
 
   }
 
@@ -40,9 +40,13 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     let user: any = this.UserForm.value;
-    console.log(user);
     const response = await this.usuariosService.login(user);
     console.log(response);
+    if (response.fatal) {
+      return alert(response.fatal);
+    }
+
+    localStorage.setItem('token_user', response.token);
   }
 
 }
