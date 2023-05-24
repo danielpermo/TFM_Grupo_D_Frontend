@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class RegistroComponent implements OnInit {
   rolSelected!: any
   asignaturas: number[] = [];
 
-  constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService) {
+  constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService, private router: Router) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -99,9 +99,13 @@ export class RegistroComponent implements OnInit {
 
   async onSubmit() {
     let user: any = this.RegistroForm.value;
-    console.log(user)
     const response = await this.usuariosService.registro(user)
     console.log(response);
+    if (response.fatal) {
+      return alert(response.fatal);
+    }
+    alert('Usuario registrado correctamente');
+    this.router.navigate(['/home']);
   }
 
 
