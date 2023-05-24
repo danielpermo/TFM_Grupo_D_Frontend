@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => {
-      console.log(params);
-    })
+    // this.activatedRoute.params.subscribe(params => {
+    //   console.log(params);
+    // })
 
   }
 

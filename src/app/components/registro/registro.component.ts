@@ -66,9 +66,9 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedroute.params.subscribe(params => {
-      // console.log(params);
-    })
+    // this.activatedroute.params.subscribe(params => {
+    //   // console.log(params);
+    // })
   }
 
   showProfesorDivs(event: any) {

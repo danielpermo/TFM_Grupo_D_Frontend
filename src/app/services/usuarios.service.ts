@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
+import { Usuario } from '../interfaces/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class UsuariosService {
     this.baseUrl = 'http://localhost:3000/api/usuarios'
   }
 
-  login(pUser: any): Promise<any> {
+  login(pUser: Usuario): Promise<any> {
     return firstValueFrom(
-      this.httpClient.post(`${this.baseUrl}/login`, pUser)
+      this.httpClient.post<Usuario>(`${this.baseUrl}/login`, pUser)
     );
   }
 
