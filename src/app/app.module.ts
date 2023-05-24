@@ -12,6 +12,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { ProfesorComponent } from './components/profesor/profesor.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AdminComponent } from './components/admin/admin.component';
     AlumnoComponent,
     ProfesorComponent,
     AdminComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

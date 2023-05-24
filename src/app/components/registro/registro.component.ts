@@ -105,13 +105,14 @@ export class RegistroComponent implements OnInit {
       return alert(response.fatal);
     }
     alert('Usuario registrado correctamente');
+    this.router.navigate(['/login'])
 
-    const rol = this.RegistroForm.get('rol')?.value;
-    if (rol === 'alum') {
-      this.router.navigate(['/alumno', response.id]);
-    } else {
-      this.router.navigate(['/profesor', response.id]);
-    }
+    // const rol = this.RegistroForm.get('rol')?.value;
+    // if (rol === 'alum') {
+    //   this.router.navigate(['/alumno', response.id]);
+    // } else {
+    //   this.router.navigate(['/profesor', response.id]);
+    // }
   }
 
 
