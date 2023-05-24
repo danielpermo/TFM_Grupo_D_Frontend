@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
 
@@ -15,6 +15,17 @@ export class UsuariosService {
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:3000/api/usuarios'
+  }
+
+  getAll() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.get<any>(this.baseUrl, httpOptions)
+    );
   }
 
   login(pUser: Usuario): Promise<any> {
