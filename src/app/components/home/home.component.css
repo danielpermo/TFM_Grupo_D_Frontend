@@ -7,3 +7,17 @@
 .w-teacher {
     border: 1px solid #cecece;
 }
+
+.left-div {
+    float: left;
+    width: 50%; /* Ajusta el ancho según tus necesidades */
+  }
+  
+.right-div {
+    float: left;
+    width: 50%; /* Ajusta el ancho según tus necesidades */
+  }
+
+card-img-top {
+    size: 30%;
+}
