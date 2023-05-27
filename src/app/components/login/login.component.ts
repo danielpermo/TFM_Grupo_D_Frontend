@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
       email: new FormControl("", [
         Validators.required
       ]),
-      contraseña: new FormControl("", [
+      password: new FormControl("", [
         Validators.required
       ])
     }, []);

@@ -21,9 +21,8 @@
                                 <div class="mb-2 w-100">
                                     <label class="text-muted" for="contraseña">Contraseña:</label>
                                 </div>
-                                <input type="password" class="form-control" id="contraseña"
-                                    formControlName="contraseña">
-                                <p class="error" *ngIf="checkControl('contraseña', 'required')">(*) Debes introducir
+                                <input type="password" class="form-control" id="password" formControlName="password">
+                                <p class="error" *ngIf="checkControl('password', 'required')">(*) Debes introducir
                                     contraseña.
                                 </p>
                             </div>

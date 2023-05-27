@@ -29,6 +29,7 @@ export class UsuariosService {
   }
 
   login(pUser: Usuario): Promise<any> {
+    console.log(firstValueFrom(this.httpClient.post<Usuario>(`${this.baseUrl}/login`, pUser)));
     return firstValueFrom(
       this.httpClient.post<Usuario>(`${this.baseUrl}/login`, pUser)
     );
