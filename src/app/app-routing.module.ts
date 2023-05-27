@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
   { path: "alumno/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
-  { path: "profesor:/:userId", component: ProfesorComponent },
+  { path: "profesor:/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
   { path: "admin", component: AdminComponent },
   { path: "**", component: C404Component }
 ];

@@ -40,6 +40,10 @@ export class UsuariosService {
     )
   }
 
+  isLogged(): boolean {
+    return localStorage.getItem('token_user') ? true : false;
+  }
+
 
   // getById(pId: number): Promise<any> {
   //   return Promise.resolve(this.usuarios.find(usuarios => usuarios.id === pId));
