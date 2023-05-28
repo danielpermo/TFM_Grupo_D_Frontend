@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
     const token = response.token;
     const tokenDecode = jwtDecode<any>(token!);
     localStorage.setItem('token_user', token);
-    console.log(tokenDecode.usuario_id);
 
     this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id])
   }
