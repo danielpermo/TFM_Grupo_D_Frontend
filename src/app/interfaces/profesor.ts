@@ -13,6 +13,7 @@ export interface Profesor {
     edad: number;
     fecha_nacimiento?: Date;
     genero: string;
+    asignaturas: any;
     dni: string;
     experiencia: number;
     precio: number;

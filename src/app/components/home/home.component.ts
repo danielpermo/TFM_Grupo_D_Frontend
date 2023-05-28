@@ -9,7 +9,7 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 })
 export class HomeComponent implements OnInit {
 
-  profesArr: any[] = [];
+  profesArr: Profesor[] = [];
 
   profesoresService = inject(ProfesoresService);
 
