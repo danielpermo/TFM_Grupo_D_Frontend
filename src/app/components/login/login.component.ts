@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -46,9 +47,12 @@ export class LoginComponent implements OnInit {
     if (response === fatal) {
       return alert(response);
     }
+    const token = response.token;
+    const tokenDecode = jwtDecode<any>(token!);
+    localStorage.setItem('token_user', token);
+    console.log(tokenDecode.usuario_id);
 
-    localStorage.setItem('token_user', response.token);
-    this.router.navigate(['/alumno', 25])
+    this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id])
   }
 
 }

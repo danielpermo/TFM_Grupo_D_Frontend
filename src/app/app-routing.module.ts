@@ -8,15 +8,16 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
 import { ProfesorComponent } from './components/profesor/profesor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { loginGuard } from './guards/login.guards';
+import { roleGuard } from './guards/role.guard';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: '/home' },
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
-  { path: "alumno/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
-  { path: "profesor:/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
-  { path: "admin", component: AdminComponent },
+  { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
+  { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
+  { path: "admin/:userId", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "**", component: C404Component }
 ];
 
