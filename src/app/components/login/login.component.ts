@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-login',
@@ -12,12 +13,12 @@ export class LoginComponent implements OnInit {
 
   UserForm: FormGroup
 
-  constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsuariosService) {
+  constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsuariosService, private router: Router) {
     this.UserForm = new FormGroup({
       email: new FormControl("", [
         Validators.required
       ]),
-      contraseña: new FormControl("", [
+      password: new FormControl("", [
         Validators.required
       ])
     }, []);
@@ -41,12 +42,16 @@ export class LoginComponent implements OnInit {
   async onSubmit() {
     let user: any = this.UserForm.value;
     const response = await this.usuariosService.login(user);
+    const fatal = 'Error: email y/o contraseña no válidos'
     console.log(response);
-    if (response.fatal) {
-      return alert(response.fatal);
+    if (response === fatal) {
+      return alert(response);
     }
+    const token = response.token;
+    const tokenDecode = jwtDecode<any>(token!);
+    localStorage.setItem('token_user', token);
 
-    localStorage.setItem('token_user', response.token);
+    this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id])
   }
 
 }

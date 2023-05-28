@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { Usuario } from '../interfaces/usuario';
+import jwtDecode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,19 @@ export class UsuariosService {
       this.httpClient.post<any>(`${this.baseUrl}/registro`, values)
     )
   }
+
+  isLogged(): boolean {
+    return localStorage.getItem('token_user') ? true : false;
+  }
+
+  // isAdmin(): boolean {
+  //   const token = localStorage.getItem('token_user');
+  //   const tokenDecode = jwtDecode<any>(token!);
+  //   if (token) {
+  //     return tokenDecode.usuario_rol === 'admin';
+  //   }
+  //   return false;
+  // }
 
 
   // getById(pId: number): Promise<any> {
