@@ -19,7 +19,7 @@ export class ProfesoresService {
 
   getAll(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get('http://peticiones.online/api/contacts')
+      this.httpClient.get(`${this.baseUrl}/profesores`)
     );
   }
 

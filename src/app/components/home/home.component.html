@@ -2,27 +2,31 @@
 
 <div class="container mb-3">
     <h1 class=" text-card text-center mb-3 fw-bold">Nos adaptamos a tu forma de aprender</h1>
-<div class="container row text-center grid gap-3 d-flex">
-<div class="card col left-div mx-auto p-2 p-2 g-col-6 shadow p-3 bg-body-tertiary rounded " style="width: 18rem; width: 200px">
-  <img src="https://media.istockphoto.com/id/1089058072/es/foto/maestro-adultos-posando-en-la-pizarra.webp?s=2048x2048&w=is&k=20&c=M7w4AFj3O6Jx86d4fBZHY_KK2TaBtOKjTF10Hxgd1p4=" class="card-img-top" alt="Imagen profesor en clase">
-  <div class="card-body">
-    <h5 class="card-title fs-3">Clases presenciales</h5>
-    <p class="card-text">Clases en tu domicilio o el de tu profesor/a, en tu lugar de trabajo, en una academia...</p>
-    <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
-  </div>
-</div>
+    <div class="container row text-center grid gap-3 d-flex">
+        <div class="card col left-div mx-auto p-2 p-2 g-col-6 shadow p-3 bg-body-tertiary rounded "
+            style="width: 18rem; width: 200px">
+            <img src="../../../assets/profesor_en_clase.jpg" class="card-img-top" alt="Imagen profesora en clase">
+            <div class="card-body">
+                <h5 class="card-title fs-3">Clases presenciales</h5>
+                <p class="card-text">Clases en tu domicilio o el de tu profesor/a, en tu lugar de trabajo, en una
+                    academia...</p>
+                <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
+            </div>
+        </div>
 
-<div class="card col right-div mx-auto p-2 p-2 g-col-6 shadow p-3 bg-body-tertiary rounded" style="width: 18rem; width: 200px">
-    <img src="https://media.istockphoto.com/id/1028869800/es/foto/cerca-de-manos-de-un-empresario-en-un-teclado.webp?s=2048x2048&w=is&k=20&c=Da9NefvZe0FeQhIvIr1bmpRVJdU2qT9elkgpCn05b1A=" class="card-img-top" alt="Imagen persona trabajando en un ordenador">
-    <div class="card-body">
-      <h5 class="card-title fs-3">Clases online</h5>
-      <p class="card-text">Metiantes videoconferencia con un profesor/a online, a cualquier hora y sin salir de casa</p>
-      <a class="btn btn-primary fs-4"[routerLink]="['/login']" >Entrar</a>
+        <div class="card col right-div mx-auto p-2 p-2 g-col-6 shadow p-3 bg-body-tertiary rounded"
+            style="width: 18rem; width: 200px">
+            <img src="../../../assets/laptop.jpg" class="card-img-top" alt="Imagen persona trabajando en un ordenador">
+            <div class="card-body">
+                <h5 class="card-title fs-3">Clases online</h5>
+                <p class="card-text">Mediente videoconferencia con un profesor/a online, a cualquier hora y sin salir
+                    de casa</p>
+                <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
-</div>  
-<hr>
+</div>
+<hr class="container">
 <!-- Tabla Profesores -->
 
 <div class="container">
@@ -45,10 +49,10 @@
             <h3 class="m-0 p-0">Precio</h3>
         </div>
         <div class="col-2">
-            <h3 class="m-0 p-0">Valoración</h3>
+            <h3 class="m-0 p-0">Puntuación </h3>
         </div>
     </div>
-    <div class="row w-teacher d-flex align-items-center">
+    <div class="row w-teacher d-flex align-items-center" *ngFor="let profe of profesArr">
         <div class="col-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-fill"
                 viewBox="0 0 16 16">
@@ -56,16 +60,16 @@
             </svg>
         </div>
         <div class="col-4">
-            <p class="m-0 p-0">Nombre</p>
+            <p class="m-0 p-0">{{profe.nombre}} {{profe.apellidos}}</p>
         </div>
         <div class="col-3">
-            <p class="m-0 p-0">Asignaturas</p>
+            <p class="m-0 p-0" *ngFor="let asignatura of profe.asignaturas">{{asignatura.nombre}}</p>
         </div>
         <div class="col-2">
             <p class="m-0 p-0">Precio</p>
         </div>
         <div class="col-2">
-            <p class="m-0 p-0">Valoración</p>
+            <p class="m-0 p-0">Puntuación</p>
         </div>
     </div>
 </div>
