@@ -14,3 +14,7 @@ a {
     font-family: 'Pinyon Script', cursive;
     font-size: 3rem;
 }
+
+footer {
+    background-color: lightgrey;
+}
