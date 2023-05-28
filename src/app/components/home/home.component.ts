@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Profesor } from 'src/app/interfaces/profesor';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 
@@ -7,19 +7,22 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
-  profesArr: Profesor[] = [];
+  profesArr: any[] = [];
 
   profesoresService = inject(ProfesoresService);
 
-  async getAll() {
-    try {
-      let response = await this.profesoresService.getAll();
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+  ngOnInit() {
+    this.getProfes();
+  }
+
+  async getProfes() {
+
+    const response = await this.profesoresService.getAll();
+    this.profesArr = response;
+    return this.profesArr;
+
   }
 
 

@@ -19,7 +19,7 @@
             <img src="../../../assets/laptop.jpg" class="card-img-top" alt="Imagen persona trabajando en un ordenador">
             <div class="card-body">
                 <h5 class="card-title fs-3">Clases online</h5>
-                <p class="card-text">Metiantes videoconferencia con un profesor/a online, a cualquier hora y sin salir
+                <p class="card-text">Mediente videoconferencia con un profesor/a online, a cualquier hora y sin salir
                     de casa</p>
                 <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
             </div>
@@ -52,7 +52,7 @@
             <h3 class="m-0 p-0">Valoración</h3>
         </div>
     </div>
-    <div class="row w-teacher d-flex align-items-center">
+    <div class="row w-teacher d-flex align-items-center" *ngFor="let profe of profesArr">
         <div class="col-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-fill"
                 viewBox="0 0 16 16">
@@ -60,10 +60,10 @@
             </svg>
         </div>
         <div class="col-4">
-            <p class="m-0 p-0">Nombre</p>
+            <p class="m-0 p-0">{{profe.nombre}} {{profe.apellidos}}</p>
         </div>
         <div class="col-3">
-            <p class="m-0 p-0">Asignaturas</p>
+            <p class="m-0 p-0">{{profe.asignaturas.nombre}}</p>
         </div>
         <div class="col-2">
             <p class="m-0 p-0">Precio</p>
