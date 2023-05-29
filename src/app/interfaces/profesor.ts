@@ -16,6 +16,7 @@ export interface Profesor {
     asignaturas: any[];
     dni: string;
     experiencia: number;
+    puntuacion: number;
     precio: number;
     fecha_alta?: Date;
     validado?: boolean;

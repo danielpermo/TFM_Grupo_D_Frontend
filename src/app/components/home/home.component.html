@@ -46,10 +46,10 @@
             <h3 class="m-0 p-0">Asignaturas</h3>
         </div>
         <div class="col-2">
-            <h3 class="m-0 p-0">Precio</h3>
+            <h3 class="m-0 p-0">Precio / hora</h3>
         </div>
         <div class="col-2">
-            <h3 class="m-0 p-0">Puntuación </h3>
+            <h3 class="m-0 p-0">Puntuación</h3>
         </div>
     </div>
     <div class="row w-teacher d-flex align-items-center" *ngFor="let profe of profesArr">
@@ -66,10 +66,10 @@
             <p class="m-0 p-0" *ngFor="let asignatura of profe.asignaturas">{{asignatura.nombre}}</p>
         </div>
         <div class="col-2">
-            <p class="m-0 p-0">Precio</p>
+            <p class="m-0 p-0">{{profe.precio}}€</p>
         </div>
         <div class="col-2">
-            <p class="m-0 p-0">Puntuación</p>
+            <p class="m-0 p-0">{{profe.puntuacion}}</p>
         </div>
     </div>
 </div>
