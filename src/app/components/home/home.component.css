@@ -40,3 +40,8 @@
   font-weight: 700;
   background-color: #ba94ec;
 }
+
+.first-row {
+  background-color: #7941C0;
+  color: #fff; /* Cambia el color del texto si es necesario para que sea legible */
+}
