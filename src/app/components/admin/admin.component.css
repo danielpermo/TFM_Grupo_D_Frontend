@@ -1,0 +1,16 @@
+.btn-purple {
+    background-color: #7941C0;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+.table-caption {
+    caption-side: top;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+
+  
