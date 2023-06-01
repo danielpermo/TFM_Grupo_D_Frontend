@@ -23,7 +23,7 @@
 h1 {
   font-size: 4rem;
   color: #ba94ec;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transition: color 0.3s;
   margin-bottom: 20px;
 }
@@ -38,23 +38,49 @@ h1 {
   background-color: #7500c0;
 }
 
-.profesoresTitulo {
-  font-size: 3rem;
+h2 {
+  font-size: 4rem;
   color: #ba94ec;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transition: color 0.3s;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
-.hr {
-  border: none;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  height: 50px;
-  font-weight: 700;
-}
-
-.first-row {
-  background-color: #7941c0;
+/* .first-row {
+  background-color: #ba94ec;
+  border-color: #ba94ec;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   color: #fff; /* Cambia el color del texto si es necesario para que sea legible */
+
+  .first-row th {
+    font-size: 20px;
+    color: white;
+    background-color: #7500c0;
+  }
+
+  .data-row {
+    background-color: #d0b9f2;
+    color: white;
+  }
+
+.valoracion {
+  color: #7500c0;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: 30px;
+}
+
+.nombreTabla {
+  color: #7500c0;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: 35px;
+}
+
+.ciudadTabla {
+  color: #7500c0;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  font-size: 35px;
 }
