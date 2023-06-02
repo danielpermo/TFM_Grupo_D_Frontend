@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { profesores } from '../db/profesores.db';
 import { Profesor } from '../interfaces/profesor';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -17,9 +17,20 @@ export class ProfesoresService {
     this.baseUrl = 'http://localhost:3000/api/'
   }
 
-  getAll(): Promise<any> {
+  getAllPublic(): Promise<any> {
     return firstValueFrom(
       this.httpClient.get(`${this.baseUrl}/profesores`)
+    );
+  }
+
+  getAllAdmin(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/administradores/listado/profe`, httpOptions)
     );
   }
 

@@ -1,7 +1,4 @@
 <section class="h-100 mt-2">
-
-  <!-- LISTADO DE ALUMNOS -->
-
   <div class="container">
     <div class="table-responsive">
       <table class="table">
@@ -22,15 +19,15 @@
         </thead>
         <tbody *ngIf="isProfesoresUrl(); else alumnosContent">
           <tr *ngFor="let profe of profesArr">
-            <td class="text-center">Juan</td>
-            <td class="text-center">Muñoz</td>
-            <td class="text-center">juan@correo.com</td>
-            <td class="text-center">000000000</td>
-            <td class="text-center">C/Falsa 123</td>
-            <td class="text-center">Valencia</td>
-            <td class="text-center">20</td>
-            <td class="text-center">65546788-D</td>
-            <td class="text-center">2022-01-01</td>
+            <td class="text-center">{{profe.nombre}}</td>
+            <td class="text-center">{{profe.apellidos}}</td>
+            <td class="text-center">{{profe.correo}}</td>
+            <td class="text-center">{{profe.telefono}}</td>
+            <td class="text-center">{{profe.direccion}}</td>
+            <td class="text-center">{{profe.ciudad}}</td>
+            <td class="text-center">{{profe.edad}}</td>
+            <td class="text-center">{{profe.dni}}</td>
+            <td class="text-center">{{profe.fecha_alta}}</td>
             <td>
               <button class="btn btn-purple">Dar de baja</button>
             </td>
