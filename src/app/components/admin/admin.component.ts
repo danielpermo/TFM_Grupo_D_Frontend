@@ -10,12 +10,14 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 })
 export class AdminComponent implements OnInit {
 
-  profesArr: any[] = []
+  profesArr: any[] = [];
+  alumnosArr: any[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private profesoresService: ProfesoresService, private alumnosService: AlumnosService) { }
 
   ngOnInit() {
     this.getProfes();
+    this.getAlumnos();
   }
 
   isProfesoresUrl(): boolean {
@@ -30,8 +32,8 @@ export class AdminComponent implements OnInit {
 
   async getAlumnos() {
     const response = await this.alumnosService.getAllAdmin();
-    this.profesArr = response;
-    return this.profesArr;
+    this.alumnosArr = response;
+    return this.alumnosArr;
   }
 
 }

@@ -35,16 +35,16 @@
         </tbody>
         <ng-template #alumnosContent>
           <tbody>
-            <tr>
-              <td class="text-center">Pedro</td>
-              <td class="text-center">Díaz</td>
-              <td class="text-center">pedro@correo.com</td>
-              <td class="text-center">000000000</td>
-              <td class="text-center">C/Mentira 123</td>
-              <td class="text-center">Madrid</td>
-              <td class="text-center">40</td>
-              <td class="text-center">78656233-Z</td>
-              <td class="text-center">2022-01-01</td>
+            <tr *ngFor="let alumno of alumnosArr">
+              <td class="text-center">{{alumno.nombre}}</td>
+              <td class="text-center">{{alumno.apellidos}}</td>
+              <td class="text-center">{{alumno.correo}}</td>
+              <td class="text-center">{{alumno.telefono}}</td>
+              <td class="text-center">{{alumno.direccion}}</td>
+              <td class="text-center">{{alumno.ciudad}}</td>
+              <td class="text-center">{{alumno.edad}}</td>
+              <td class="text-center">{{alumno.dni}}</td>
+              <td class="text-center">{{alumno.fecha_alta}}</td>
               <td>
                 <button class="btn btn-purple">Dar de baja</button>
               </td>
