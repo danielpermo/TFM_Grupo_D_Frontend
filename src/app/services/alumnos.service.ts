@@ -21,14 +21,5 @@ export class AlumnosService {
     );
   }
 
-  getAllAdmin(): Promise<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token_user')!
-      })
-    }
-    return firstValueFrom(
-      this.httpClient.get<any>(`${this.baseUrl}/administradores/listado/alum`, httpOptions)
-    );
-  }
+
 }

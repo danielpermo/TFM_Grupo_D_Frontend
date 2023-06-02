@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AlumnosService } from 'src/app/services/alumnos.service';
-import { ProfesoresService } from 'src/app/services/profesores.service';
+import { AdministradoresService } from 'src/app/services/administradores.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
   profesArr: any[] = [];
   alumnosArr: any[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private profesoresService: ProfesoresService, private alumnosService: AlumnosService) { }
+  constructor(private activatedRoute: ActivatedRoute, private administradoresService: AdministradoresService) { }
 
   ngOnInit() {
     this.getProfes();
@@ -25,15 +25,19 @@ export class AdminComponent implements OnInit {
   }
 
   async getProfes() {
-    const response = await this.profesoresService.getAllAdmin();
+    const response = await this.administradoresService.getAllProfes();
     this.profesArr = response;
     return this.profesArr;
   }
 
   async getAlumnos() {
-    const response = await this.alumnosService.getAllAdmin();
+    const response = await this.administradoresService.getAllAlum();
     this.alumnosArr = response;
     return this.alumnosArr;
+  }
+
+  borrarUsuario() {
+
   }
 
 }
