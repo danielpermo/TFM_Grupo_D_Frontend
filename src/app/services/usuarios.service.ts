@@ -45,14 +45,22 @@ export class UsuariosService {
     return localStorage.getItem('token_user') ? true : false;
   }
 
-  // isAdmin(): boolean {
-  //   const token = localStorage.getItem('token_user');
-  //   const tokenDecode = jwtDecode<any>(token!);
-  //   if (token) {
-  //     return tokenDecode.usuario_rol === 'admin';
-  //   }
-  //   return false;
-  // }
+
+
+  rol(pRol: string): boolean {
+    const token = localStorage.getItem('token_user');
+    const tokenDecode = jwtDecode<any>(token!);
+    if (token) {
+      return tokenDecode.usuario_rol === pRol;
+    }
+    return false;
+  }
+
+  getId(): number {
+    const token = localStorage.getItem('token_user');
+    const tokenDecode = jwtDecode<any>(token!);
+    return tokenDecode.usuario_id;
+  }
 
 
   // getById(pId: number): Promise<any> {

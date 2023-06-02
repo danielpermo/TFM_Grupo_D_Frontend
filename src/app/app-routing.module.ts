@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: "registro", component: RegistroComponent },
   { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
   { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
-  { path: "admin/:userId", component: AdminComponent, canActivate: [loginGuard, roleGuard]},
+  { path: "admin/:userId", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
+  { path: "admin/:userId/alumnos", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
+  { path: "admin/:userId/profesores", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "**", component: C404Component }
 ];
 
