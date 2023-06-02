@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
 @Component({
@@ -9,12 +9,19 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class MenuComponent {
 
+  pId!: number;
+
   usuariosService = inject(UsuariosService);
   router = inject(Router);
+
 
   onClickLogout() {
     localStorage.removeItem('token_user');
     this.router.navigate(['/home']);
   }
 
+
+  getId() {
+    return this.pId = this.usuariosService.getId();
+  }
 }
