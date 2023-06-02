@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class AdminComponent implements OnInit {
 
   profesArr: any[] = []
 
-  constructor(private activatedRoute: ActivatedRoute, private profesoresService: ProfesoresService) { }
+  constructor(private activatedRoute: ActivatedRoute, private profesoresService: ProfesoresService, private alumnosService: AlumnosService) { }
 
   ngOnInit() {
     this.getProfes();
@@ -24,12 +25,13 @@ export class AdminComponent implements OnInit {
   async getProfes() {
     const response = await this.profesoresService.getAllAdmin();
     this.profesArr = response;
-    console.log(this.profesArr);
     return this.profesArr;
   }
 
-  getAlumnos() {
-
+  async getAlumnos() {
+    const response = await this.alumnosService.getAllAdmin();
+    this.profesArr = response;
+    return this.profesArr;
   }
 
 }
