@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody *ngIf="isProfesoresUrl(); else alumnosContent">
-          <tr>
+          <tr *ngFor="let profe of profesArr">
             <td class="text-center">Juan</td>
             <td class="text-center">Muñoz</td>
             <td class="text-center">juan@correo.com</td>
