@@ -1,5 +1,25 @@
-<section class="h-100 mt-2">
-    <div class="container h-100">
-        <p>Alumno works</p>
-    </div>
-</section>
+<div class="card shadow p-2, cards">
+  <br>
+  <div class="d-flex flex-column justify-content-center">
+      <h1 class="d-flex text-center justify-content-center">{{ alumno.nombre }} {{ alumno.apellidos }}</h1>
+  </div>
+  <br>
+  <div class="links">
+  <div class="detalles d-flex align-items-center" [routerLink]="['/alumno', alumno.id]">
+    <img src="assets/details.png" alt="" class="icons">
+    <span class="link-detail">Ver detalles</span>
+  </div>
+   <div class="detalles d-flex align-items-center">
+    <img src="assets/books.svg" alt="" class="icons" [routerLink]="[]">
+   <span class="link-detail">Mis clases</span>
+   </div>
+   <div class="detalles d-flex align-items-center">
+    <img src="assets/star.svg" alt="" class="icons" [routerLink]="[]">
+    <span class="link-detail">Calificaciones</span>
+   </div>
+   <div class="detalles d-flex align-items-center"  [routerLink]="['/home']">
+    <img src="assets/school.svg" alt="" class="icons">
+   <span class="link-detail">Más cursos</span>
+   </div>
+  </div>
+</div>
