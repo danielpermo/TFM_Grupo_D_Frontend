@@ -13,6 +13,7 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
 import { ProfesorComponent } from './components/profesor/profesor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MenuComponent } from './components/menu/menu.component';
     LoginComponent,
     RegistroComponent,
     AlumnoComponent,
+    AlumnoDetailsComponent,
     ProfesorComponent,
     AdminComponent,
     MenuComponent,
@@ -33,6 +35,7 @@ import { MenuComponent } from './components/menu/menu.component';
     FormsModule,
     HttpClientModule
   ],
+  exports: [AlumnoComponent, AlumnoDetailsComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
