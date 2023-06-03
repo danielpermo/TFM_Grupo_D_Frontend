@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   async getProfes() {
 
-    const response = await this.profesoresService.getAll();
+    const response = await this.profesoresService.getAllPublic();
     this.profesArr = response;
     return this.profesArr;
 

@@ -1,7 +1,4 @@
 <section class="h-100 mt-2">
-
-  <!-- LISTADO DE ALUMNOS -->
-
   <div class="container">
     <div class="table-responsive">
       <table class="table">
@@ -22,34 +19,53 @@
         </thead>
         <tbody *ngIf="isProfesoresUrl(); else alumnosContent">
           <tr *ngFor="let profe of profesArr">
-            <td class="text-center">Juan</td>
-            <td class="text-center">Muñoz</td>
-            <td class="text-center">juan@correo.com</td>
-            <td class="text-center">000000000</td>
-            <td class="text-center">C/Falsa 123</td>
-            <td class="text-center">Valencia</td>
-            <td class="text-center">20</td>
-            <td class="text-center">65546788-D</td>
-            <td class="text-center">2022-01-01</td>
+            <td class="text-center">{{profe.nombre}}</td>
+            <td class="text-center">{{profe.apellidos}}</td>
+            <td class="text-center">{{profe.correo}}</td>
+            <td class="text-center">{{profe.telefono}}</td>
+            <td class="text-center">{{profe.direccion}}</td>
+            <td class="text-center">{{profe.ciudad}}</td>
+            <td class="text-center">{{profe.edad}}</td>
+            <td class="text-center">{{profe.dni}}</td>
+            <td class="text-center">{{profe.fecha_alta}}</td>
             <td>
-              <button class="btn btn-purple">Dar de baja</button>
+              <button class="btn btn-purple">Validar</button>
+            </td>
+            <td>
+              <a class="nav-link pe-auto" role="button" title="Eliminar" (click)="borrarUsuario(profe.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                  <path
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                </svg>
+              </a>
             </td>
           </tr>
         </tbody>
         <ng-template #alumnosContent>
           <tbody>
-            <tr>
-              <td class="text-center">Pedro</td>
-              <td class="text-center">Díaz</td>
-              <td class="text-center">pedro@correo.com</td>
-              <td class="text-center">000000000</td>
-              <td class="text-center">C/Mentira 123</td>
-              <td class="text-center">Madrid</td>
-              <td class="text-center">40</td>
-              <td class="text-center">78656233-Z</td>
-              <td class="text-center">2022-01-01</td>
+            <tr *ngFor="let alumno of alumnosArr">
+              <td class="text-center">{{alumno.nombre}}</td>
+              <td class="text-center">{{alumno.apellidos}}</td>
+              <td class="text-center">{{alumno.correo}}</td>
+              <td class="text-center">{{alumno.telefono}}</td>
+              <td class="text-center">{{alumno.direccion}}</td>
+              <td class="text-center">{{alumno.ciudad}}</td>
+              <td class="text-center">{{alumno.edad}}</td>
+              <td class="text-center">{{alumno.dni}}</td>
+              <td class="text-center">{{alumno.fecha_alta}}</td>
               <td>
-                <button class="btn btn-purple">Dar de baja</button>
+                <a class="nav-link pe-auto" role="button" title="Eliminar" (click)="borrarUsuario(alumno.id)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                    viewBox="0 0 16 16">
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                    <path
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                  </svg>
+                </a>
               </td>
             </tr>
           </tbody>
