@@ -35,4 +35,15 @@ export class AdministradoresService {
     );
   }
 
+  delete(pId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+  }
+
 }

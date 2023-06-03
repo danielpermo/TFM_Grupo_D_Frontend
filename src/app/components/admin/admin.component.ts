@@ -36,8 +36,10 @@ export class AdminComponent implements OnInit {
     return this.alumnosArr;
   }
 
-  borrarUsuario() {
-
+  async borrarUsuario(pId: number) {
+    const response = await this.administradoresService.delete(pId);
+    console.log(response);
+    return response;
   }
 
 }
