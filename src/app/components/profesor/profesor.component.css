@@ -19,12 +19,38 @@ h3 {
     padding-right: 10px;
 }
 
-.btn {
+/* Boton Añadir Asignatura */
+
+.btnAnadir {
     background-color: #ba94ec;
     border: none;
     font-weight: 650;
   }
-  
-.btn:hover {
+
+.btnAnadir:hover {
     background-color: #7500c0;
   }
+
+/* Boton Borrar Asignatura */
+
+.btnBorrar {
+    background-color: transparent;
+    color: gray;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+
+  .btnBorrar:hover { 
+    color: #7500c0;
+  }
+  
+  .asignatura {
+    margin-left: 0.5rem;
+  }
+  
+  
+  
