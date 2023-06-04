@@ -19,6 +19,15 @@ h3 {
     padding-right: 10px;
 }
 
+.asignatura {
+    margin-left: 0.5rem;
+  }
+
+.text-center {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
 /* Boton Añadir Asignatura */
 
 .btnAnadir {
@@ -47,10 +56,3 @@ h3 {
   .btnBorrar:hover { 
     color: #7500c0;
   }
-  
-  .asignatura {
-    margin-left: 0.5rem;
-  }
-  
-  
-  
