@@ -44,13 +44,14 @@ export class AdminComponent implements OnInit {
 
   async validate(pId: number) {
     const isValidate = await this.administradoresService.getById(pId);
-    if (isValidate.validado === 0) {
-      const response = await this.administradoresService.validateProfe(pId);
-      console.log(response);
-      alert('Validación realizada correctamente.')
-      return response;
+    console.log(isValidate.validado)
+    if (isValidate.validado === 1 || isValidate.validado === undefined) {
+      return alert('Usuario ya validado.')
     }
-    alert('El usuario ya estaba validado.');
+    const response = await this.administradoresService.validateProfe(pId);
+    console.log(response);
+    alert('Validación realizada correctamente.')
+    return response;
   }
 
 }
