@@ -93,6 +93,7 @@ export class RegistroComponent {
 
   async onSubmit() {
     let user: any = this.RegistroForm.value;
+    console.log(user)
     const response = await this.usuariosService.registro(user)
     console.log(response);
     if (response.fatal) {
