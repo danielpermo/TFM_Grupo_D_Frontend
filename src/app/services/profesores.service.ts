@@ -19,7 +19,7 @@ export class ProfesoresService {
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/profesores`)
+      this.httpClient.get(`${this.baseUrl}/publica`)
     );
   }
 
