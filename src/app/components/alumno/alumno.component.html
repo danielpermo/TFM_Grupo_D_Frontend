@@ -1,9 +1,60 @@
-<div class="card shadow p-2, cards">
-  <br>
-  <div class="d-flex flex-column justify-content-center">
-      <h1 class="d-flex text-center justify-content-center">{{ alumno.nombre }} {{ alumno.apellidos }}</h1>
+  <div class="container">
+    <div class="container1">
+      <h1 class="title">Mi perfil</h1>
+      <hr>
+      <div class="data-container">
+        <span class="data">Nombre:</span>
+        <span>{{ alumno.nombre }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Apellidos:</span>
+        <span>{{ alumno.apellidos }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Nombre de usuario:</span>
+        <span>{{ alumno.username }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Ubicación:</span>
+        <span>{{ alumno.ciudad }}</span>
+      </div>
+    </div>
+    <div class="container2">
+      <h1 class="title">Privado</h1>
+      <hr>
+      <div>
+        <span class="info">Solo tú puedes ver estos datos.</span>
+      <div>
+      <br>
+      <div class="data-container">
+        <span class="data">Dirección:</span>
+        <span>{{ alumno.direccion }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Edad:</span>
+        <span>{{ alumno.edad }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Teléfono:</span>
+        <span>{{ alumno.telefono }}</span>
+      </div>
+      <div class="data-container">
+       <span class="data">DNI:</span>
+       <span>{{ alumno.dni }}</span>
+      </div>
+      <div class="data-container">
+       <span class="data">Edad:</span>
+       <span>{{ alumno.edad }}</span>
+      </div>
+    </div>
+    </div> 
   </div>
-  <br>
+</div>
+
+
+
+
+
   <div class="links">
   <div class="detalles d-flex align-items-center" [routerLink]="['/alumno', alumno.id]">
     <img src="assets/details.png" alt="" class="icons">
@@ -21,5 +72,4 @@
     <img src="assets/school.svg" alt="" class="icons">
    <span class="link-detail">Más cursos</span>
    </div>
-  </div>
-</div>
+  
