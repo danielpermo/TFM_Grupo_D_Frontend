@@ -1,5 +1,75 @@
-<section class="h-100 mt-2">
-    <div class="container h-100">
-        <p>Alumno works</p>
+  <div class="container">
+    <div class="container1">
+      <h1 class="title">Mi perfil</h1>
+      <hr>
+      <div class="data-container">
+        <span class="data">Nombre:</span>
+        <span>{{ alumno.nombre }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Apellidos:</span>
+        <span>{{ alumno.apellidos }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Nombre de usuario:</span>
+        <span>{{ alumno.username }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Ubicación:</span>
+        <span>{{ alumno.ciudad }}</span>
+      </div>
     </div>
-</section>
+    <div class="container2">
+      <h1 class="title">Privado</h1>
+      <hr>
+      <div>
+        <span class="info">Solo tú puedes ver estos datos.</span>
+      <div>
+      <br>
+      <div class="data-container">
+        <span class="data">Dirección:</span>
+        <span>{{ alumno.direccion }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Edad:</span>
+        <span>{{ alumno.edad }}</span>
+      </div>
+      <div class="data-container">
+        <span class="data">Teléfono:</span>
+        <span>{{ alumno.telefono }}</span>
+      </div>
+      <div class="data-container">
+       <span class="data">DNI:</span>
+       <span>{{ alumno.dni }}</span>
+      </div>
+      <div class="data-container">
+       <span class="data">Edad:</span>
+       <span>{{ alumno.edad }}</span>
+      </div>
+    </div>
+    </div> 
+  </div>
+</div>
+
+
+
+
+
+  <div class="links">
+  <div class="detalles d-flex align-items-center" [routerLink]="['/alumno', alumno.id]">
+    <img src="assets/details.png" alt="" class="icons">
+    <span class="link-detail">Ver detalles</span>
+  </div>
+   <div class="detalles d-flex align-items-center">
+    <img src="assets/books.svg" alt="" class="icons" [routerLink]="[]">
+   <span class="link-detail">Mis clases</span>
+   </div>
+   <div class="detalles d-flex align-items-center">
+    <img src="assets/star.svg" alt="" class="icons" [routerLink]="[]">
+    <span class="link-detail">Calificaciones</span>
+   </div>
+   <div class="detalles d-flex align-items-center"  [routerLink]="['/home']">
+    <img src="assets/school.svg" alt="" class="icons">
+   <span class="link-detail">Más cursos</span>
+   </div>
+  
