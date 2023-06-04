@@ -15,7 +15,7 @@ export class UsuariosService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/usuarios'
+    this.baseUrl = 'http://localhost:3000/api'
   }
 
   getAll() {
@@ -25,19 +25,19 @@ export class UsuariosService {
       })
     }
     return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl, httpOptions)
+      this.httpClient.get<any>(`${this.baseUrl}/publica`, httpOptions)
     );
   }
 
   login(pUser: Usuario): Promise<any> {
     return firstValueFrom(
-      this.httpClient.post<Usuario>(`${this.baseUrl}/login`, pUser)
+      this.httpClient.post<Usuario>(`${this.baseUrl}/usuarios/login`, pUser)
     );
   }
 
   registro(values: any) {
     return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/registro`, values)
+      this.httpClient.post<any>(`${this.baseUrl}/usuarios/registro`, values)
     )
   }
 
