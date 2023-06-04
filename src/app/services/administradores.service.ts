@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
+import jwtDecode from "jwt-decode";
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,7 @@ export class AdministradoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
+    console.log(httpOptions.headers)
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pId}`, httpOptions)
     );
@@ -64,7 +66,7 @@ export class AdministradoresService {
       })
     }
     return firstValueFrom(
-      this.httpClient.patch<any>(`${this.baseUrl}/${pId}`, httpOptions)
+      this.httpClient.patch<any>(`${this.baseUrl}/${pId}`, { "validado": 1 }, httpOptions)
     );
   }
 
