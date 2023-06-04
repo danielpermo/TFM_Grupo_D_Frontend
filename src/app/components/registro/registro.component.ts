@@ -8,7 +8,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistroComponent {
 
   RegistroForm: FormGroup
   rolSelected!: any
@@ -63,12 +63,6 @@ export class RegistroComponent implements OnInit {
         Validators.required
       ])
     }, []);
-  }
-
-  ngOnInit() {
-    // this.activatedroute.params.subscribe(params => {
-    //   // console.log(params);
-    // })
   }
 
   showProfesorDivs(event: any) {

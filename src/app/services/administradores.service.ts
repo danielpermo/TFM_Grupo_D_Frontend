@@ -35,7 +35,7 @@ export class AdministradoresService {
     );
   }
 
-  delete(pId: number) {
+  delete(pId: number): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_user')!
@@ -43,6 +43,28 @@ export class AdministradoresService {
     }
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+  }
+
+  getById(pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.get<any>(`${this.baseUrl}/${pId}`, httpOptions)
+    );
+  }
+
+  validateProfe(pId: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(
+      this.httpClient.patch<any>(`${this.baseUrl}/${pId}`, httpOptions)
     );
   }
 

@@ -29,7 +29,7 @@
             <td class="text-center">{{profe.dni}}</td>
             <td class="text-center">{{profe.fecha_alta}}</td>
             <td>
-              <button class="btn btn-purple">Validar</button>
+              <button class="btn btn-purple" (click)="validate(profe.id)">Validar</button>
             </td>
             <td>
               <a class="nav-link pe-auto" role="button" title="Eliminar" (click)="borrarUsuario(profe.id)">
