@@ -12,13 +12,13 @@
         <a class="nav-link" [routerLink]="['/admin', getId() ,'profesores']">Profesores</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-        <a class="nav-link" [routerLink]="['/alumno', 25]">Mi perfil</a>
+        <a class="nav-link" [routerLink]="['/profe', getId()]">Mi perfil</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
         <a class="nav-link" [routerLink]="['/alumno', 25]">Mis alumnos</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-        <a class="nav-link" [routerLink]="['/alumno', 25]">Profesores</a>
+        <a class="nav-link" [routerLink]="['/alum', getId()]">Profesores</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
         <a class="nav-link" [routerLink]="['/alumno', 25]">Clases</a>
