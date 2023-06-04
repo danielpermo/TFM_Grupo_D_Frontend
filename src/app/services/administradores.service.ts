@@ -42,7 +42,6 @@ export class AdministradoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    console.log(httpOptions.headers)
     return firstValueFrom(
       this.httpClient.delete<any>(`${this.baseUrl}/${pId}`, httpOptions)
     );
