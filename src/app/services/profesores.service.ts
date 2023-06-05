@@ -23,6 +23,15 @@ export class ProfesoresService {
     );
   }
 
+  getProfesor(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/profesores/perfil`, httpOptions));
+  }
+
 
   // getById(pId: number): Promise<any> {
   //   return Promise.resolve(this.profesores.find(profesores => profesores.id === pId));
