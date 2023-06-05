@@ -16,14 +16,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
-<<<<<<< HEAD
   { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
-  { path: "profe/:userId", component: ProfesorComponent,/* canActivate: [loginGuard]*/ },
-=======
-  { path: "alum/:id", component: AlumnoComponent, canActivate: [loginGuard] },
-  { path: "alumno/:id", component: AlumnoDetailsComponent, canActivate: [loginGuard] },
   { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
->>>>>>> origin/feature_private_alumno
   { path: "admin/:userId", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/alumnos", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/profesores", component: AdminComponent, canActivate: [loginGuard, roleGuard] },

@@ -10,7 +10,6 @@ import jwtDecode from 'jwt-decode';
 export class UsuariosService {
 
   private baseUrl: string;
-  usuarios: any = {};
 
 
 
@@ -35,10 +34,10 @@ export class UsuariosService {
     );
   }
 
-  registro(values: any) {
+  registro(values: any): Promise<any> {
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/registro`, values)
-    )
+    );
   }
 
   isLogged(): boolean {

@@ -19,8 +19,17 @@ export class ProfesoresService {
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/profesores`)
+      this.httpClient.get(`${this.baseUrl}/publica`)
     );
+  }
+
+  getProfesor(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/profesores/perfil`, httpOptions));
   }
 
 

@@ -1,91 +1,90 @@
 <section class="h-100 mt-2">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>Mi Perfil</h3>
-          <hr>
-          <div class="form-group">
-            <label class="tituloDatos">Nombre:</label>
-            <p>Nombre del profesor</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Apellidos:</label>
-            <p>Apellidos del profesor</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Edad:</label>
-            <p>00</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Experiencia:</label>
-            <p>Experiencia del profesor</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Precio:</label>
-            <p>99.99€</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Ciudad:</label>
-            <p>Ciudad del profesor</p>
-          </div>
-          <h3>Contacto</h3>
-          <hr>
-          <div class="form-group">
-            <label class="tituloDatos">Teléfono:</label>
-            <p>000-000-000</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Email:</label>
-            <p>correo@ejemplo.com</p>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Mi Perfil</h3>
+        <hr>
+        <div class="form-group">
+          <label class="tituloDatos">Nombre:</label>
+          <p>{{profesorObj.nombre}}</p>
         </div>
-        <div class="col-md-6 privado">
-          <h3>Privado</h3>
-          <hr>
-          <div class="alert alert-info" style="background-color: #d9c8f1;">
-            Solo tú puedes ver estos datos.
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Username:</label>
-            <p>Username del profesor</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">Dirección:</label>
-            <p>Dirección del profesor</p>
-          </div>
-          <div class="form-group">
-            <label class="tituloDatos">DNI:</label>
-            <p>00000000-X</p>
-          </div>
+        <div class="form-group">
+          <label class="tituloDatos">Apellidos:</label>
+          <p>{{profesorObj.apellidos}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Edad:</label>
+          <p>{{profesorObj.edad}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Experiencia:</label>
+          <p>{{profesorObj.experiencia}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Precio:</label>
+          <p>{{profesorObj.precio}}€</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Ciudad:</label>
+          <p>{{profesorObj.ciudad}}</p>
+        </div>
+        <h3>Contacto</h3>
+        <hr>
+        <div class="form-group">
+          <label class="tituloDatos">Teléfono:</label>
+          <p>{{profesorObj.telefono}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Email:</label>
+          <p>{{profesorObj.email}}</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <h3>Asignaturas</h3>
-          <hr>
-          <ul class="list-group">
-            <li class="list-group-item d-flex align-items-center">
-                <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
-                <span class="asignatura">Asignatura 1</span>
-              </li>
-              <li class="list-group-item d-flex align-items-center">
-                <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
-                <span class="asignatura">Asignatura 2</span>
-              </li>
-              <li class="list-group-item d-flex align-items-center">
-                <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
-                <span class="asignatura">Asignatura 3</span>
-              </li>
-                                          
-          </ul>
+      <div class="col-md-6 privado">
+        <h3>Privado</h3>
+        <hr>
+        <div class="alert alert-info" style="background-color: #d9c8f1;">
+          Solo tú puedes ver estos datos.
         </div>
+        <div class="form-group">
+          <label class="tituloDatos">Username:</label>
+          <p>{{profesorObj.username}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">Dirección:</label>
+          <p>{{profesorObj.direccion}}</p>
+        </div>
+        <div class="form-group">
+          <label class="tituloDatos">DNI:</label>
+          <p>{{profesorObj.dni}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Asignaturas</h3>
+        <hr>
+        <ul class="list-group" *ngFor="let asignatura of profesorObj.asignaturas">
+          <li class="list-group-item d-flex align-items-center">
+            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
+            <span class="asignatura">{{asignatura.nombre}}</span>
+          </li>
+          <!-- <li class="list-group-item d-flex align-items-center">
+            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
+            <span class="asignatura">Asignatura 2</span>
+          </li>
+          <li class="list-group-item d-flex align-items-center">
+            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
+            <span class="asignatura">Asignatura 3</span>
+          </li> -->
+
+        </ul>
+      </div>
     </div>
     <div class="row">
       <div class="col-md-12 text-center mt-3">
         <button class="btnAnadir btn btn-primary fs-4">Añadir Asignatura</button>
       </div>
     </div>
-    </div>
-    
-  </section>
-  
+  </div>
+
+</section>
