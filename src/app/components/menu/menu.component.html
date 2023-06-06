@@ -15,7 +15,7 @@
         <a class="nav-link" [routerLink]="['/profe', getId()]">Mi perfil</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-        <a class="nav-link" [routerLink]="['/alumno', 25]">Mis alumnos</a>
+        <a class="nav-link" [routerLink]="'/profe/' + getId() + '/misAlumnos'">Mis alumnos</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
         <a class="nav-link" [routerLink]="['/alum', getId()]">Profesores</a>
