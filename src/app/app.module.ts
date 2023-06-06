@@ -14,6 +14,7 @@ import { ProfesorComponent } from './components/profesor/profesor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
+import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AlumnoDetailsComponent } from './components/alumno-details/alumno-detai
     ProfesorComponent,
     AdminComponent,
     MenuComponent,
+    MisAlumnosComponent,
   ],
   imports: [
     BrowserModule,
