@@ -1,0 +1,48 @@
+h2 {
+    font-weight: bold;
+    color: #7500c0;
+    text-shadow: #ba94ec;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+.table th,
+.table td {
+    padding: 8px;
+  }
+  
+.table thead tr {
+    background-color: #7500c0;
+    color: white;
+  }
+  
+.table tbody tr {
+    background-color: #f2eef3;
+  }
+  
+.btnBorrar {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+
+/* Boton Borrar Asignatura */
+
+.btnBorrar {
+    background-color: transparent;
+    color: gray;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+
+  .btnBorrar:hover { 
+    color: #7500c0;
+  }
