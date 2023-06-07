@@ -40,6 +40,15 @@ export class ProfesoresService {
     return firstValueFrom(this.httpClient.post(`${this.baseUrl}/profesores/asignaturas/${pAsignatura}`, null, httpOptions));
   }
 
+  deleteAsignatura(pAsignatura: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/profesores/asignaturas/${pAsignatura}`, httpOptions));
+  }
+
 
   // getById(pId: number): Promise<any> {
   //   return Promise.resolve(this.profesores.find(profesores => profesores.id === pId));

@@ -46,4 +46,10 @@ export class ProfesorComponent implements OnInit {
     return response;
   }
 
+  async deleteAsignatura(pAsignatura: number) {
+    const response = await this.profesoresService.deleteAsignatura(pAsignatura)
+    console.log(response);
+    return response;
+  }
+
 }

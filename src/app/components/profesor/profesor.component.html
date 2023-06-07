@@ -65,7 +65,8 @@
         <hr>
         <ul class="list-group" *ngFor="let asignatura of profesorObj.asignaturas">
           <li class="list-group-item d-flex align-items-center">
-            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5">X</button>
+            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5"
+              (click)="deleteAsignatura(asignatura.id)">X</button>
             <span class="asignatura">{{asignatura.nombre}}</span>
           </li>
         </ul>
