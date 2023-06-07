@@ -34,9 +34,13 @@ export class ProfesorComponent implements OnInit {
   }
 
   async aceptarSeleccion() {
-    console.log(this.asignaturaSeleccionada);
+    const [asignatura] = await this.asignaturasService.getById(this.asignaturaSeleccionada);
+    const profesor = await this.profesoresService.getProfesor();
+    const asignaturas = profesor.asignaturas;
+    if (asignaturas.some((a: any) => a.nombre === asignatura.nombre)) {
+      return alert('La asignatura ya estaba añadida.');
+    }
     const response = await this.profesoresService.addAsignatura(this.asignaturaSeleccionada);
-    console.log(response);
     alert('Asignatura añadida.');
     window.location.reload();
     return response;

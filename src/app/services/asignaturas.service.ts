@@ -18,4 +18,8 @@ export class AsignaturasService {
     return firstValueFrom(this.httpClient.get(`${this.baseUrl}`));
   }
 
+  getById(pId: any): Promise<any> {
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/${pId}`));
+  }
+
 }
