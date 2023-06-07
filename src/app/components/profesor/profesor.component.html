@@ -68,7 +68,8 @@
             <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5"
               (click)="deleteAsignatura(asignatura.id)">X</button>
             <span class="asignatura">{{asignatura.nombre}}</span>
-            <button class="btnCrear btn btn-primary d-flex align-items-end m-3">Crear clase</button>
+            <button class="btnCrear btn btn-primary d-flex align-items-end m-3"
+              (click)="crearClase(asignatura.id, profesorObj)">Crear clase</button>
           </li>
         </ul>
       </div>
