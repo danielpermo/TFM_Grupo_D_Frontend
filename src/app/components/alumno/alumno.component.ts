@@ -12,19 +12,19 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 })
 export class AlumnoComponent implements OnInit {
 
-  alumno!: IAlumno;
+  alumno: any = {}
 
 
 
-  constructor(private servicioAlumno: AlumnosService, private activatedRoute: ActivatedRoute, private router: Router) {
-    this.alumno = {} as IAlumno;
+  constructor(private alumnosservice: AlumnosService, private activatedRoute: ActivatedRoute, private router: Router) {
+
   }
 
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(async (params: any) => {
-      let id: number = params.id;
-      let res: any = await this.servicioAlumno.getById(id);
+      let id: number = params.userId;
+      let res: any = await this.alumnosservice.getalumno(id);
       this.alumno = res[0];
     });
   }
