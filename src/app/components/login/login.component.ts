@@ -9,7 +9,7 @@ import jwtDecode from "jwt-decode";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   UserForm: FormGroup
 
@@ -23,14 +23,6 @@ export class LoginComponent implements OnInit {
       ])
     }, []);
   }
-
-  ngOnInit() {
-    // this.activatedRoute.params.subscribe(params => {
-    //   console.log(params);
-    // })
-
-  }
-
 
   checkControl(pControlName: string, pError: string): boolean {
     if (this.UserForm.get(pControlName)?.hasError(pError) && this.UserForm.get(pControlName)?.touched) {

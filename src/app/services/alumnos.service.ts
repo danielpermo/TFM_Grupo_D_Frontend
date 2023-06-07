@@ -12,7 +12,7 @@ export class AlumnosService {
 
 
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
@@ -20,8 +20,13 @@ export class AlumnosService {
     );
   }
 
-  getById(pId: number): Promise<IAlumno> {
-    return lastValueFrom(this.httpClient.get<IAlumno>(`${this.baseUrl}${pId}`))
+  getalumno(pId: number): Promise<IAlumno> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return lastValueFrom(this.httpClient.get<IAlumno>(`${this.baseUrl}/${pId}`, httpOptions))
   }
 
 
