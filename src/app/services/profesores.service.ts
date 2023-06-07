@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { profesores } from '../db/profesores.db';
 import { Profesor } from '../interfaces/profesor';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
@@ -30,6 +29,15 @@ export class ProfesoresService {
       })
     }
     return firstValueFrom(this.httpClient.get(`${this.baseUrl}/profesores/perfil`, httpOptions));
+  }
+
+  addAsignatura(pAsignatura: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.post(`${this.baseUrl}/profesores/asignaturas/${pAsignatura}`, null, httpOptions));
   }
 
 
