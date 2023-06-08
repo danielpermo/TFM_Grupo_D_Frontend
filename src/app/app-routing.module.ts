@@ -6,7 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { AlumnoComponent } from './components/alumno/alumno.component';
 import { ProfesorComponent } from './components/profesor/profesor.component';
-import { MisAlumnosComponent} from './components/mis-alumnos/mis-alumnos.component';
+import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { loginGuard } from './guards/login.guards';
 import { roleGuard } from './guards/role.guard';
@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
+  { path: "update/:userId", component: RegistroComponent, canActivate: [loginGuard] },
   { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
   { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
   { path: "profe/:userId/misAlumnos", component: MisAlumnosComponent },

@@ -1,3 +1,6 @@
+<div class="profile">
+    <h1>PERFIL: {{profile}}</h1>
+</div>
 <div class="card mb-3">
     <div class="row g-0 m-5">
         <div class="col-12 col-md-6 col-xl-6 border-end border-primary text-center">
@@ -25,8 +28,8 @@
                 </p>
                 <div class="btn-group mt-4" role="group" aria-label="Basic outlined example">
                     <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Eliminar</button>
-                    <button type="button"
-                        class="btnCrear btn btn-primary d-flex align-items-end m-3">Actualizar</button>
+                    <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
+                        [routerLink]="['/update', myUser.id]">Actualizar</button>
                     <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Mis
                         clases</button>
                 </div>
