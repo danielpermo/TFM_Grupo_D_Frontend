@@ -49,6 +49,8 @@ export class ProfesorComponent implements OnInit {
   async deleteAsignatura(pAsignatura: number) {
     const response = await this.profesoresService.deleteAsignatura(pAsignatura)
     console.log(response);
+    alert('Asignatura eliminada.');
+    window.location.reload();
     return response;
   }
   async crearClase(pAsignatura: number, usuario: any) {

@@ -1,6 +1,6 @@
 <section class="h-100 mt-2">
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-6">
         <h3>Mi Perfil</h3>
         <hr>
@@ -58,18 +58,26 @@
           <p>{{profesorObj.dni}}</p>
         </div>
       </div>
-    </div>
+    </div> -->
+
+
     <div class="row">
+      <app-user-view></app-user-view>
+    </div>
+
+
+
+    <div class="row mt-4">
       <div class="col-md-12">
         <h3>Asignaturas</h3>
         <hr>
         <ul class="list-group" *ngFor="let asignatura of profesorObj.asignaturas">
           <li class="list-group-item d-flex align-items-center">
             <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5"
-              (click)="deleteAsignatura(asignatura.id)">X</button>
+              (click)="deleteAsignatura(asignatura.asignatura_id)">X</button>
             <span class="asignatura">{{asignatura.nombre}}</span>
             <button class="btnCrear btn btn-primary d-flex align-items-end m-3"
-              (click)="crearClase(asignatura.id, profesorObj)">Crear clase</button>
+              (click)="crearClase(asignatura.asignatura_id, profesorObj)">Crear clase</button>
           </li>
         </ul>
       </div>
