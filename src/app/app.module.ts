@@ -15,6 +15,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
 import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.component';
+import { UserViewComponent } from './components/user-view/user-view.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.compon
     AdminComponent,
     MenuComponent,
     MisAlumnosComponent,
+    UserViewComponent,
   ],
   imports: [
     BrowserModule,
