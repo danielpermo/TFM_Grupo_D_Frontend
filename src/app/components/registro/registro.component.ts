@@ -277,6 +277,8 @@ export class RegistroComponent implements OnInit {
       console.log(response);
       alert('Usuario actualizado correctamente.');
       return response;
+    } else if (this.profile === 'alum') {
+
     }
   }
 
