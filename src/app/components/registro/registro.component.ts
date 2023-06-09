@@ -119,7 +119,7 @@ export class RegistroComponent implements OnInit {
           dni: new FormControl(this.myUser?.dni, [
             Validators.required
           ]),
-          rol: new FormControl(this.profile, [
+          rol: new FormControl(this.myUser?.rol, [
             Validators.required
           ]),
           experiencia: new FormControl(this.myUser?.experiencia, [
@@ -178,8 +178,6 @@ export class RegistroComponent implements OnInit {
           experiencia: new FormControl(this.myUser?.experiencia, [
           ]),
           precio: new FormControl(this.myUser?.precio, [
-          ]),
-          asignaturas: new FormControl(this.myUser?.asignaturas, [
           ])
         }, []);
       } else if (userType === 'admin') {
@@ -273,7 +271,13 @@ export class RegistroComponent implements OnInit {
   }
 
   async update() {
-
+    let user: any = this.RegistroForm.value;
+    if (this.profile === 'Profesor') {
+      const response = await this.profesoresService.updateProfesor(user);
+      console.log(response);
+      alert('Usuario actualizado correctamente.');
+      return response;
+    }
   }
 
   isLogged() {

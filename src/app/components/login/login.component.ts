@@ -44,7 +44,10 @@ export class LoginComponent {
     localStorage.setItem('token_user', token);
 
     alert('Login realizado con éxito');
-    this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id, 'perfil']);
+    if (tokenDecode.usuario_rol === 'admin') {
+      return this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id, 'perfil']);
+    }
+    return this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id]);
   }
 
 }

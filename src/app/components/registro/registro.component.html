@@ -198,44 +198,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div *ngIf="profile === 'Profesor'" class="col-12 mb-3">
-                                    <div class="mb-2 w-100">
-                                        <label class="text-muted" for="asignaturas">*Asignaturas:</label>
-                                    </div>
-                                    <div class="form-control row">
-                                        <label class="col-4">
-                                            <input type="checkbox" id="1" [checked]="asignaturas.includes(1)"
-                                                (change)="toggleCheckbox(1)">
-                                            Matemáticas
-                                        </label>
-                                        <label class="col-4">
-                                            <input type="checkbox" id="2" [checked]="asignaturas.includes(2)"
-                                                (change)="toggleCheckbox(2)">
-                                            Lengua y Literatura
-                                        </label>
-                                        <label class="col-4">
-                                            <input type="checkbox" id="3" [checked]="asignaturas.includes(3)"
-                                                (change)="toggleCheckbox(3)">
-                                            Física
-                                        </label>
-                                        <label class="col-4">
-                                            <input type="checkbox" id="4" [checked]="asignaturas.includes(4)"
-                                                (change)="toggleCheckbox(4)">
-                                            Historia
-                                        </label>
-                                        <label class="col-4">
-                                            <input type="checkbox" id="5" [checked]="asignaturas.includes(5)"
-                                                (change)="toggleCheckbox(5)">
-                                            Química
-                                        </label>
 
-                                    </div>
-                                    <p class="error" *ngIf="checkControl('asignaturas', 'required')">(*) El campo es
-                                        requerido
-                                    </p>
-                                </div>
-                            </div>
 
                             <div class="d-flex align-items-center">
                                 <button type="submit" class="btn btn-primary btn-lg ms-auto"
@@ -250,6 +213,9 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- REGISTRO CUANDO NO HAY LOGIN HECHO -->
+
 
                 <div class="card shadow-lg" *ngIf="isLogged() === false">
                     <div class="card-body p-5">
