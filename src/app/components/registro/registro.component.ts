@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import jwtDecode from 'jwt-decode';
+import { ProfesoresService } from 'src/app/services/profesores.service';
+import { AdministradoresService } from 'src/app/services/administradores.service';
+import { AlumnosService } from 'src/app/services/alumnos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
 
   RegistroForm: FormGroup
   rolSelected!: any
   asignaturas: number[] = [];
+  myUser: any = {};
+  title: string = "REGISTRO";
+  buttonName: string = "Regístrate";
+  profile: string = "";
 
-  constructor(private activatedroute: ActivatedRoute, private usuariosService: UsuariosService, private router: Router) {
+  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -65,6 +73,168 @@ export class RegistroComponent {
     }, []);
   }
 
+  async ngOnInit() {
+    const token = localStorage.getItem('token_user');
+    if (token) {
+      const tokenDecode: any = jwtDecode(token!);
+      const userType = tokenDecode.usuario_rol;
+      this.title = "ACTUALIZAR";
+      this.buttonName = "Actualizar";
+      if (userType === 'profe') {
+        const response = await this.profesoresService.getProfesor();
+        this.profile = "Profesor";
+        this.myUser = response;
+        this.RegistroForm = new FormGroup({
+          nombre: new FormControl(this.myUser?.nombre, [
+            Validators.required
+          ]),
+          apellidos: new FormControl(this.myUser?.apellidos, [
+            Validators.required
+          ]),
+          username: new FormControl(this.myUser?.username, [
+            Validators.required
+          ]),
+          email: new FormControl(this.myUser?.email, [
+            Validators.required
+          ]),
+          password: new FormControl("", [
+            Validators.required
+          ]),
+          telefono: new FormControl(this.myUser?.telefono, [
+            Validators.required
+          ]),
+          direccion: new FormControl(this.myUser?.direccion, [
+            Validators.required
+          ]),
+          ciudad: new FormControl(this.myUser?.ciudad, [
+            Validators.required
+          ]),
+          edad: new FormControl(this.myUser?.edad, [
+            Validators.required
+          ]),
+          fechaNacimiento: new FormControl("", []),
+          genero: new FormControl(this.myUser?.genero, [
+            Validators.required
+          ]),
+          dni: new FormControl(this.myUser?.dni, [
+            Validators.required
+          ]),
+          rol: new FormControl(this.profile, [
+            Validators.required
+          ]),
+          experiencia: new FormControl(this.myUser?.experiencia, [
+            Validators.required
+          ]),
+          precio: new FormControl(this.myUser?.precio, [
+            Validators.required
+          ]),
+          asignaturas: new FormControl(this.myUser?.asignaturas, [
+            Validators.required
+          ])
+        }, []);
+      } else if (userType === 'alum') {
+        const response = await this.alumnosService.getalumno(tokenDecode.usuario_id);
+        this.profile = "Alumno";
+        this.myUser = response;
+        this.myUser = this.myUser[0];
+        this.RegistroForm = new FormGroup({
+          nombre: new FormControl(this.myUser?.nombre, [
+            Validators.required
+          ]),
+          apellidos: new FormControl(this.myUser?.apellidos, [
+            Validators.required
+          ]),
+          username: new FormControl(this.myUser?.username, [
+            Validators.required
+          ]),
+          email: new FormControl(this.myUser?.email, [
+            Validators.required
+          ]),
+          password: new FormControl("", [
+            Validators.required
+          ]),
+          telefono: new FormControl(this.myUser?.telefono, [
+            Validators.required
+          ]),
+          direccion: new FormControl(this.myUser?.direccion, [
+            Validators.required
+          ]),
+          ciudad: new FormControl(this.myUser?.ciudad, [
+            Validators.required
+          ]),
+          edad: new FormControl(this.myUser?.edad, [
+            Validators.required
+          ]),
+          fechaNacimiento: new FormControl("", []),
+          genero: new FormControl(this.myUser?.genero, [
+            Validators.required
+          ]),
+          dni: new FormControl(this.myUser?.dni, [
+            Validators.required
+          ]),
+          rol: new FormControl(this.profile, [
+            Validators.required
+          ]),
+          experiencia: new FormControl(this.myUser?.experiencia, [
+          ]),
+          precio: new FormControl(this.myUser?.precio, [
+          ]),
+          asignaturas: new FormControl(this.myUser?.asignaturas, [
+          ])
+        }, []);
+      } else if (userType === 'admin') {
+        const response = await this.administradoresService.getById(tokenDecode.usuario_id);
+        this.myUser = response;
+        this.profile = "Administrador";
+        this.RegistroForm = new FormGroup({
+          nombre: new FormControl(this.myUser?.nombre, [
+            Validators.required
+          ]),
+          apellidos: new FormControl(this.myUser?.apellidos, [
+            Validators.required
+          ]),
+          username: new FormControl(this.myUser?.username, [
+            Validators.required
+          ]),
+          email: new FormControl(this.myUser?.email, [
+            Validators.required
+          ]),
+          password: new FormControl("", [
+            Validators.required
+          ]),
+          telefono: new FormControl(this.myUser?.telefono, [
+            Validators.required
+          ]),
+          direccion: new FormControl(this.myUser?.direccion, [
+            Validators.required
+          ]),
+          ciudad: new FormControl(this.myUser?.ciudad, [
+            Validators.required
+          ]),
+          edad: new FormControl(this.myUser?.edad, [
+            Validators.required
+          ]),
+          fechaNacimiento: new FormControl("", []),
+          genero: new FormControl(this.myUser?.genero, [
+            Validators.required
+          ]),
+          dni: new FormControl(this.myUser?.dni, [
+            Validators.required
+          ]),
+          rol: new FormControl(this.profile, [
+            Validators.required
+          ]),
+          experiencia: new FormControl(this.myUser?.experiencia, [
+          ]),
+          precio: new FormControl(this.myUser?.precio, [
+          ]),
+          asignaturas: new FormControl(this.myUser?.asignaturas, [
+          ])
+        }, []);
+      }
+    }
+  }
+
   showProfesorDivs(event: any) {
     if (event.target.value === 'profe') {
       this.rolSelected = 'profe';
@@ -99,16 +269,17 @@ export class RegistroComponent {
       return alert(response.fatal);
     }
     alert('Usuario registrado correctamente');
-    this.router.navigate(['/login'])
-
-    // const rol = this.RegistroForm.get('rol')?.value;
-    // if (rol === 'alum') {
-    //   this.router.navigate(['/alumno', response.id]);
-    // } else {
-    //   this.router.navigate(['/profesor', response.id]);
-    // }
+    this.router.navigate(['/login']);
   }
 
+  async update() {
+
+  }
+
+  isLogged() {
+    const token = localStorage.getItem('token_user');
+    return (token) ? true : false;
+  }
 
 
 }

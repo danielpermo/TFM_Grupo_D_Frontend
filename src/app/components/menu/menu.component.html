@@ -6,19 +6,22 @@
         <a class="nav-link" [routerLink]="['/login']">Login</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
+        <a class="nav-link" [routerLink]="['/admin', getId(), 'perfil']">Mi perfil</a>
+    </li>
+    <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
         <a class="nav-link" [routerLink]="['/admin', getId() ,'alumnos']">Alumnos</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
         <a class="nav-link" [routerLink]="['/admin', getId() ,'profesores']">Profesores</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-        <a class="nav-link" [routerLink]="['/profe', getId()]">Mi perfil</a>
+        <a class="nav-link" [routerLink]="['/profe', getId(), 'perfil']">Mi perfil</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
         <a class="nav-link" [routerLink]="'/profe/' + getId() + '/misAlumnos'">Mis alumnos</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-        <a class="nav-link" [routerLink]="['/alum', getId()]">Mi perfil</a>
+        <a class="nav-link" [routerLink]="['/alum', getId(), 'perfil']">Mi perfil</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
         <a class="nav-link" [routerLink]="['/alum', getId()]">Profesores</a>

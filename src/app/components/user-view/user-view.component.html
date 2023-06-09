@@ -1,39 +1,52 @@
-<div class="profile">
-    <h1>PERFIL: {{profile}}</h1>
-</div>
-<div class="card mb-3">
-    <div class="row g-0 m-5">
-        <div class="col-12 col-md-6 col-xl-6 border-end border-primary text-center">
-            <img [src]="" class="rounded-circle mx-auto img-fluid" alt="Imagen del usuario">
+<section class="h-100 mt-2">
+    <div class="container h-100">
+        <div class="profile">
+            <h1>PERFIL: {{profile}}</h1>
         </div>
-        <div class="col-12 col-md-6 col-xl-6">
-            <div class="card-body">
-                <h2 class="card-title">{{myUser.nombre}}</h2>
-                <h2 class="card-title">{{myUser.apellidos}}</h2>
-                <p class="card-text m-0"><small class="text-muted"><strong>Edad:</strong> {{myUser.edad}}</small></p>
-                <p class="card-text m-0"><small class="text-muted"><strong>Nombre usuario:</strong>
-                        {{myUser.username}}</small></p>
-                <p class="card-text m-0"><small class="text-muted"><strong>Email:</strong> {{myUser.email}}</small></p>
-                <p class="card-text m-0"><small class="text-muted"><strong>Teléfono:</strong>
-                        {{myUser.telefono}}</small>
-                </p>
-                <p class="card-text m-0"><small class="text-muted"><strong>DNI:</strong> {{myUser.dni}}</small></p>
-                <p class="card-text m-0"><small class="text-muted"
-                        *ngIf="myUser.rol === 'profe'"><strong>Experiencia:</strong> {{myUser.experiencia}}</small></p>
-                <p class="card-text m-0" *ngIf="myUser.rol === 'profe'"><small
-                        class="text-muted"><strong>Precio:</strong> {{myUser.precio}} €</small></p>
-                <p class="card-text m-0"><small class="text-muted"><strong>Dirección:</strong>
-                        {{myUser.direccion}}</small></p>
-                <p class="card-text m-0"><small class="text-muted"><strong>Ciudad:</strong> {{myUser.ciudad}}</small>
-                </p>
-                <div class="btn-group mt-4" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Eliminar</button>
-                    <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
-                        [routerLink]="['/update', myUser.id]">Actualizar</button>
-                    <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Mis
-                        clases</button>
+        <div class="card mb-3">
+            <div class="row g-0 m-5">
+                <div class="col-12 col-md-6 col-xl-6 border-end border-primary text-center">
+                    <img [src]="" class="rounded-circle mx-auto img-fluid" alt="Imagen del usuario">
+                </div>
+                <div class="col-12 col-md-6 col-xl-6">
+                    <div class="card-body">
+                        <h2 class="card-title">{{myUser.nombre}}</h2>
+                        <h2 class="card-title">{{myUser.apellidos}}</h2>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Edad:</strong>
+                                {{myUser.edad}}</small>
+                        </p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Nombre usuario:</strong>
+                                {{myUser.username}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Email:</strong>
+                                {{myUser.email}}</small>
+                        </p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Teléfono:</strong>
+                                {{myUser.telefono}}</small>
+                        </p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>DNI:</strong> {{myUser.dni}}</small>
+                        </p>
+                        <p class="card-text m-0"><small class="text-muted"
+                                *ngIf="myUser.rol === 'profe'"><strong>Experiencia:</strong>
+                                {{myUser.experiencia}}</small>
+                        </p>
+                        <p class="card-text m-0" *ngIf="myUser.rol === 'profe'"><small
+                                class="text-muted"><strong>Precio:</strong> {{myUser.precio}} €</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Dirección:</strong>
+                                {{myUser.direccion}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Ciudad:</strong>
+                                {{myUser.ciudad}}</small>
+                        </p>
+                        <div class="btn-group mt-4" role="group" aria-label="Basic outlined example">
+                            <button type="button"
+                                class="btnCrear btn btn-primary d-flex align-items-end m-3">Eliminar</button>
+                            <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
+                                [routerLink]="['/update', myUser.id]">Actualizar</button>
+                            <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Mis
+                                clases</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
