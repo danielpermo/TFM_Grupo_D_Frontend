@@ -80,7 +80,7 @@
   </div>
    -->
   <div class="container rounded">
-    <div class="table-responsive table">
+    <!-- <div class="table-responsive table">
       <table class="table">
         <thead>
           <tr class="first-row align-middle">
@@ -99,7 +99,7 @@
         </thead>
         <tbody>
           <tr class="data-row align-middle">
-            <td>
+            <!-- <td>
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
                 class="bi bi-person-fill" viewBox="0 0 16 16">
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
@@ -109,8 +109,8 @@
             <td class="ciudadTabla">ejemplo ciudad</td>
             <td class="asignaturaTabla">ejemplo asignaturas</td>
             <td class="precioTabla">ejemplo precio/hora</td>
-            <td class="valoracion">ejemplo puntuación</td>
-          </tr>
+            <td class="valoracion">ejemplo puntuación</td> -->
+          <!-- </tr>
           <tr class="data-row align-middle" *ngFor="let profe of profesArr">
             <td>
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
@@ -128,6 +128,70 @@
             <td class="valoracion">{{profe.puntuacion}}</td>
           </tr>
         </tbody>
-      </table>
-    </div>
+      </table> -->
+
+      <div class="row">
+        <div class="col-md-6">
+          <a  [routerLink]="['/login']">
+            <div class="card shadow" style="height: 100%;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="../../../assets/FotoPerfilEjemplo.jpg" alt="Foto del profesor" class="card-img">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre Apellido</h5>
+                    <p class="card-text">Edad: XX</p>
+                    <p class="card-text">Experiencia: XX años</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+            <div class="card opinion-card" style="height: 100%;">
+              <div class="card-body">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit viverra mauris, in imperdiet erat molestie faucibus. Integer vulputate mauris non nisl sodales eleifend. Praesent vel leo magna. Vivamus pulvinar ipsum vitae metus varius finibus. Duis lacus nisi, tincidunt ac fermentum sed, imperdiet nec nulla. </p>
+              </div>
+            </div>
+        </div>
+      </div>
+      
+      <div style="display: flex; justify-content: center; align-items: center">
+        <div>
+          <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
+        </div>
+      </div>      
+      
+      <div class="row">
+        <div class="col-md-6">
+            <div class="card opinion-card" style="height: 100%;">
+              <div class="card-body">
+                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean hendrerit viverra mauris, in imperdiet erat molestie faucibus. Integer vulputate mauris non nisl sodales eleifend. Praesent vel leo magna. Vivamus pulvinar ipsum vitae metus varius finibus. Duis lacus nisi, tincidunt ac fermentum sed, imperdiet nec nulla. </p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <a  [routerLink]="['/login']">
+            <div class="card shadow" style="height: 100%;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="../../../assets/FotoPerfilEjemplo.jpg" alt="Foto del profesor" class="card-img">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Nombre Apellido</h5>
+                    <p class="card-text">Edad: XX</p>
+                    <p class="card-text">Experiencia: XX años</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      
+      
+    
   </div>

@@ -96,3 +96,14 @@ h2 {
   color: inherit;
   text-decoration: inherit;
 }
+
+/* Cards de las valoraciones */
+
+.opinion-card {
+  border: none;
+  text-align: center;
+  font-style: italic;
+  color: #7500c0;
+  font-weight: bold;
+  text-shadow: 2px;
+}
