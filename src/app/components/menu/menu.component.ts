@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-menu',
@@ -13,6 +14,7 @@ export class MenuComponent {
 
   usuariosService = inject(UsuariosService);
   router = inject(Router);
+  token: any = localStorage.getItem('token_user');
 
 
   onClickLogout() {
