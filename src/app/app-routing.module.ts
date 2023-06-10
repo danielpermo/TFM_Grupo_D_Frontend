@@ -11,6 +11,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { loginGuard } from './guards/login.guards';
 import { roleGuard } from './guards/role.guard';
 import { UserViewComponent } from './components/user-view/user-view.component';
+import { ClasesViewComponent } from './components/clases-view/clases-view.component';
+import { ClasesComponent } from './components/clases-component/clases-component';
+import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: '/home' },
@@ -25,8 +28,12 @@ const routes: Routes = [
   { path: "admin/:userId/alumnos", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/profesores", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/perfil", component: UserViewComponent, canActivate: [loginGuard, roleGuard] },
-  // { path: "alum/:userId/perfil", component: UserViewComponent, canActivate: [loginGuard] },
-  // { path: "profe/:userId/perfil", component: UserViewComponent, canActivate: [loginGuard] },
+  {
+    path: "alum/:userId/clases", component: ClasesComponent, canActivate: [loginGuard], children: [
+      { path: "calificaciones", component: CalificacionesComponent, canActivate: [loginGuard] },
+      { path: "misClases", component: ClasesViewComponent, canActivate: [loginGuard] }
+    ]
+  },
   { path: "**", component: C404Component }
 ];
 
