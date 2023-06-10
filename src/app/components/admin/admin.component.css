@@ -12,6 +12,11 @@
     padding: 10px;
   }
 
+  .table thead tr {
+    background-color: #7500c0;
+    color: white;
+  }
+
 .TrDatos:hover {
   background-color: rgb(223, 223, 223);
 }
