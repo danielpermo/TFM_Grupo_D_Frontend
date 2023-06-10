@@ -13,9 +13,22 @@ import { AlumnoComponent } from './components/alumno/alumno.component';
 import { ProfesorComponent } from './components/profesor/profesor.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
 import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
+import { ClasesComponent } from './components/clases-component/clases-component';
+import { ClasesViewComponent } from './components/clases-view/clases-view.component';
+import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+
+
+
+//Material imports
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -25,21 +38,26 @@ import { UserViewComponent } from './components/user-view/user-view.component';
     LoginComponent,
     RegistroComponent,
     AlumnoComponent,
-    AlumnoDetailsComponent,
     ProfesorComponent,
     AdminComponent,
     MenuComponent,
     MisAlumnosComponent,
     UserViewComponent,
+    ClasesComponent,
+    ClasesViewComponent,
+    CalificacionesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatListModule
   ],
-  exports: [AlumnoComponent, AlumnoDetailsComponent],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

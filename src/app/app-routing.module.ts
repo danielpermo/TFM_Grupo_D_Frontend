@@ -10,7 +10,6 @@ import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.compon
 import { AdminComponent } from './components/admin/admin.component';
 import { loginGuard } from './guards/login.guards';
 import { roleGuard } from './guards/role.guard';
-import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 
 const routes: Routes = [
