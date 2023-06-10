@@ -14,14 +14,22 @@ h2 {
     padding: 8px;
   }
   
-.table thead tr {
+  .table-caption {
+    caption-side: top;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    padding: 10px;
+  }
+
+  .table thead tr {
     background-color: #7500c0;
     color: white;
   }
-  
-.table tbody tr {
-    background-color: #f2eef3;
-  }
+
+.TrDatos:hover {
+  background-color: rgb(223, 223, 223);
+}
   
 .btnBorrar {
     border: none;
