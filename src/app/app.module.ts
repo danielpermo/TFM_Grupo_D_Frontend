@@ -16,11 +16,16 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.component';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { ClasesComponent } from './components/clases-component/clases-component';
+import { ClasesViewComponent } from './components/clases-view/clases-view.component';
+import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+
+
 
 //Material imports
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
+
 
 
 
@@ -38,7 +43,9 @@ import { MatListModule } from '@angular/material/list';
     MenuComponent,
     MisAlumnosComponent,
     UserViewComponent,
-    ClasesComponent
+    ClasesComponent,
+    ClasesViewComponent,
+    CalificacionesComponent
   ],
   imports: [
     BrowserModule,
