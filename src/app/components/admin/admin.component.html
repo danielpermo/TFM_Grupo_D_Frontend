@@ -14,11 +14,12 @@
             <th class="text-center">Edad</th>
             <th class="text-center">DNI</th>
             <th class="text-center">Fecha Alta</th>
+            <th class="text-center">Validado</th>
             <th class="text-center">Acciones</th>
           </tr>
         </thead>
         <tbody *ngIf="isProfesoresUrl(); else alumnosContent">
-          <tr *ngFor="let profe of profesArr">
+          <tr class="TrDatos" *ngFor="let profe of profesArr">
             <td class="text-center">{{profe.nombre}}</td>
             <td class="text-center">{{profe.apellidos}}</td>
             <td class="text-center">{{profe.correo}}</td>
@@ -28,6 +29,11 @@
             <td class="text-center">{{profe.edad}}</td>
             <td class="text-center">{{profe.dni}}</td>
             <td class="text-center">{{profe.fecha_alta}}</td>
+            <td class="text-center">
+              <span [ngClass]="{'verificado': profe.validado, 'no-verificado': !profe.validado}">
+                {{ profe.validado ? 'Verificado' : 'No verificado' }}
+              </span>
+            </td>
             <td>
               <button class="btn btn-purple" (click)="validate(profe.id)">Validar</button>
             </td>
@@ -46,7 +52,7 @@
         </tbody>
         <ng-template #alumnosContent>
           <tbody>
-            <tr *ngFor="let alumno of alumnosArr">
+            <tr class="TrDatos" *ngFor="let alumno of alumnosArr">
               <td class="text-center">{{alumno.nombre}}</td>
               <td class="text-center">{{alumno.apellidos}}</td>
               <td class="text-center">{{alumno.correo}}</td>
