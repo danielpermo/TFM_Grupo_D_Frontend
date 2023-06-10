@@ -40,5 +40,10 @@ export class UserViewComponent implements OnInit {
     return this.myUser;
   }
 
+  async borrarUsuario(pId: number) {
+    const response = await this.administradoresService.delete(pId);
+    console.log(response);
+    return response;
+  }
 
 }
