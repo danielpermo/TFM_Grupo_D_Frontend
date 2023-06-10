@@ -37,12 +37,12 @@
                                 {{myUser.ciudad}}</small>
                         </p>
                         <div class="btn-group mt-4" role="group" aria-label="Basic outlined example">
-                            <button type="button"
-                                class="btnCrear btn btn-primary d-flex align-items-end m-3">Eliminar</button>
+                            <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
+                                (click)="borrarUsuario(myUser.id)">Eliminar</button>
                             <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
                                 [routerLink]="['/update', myUser.id]">Actualizar</button>
-                            <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3">Mis
-                                clases</button>
+                            <button type="button" class="btnCrear btn btn-primary d-flex align-items-end m-3"
+                                [routerLink]="['clases']">Clases</button>
                         </div>
                     </div>
                 </div>

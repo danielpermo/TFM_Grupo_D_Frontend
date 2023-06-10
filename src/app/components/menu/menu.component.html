@@ -27,10 +27,10 @@
         <a class="nav-link" [routerLink]="['/alum', getId()]">Profesores</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-        <a class="nav-link" [routerLink]="['/alumno', 25]">Clases</a>
+        <a class="nav-link" [routerLink]="['/alum', 25, 'clases']">Clases</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-        <a class="nav-link" [routerLink]="['/alumno', 25]">Valoraciones</a>
+        <a class="nav-link" [routerLink]="['/alum', 25, 'valoraciones']">Valoraciones</a>
     </li>
     <li class="nav-item" *ngIf="usuariosService.isLogged()">
         <a class="nav-link pe-auto" role="button" title="Logout" (click)="onClickLogout()">
