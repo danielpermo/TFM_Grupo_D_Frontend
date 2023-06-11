@@ -14,14 +14,14 @@
             <th class="text-center">Edad</th>
             <th class="text-center">DNI</th>
             <th class="text-center">Fecha Alta</th>
-            <th class="text-center">Validado</th>
+            <th class="text-center" *ngIf="isProfesoresUrl()">Validado</th>
             <th class="text-center">Acciones</th>
             <th class="text-center"> </th>
           </tr>
         </thead>
         <tbody *ngIf="isProfesoresUrl(); else alumnosContent">
           <tr class="TrDatos" *ngFor="let profe of profesArr">
-            <td  class="text-center">{{profe.nombre}}</td>
+            <td class="text-center">{{profe.nombre}}</td>
             <td class="text-center">{{profe.apellidos}}</td>
             <td class="text-center">{{profe.correo}}</td>
             <td class="text-center">{{profe.telefono}}</td>
