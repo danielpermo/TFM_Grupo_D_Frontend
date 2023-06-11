@@ -14,6 +14,7 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 import { ClasesViewComponent } from './components/clases-view/clases-view.component';
 import { ClasesComponent } from './components/clases-component/clases-component';
 import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: '/home' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
   { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
   { path: "profe/:userId/misAlumnos", component: MisAlumnosComponent },
+  { path: "profe/:userId/valoraciones", component: ValoracionesProfComponent },
   { path: "admin/:userId", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/alumnos", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
   { path: "admin/:userId/profesores", component: AdminComponent, canActivate: [loginGuard, roleGuard] },
