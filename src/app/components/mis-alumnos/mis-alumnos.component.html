@@ -1,30 +1,29 @@
 <div class="container">
-    <h2>Mis Alumnos</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Edad</th>
-          <th>Email</th>
-          <th>Teléfono</th>
-          <th>Ciudad</th>
-          <th>Asignatura</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="TrDatos">
-          <td>Nombre Ejemplo</td>
-          <td>Apellido Ejemplo</td>
-          <td>Edad</td>
-          <td>Email Ejemplo</td>
-          <td>Teléfono Ejemplo</td>
-          <td>Ciudad</td>
-          <td>Asignatura Ejemplo</td>
-          <td><button title="Eliminar Alumno" class="btnBorrar btn-unstyled fs-5">X</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h2>Mis Alumnos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Ciudad</th>
+        <th>Asignatura</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="TrDatos" *ngFor="let alumno of alumArr">
+        <td>{{alumno.nombre}}</td>
+        <td>{{alumno.apellidos}}</td>
+        <td>{{alumno.edad}}</td>
+        <td>{{alumno.email}}</td>
+        <td>{{alumno.telefono}}</td>
+        <td>{{alumno.ciudad}}</td>
+        <td *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}}</td>
+        <td><button title="Eliminar Alumno" class="btnBorrar btn-unstyled fs-5">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
