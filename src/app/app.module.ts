@@ -25,6 +25,7 @@ import { CalificacionesComponent } from './components/calificaciones/calificacio
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
+import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 
 
 
@@ -45,7 +46,8 @@ import { MatListModule } from '@angular/material/list';
     UserViewComponent,
     ClasesComponent,
     ClasesViewComponent,
-    CalificacionesComponent
+    CalificacionesComponent,
+    ValoracionesProfComponent
   ],
   imports: [
     BrowserModule,
