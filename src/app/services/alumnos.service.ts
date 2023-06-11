@@ -29,5 +29,14 @@ export class AlumnosService {
     return lastValueFrom(this.httpClient.get<IAlumno>(`${this.baseUrl}/${pId}`, httpOptions))
   }
 
+  update(pId: number, pAlumno: any): Promise<IAlumno> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return lastValueFrom(this.httpClient.put<IAlumno>(`${this.baseUrl}/${pId}`, pAlumno, httpOptions))
+  }
+
 
 }
