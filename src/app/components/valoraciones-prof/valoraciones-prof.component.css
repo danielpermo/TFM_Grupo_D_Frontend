@@ -3,3 +3,18 @@ h2 {
     color: #7500c0;
     text-shadow: #ba94ec;
 }
+
+.card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+.btn {
+    background-color: #ba94ec;
+    border: none;
+    font-weight: 650;
+  }
+  
+.btn:hover {
+    background-color: #7500c0;
+  }
