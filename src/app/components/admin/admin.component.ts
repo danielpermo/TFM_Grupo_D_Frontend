@@ -51,6 +51,7 @@ export class AdminComponent implements OnInit {
     const response = await this.administradoresService.validateProfe(pId);
     console.log(response);
     alert('Validación realizada correctamente.')
+    window.location.reload();
     return response;
   }
 
