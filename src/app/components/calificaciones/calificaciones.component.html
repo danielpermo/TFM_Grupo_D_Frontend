@@ -1,1 +1,18 @@
-<p>calificaciones works!</p>
+<table class="container">
+    <thead>
+      <tr>
+        <th>Área</th>
+        <th>Asignatura</th>
+        <th>Evaluación</th>
+        <th>Calificación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let clases of clasesArr">
+        <td class="text-center">{{clases.asignatura_rama}}</td>
+        <td class="text-center">{{clases.asignatura_nombre}}</td>
+        <td class="text-center">En espera..</td>
+        <td class="text-center">En espera..</td>
+      </tr>
+    </tbody>
+  </table>

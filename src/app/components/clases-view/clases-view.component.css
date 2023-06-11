@@ -1,16 +1,15 @@
 .container {
     width: 80%;
     margin-top: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: -1px 10px 20px 0px rgba(114, 113, 113, 0.62);
 }
 
-table {
-    width: 100%;
-   
-}
 
 th {
-    background-color:   #6666f0 !important;
-    color: white !important;
+    background-color:    #d0b8fc !important;
+    color: rgb(80, 78, 78) !important;
     text-align: center;
 }
 
@@ -22,3 +21,9 @@ td {
 tr:nth-child(odd) {
     background-color: #f2f0f0;
 }
+
+img {
+    width: 20px;
+    height: 20px;
+}
+
