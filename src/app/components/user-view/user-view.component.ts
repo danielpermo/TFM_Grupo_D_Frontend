@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import jwtDecode from "jwt-decode";
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
@@ -14,7 +15,7 @@ export class UserViewComponent implements OnInit {
   myUser: any = {};
   profile: string = "";
 
-  constructor(private profesoresService: ProfesoresService, private alumnosService: AlumnosService, private administradoresService: AdministradoresService) {
+  constructor(private router: Router, private profesoresService: ProfesoresService, private alumnosService: AlumnosService, private administradoresService: AdministradoresService) {
 
   }
 
@@ -43,6 +44,9 @@ export class UserViewComponent implements OnInit {
   async borrarUsuario(pId: number) {
     const response = await this.administradoresService.delete(pId);
     console.log(response);
+    localStorage.removeItem('token_user');
+    alert('Logout realizado correctamente.')
+    this.router.navigate(['/home']);
     return response;
   }
 
