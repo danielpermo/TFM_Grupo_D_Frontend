@@ -86,5 +86,15 @@ export class ProfesoresService {
     return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/clases/${pAsignatura}`, httpOptions));
   }
 
+  finalizarClaseAlumno(pAsignatura: number, pAlumno: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      }),
+      body: { asignatura_id: pAsignatura }
+    };
+    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/alumnos/${pAlumno}`, httpOptions));
+  }
+
 
 }
