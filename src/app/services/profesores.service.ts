@@ -73,7 +73,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.patch(`${this.baseUrl}/profesores/clases/${pAsignatura}`, { "clase": pAsignatura }, httpOptions));
+    return firstValueFrom(this.httpClient.patch(`${this.baseUrl}/profesores/clases/${pAsignatura}`, { "clase": 1 }, httpOptions));
   }
 
 
