@@ -10,20 +10,23 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 export class HomeComponent implements OnInit {
 
   profesArr: Profesor[] = [];
+  profesArrPar: Profesor[] = [];
+  profesArrImp: Profesor[] = [];
+  combinedArr: any = [];
 
   profesoresService = inject(ProfesoresService);
 
-  ngOnInit() {
-    this.getProfes();
-  }
-
-  async getProfes() {
-
+  async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
     this.profesArr = response;
-    return this.profesArr;
-
+    this.profesArrPar = this.profesArr.filter((_, index) => index % 2 === 0);
+    this.profesArrImp = this.profesArr.filter((_, index) => index % 2 === 1);
+    const maxLength = Math.max(this.profesArrPar.length, this.profesArrImp.length);
+    for (let i = 0; i < maxLength; i++) {
+      this.combinedArr.push({ par: this.profesArrPar[i], impar: this.profesArrImp[i] });
+    }
   }
 
 
 }
+
