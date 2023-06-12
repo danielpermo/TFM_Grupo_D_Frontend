@@ -58,5 +58,10 @@ export class ProfesorComponent implements OnInit {
     console.log(response);
     return response;
   }
+  async finalizarClase(pAsignatura: number) {
+    const response = await this.profesoresService.finalizarClase(pAsignatura);
+    console.log(response);
+    return response;
+  }
 
 }

@@ -13,12 +13,12 @@ export class ProfesoresService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/'
+    this.baseUrl = 'http://localhost:3000/api/profesores'
   }
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/publica`)
+      this.httpClient.get(`http://localhost:3000/api/publica`)
     );
   }
 
@@ -28,7 +28,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/profesores/perfil`, httpOptions));
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/perfil`, httpOptions));
   }
 
   updateProfesor(pProfesor: any): Promise<any> {
@@ -37,7 +37,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.put(`${this.baseUrl}/profesores`, pProfesor, httpOptions));
+    return firstValueFrom(this.httpClient.put(`${this.baseUrl}`, pProfesor, httpOptions));
   }
 
   getProfeAlum() {
@@ -46,7 +46,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/profesores/alumnos`, httpOptions));
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/alumnos`, httpOptions));
   }
 
   addAsignatura(pAsignatura: number): Promise<any> {
@@ -55,7 +55,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.post(`${this.baseUrl}/profesores/asignaturas/${pAsignatura}`, null, httpOptions));
+    return firstValueFrom(this.httpClient.post(`${this.baseUrl}/asignaturas/${pAsignatura}`, null, httpOptions));
   }
 
   deleteAsignatura(pAsignatura: number): Promise<any> {
@@ -64,7 +64,7 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/profesores/asignaturas/${pAsignatura}`, httpOptions));
+    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/asignaturas/${pAsignatura}`, httpOptions));
   }
 
   crearClase(pAsignatura: number): Promise<any> {
@@ -73,38 +73,18 @@ export class ProfesoresService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return firstValueFrom(this.httpClient.patch(`${this.baseUrl}/profesores/clases/${pAsignatura}`, { "clase": 1 }, httpOptions));
+    return firstValueFrom(this.httpClient.patch(`${this.baseUrl}/clases/${pAsignatura}`, { "clase": 1 }, httpOptions));
+  }
+
+  finalizarClase(pAsignatura: number): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      }),
+      body: { clase: 0 }
+    };
+    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/clases/${pAsignatura}`, httpOptions));
   }
 
 
-  // getById(pId: number): Promise<any> {
-  //   return Promise.resolve(this.profesores.find(profesores => profesores.id === pId));
-  // }
-
-  // create(pProfesor: Profesor): Promise<Profesor> {
-  //   const newId = Number(this.profesores.length + 1);
-  //   const newProfesor = { ...pProfesor, id: newId };
-  //   this.profesores.push(newProfesor);
-  //   return Promise.resolve(newProfesor);
-  // }
-
-  // update(pProfesor: Profesor): Promise<Profesor> {
-  //   const index = this.profesores.findIndex(profesores => profesores.id === pProfesor.id);
-  //   if (index !== -1) {
-  //     this.profesores[index] = pProfesor;
-  //     return Promise.resolve(pProfesor);
-  //   } else {
-  //     return Promise.reject(`Profesor with ID ${pProfesor.id} not found.`);
-  //   }
-  // }
-
-  // delete(pId: number): Promise<any> {
-  //   const index = this.profesores.findIndex(profesores => profesores.id === pId);
-  //   if (index !== -1) {
-  //     this.profesores.splice(index, 1);
-  //     return Promise.resolve();
-  //   } else {
-  //     return Promise.reject(`Profesor with ID ${pId} not found.`);
-  //   }
-  // }
 }
