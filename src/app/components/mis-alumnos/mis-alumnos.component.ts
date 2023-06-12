@@ -10,6 +10,7 @@ export class MisAlumnosComponent implements OnInit {
 
   alumArr: any = [];
 
+
   constructor(private profesoresService: ProfesoresService) {
 
   }
