@@ -21,4 +21,6 @@ export interface Profesor {
     fecha_alta?: Date;
     validado?: boolean;
     usuario_id?: number;
+    imagen: string;
+    opinion: string;
 }
