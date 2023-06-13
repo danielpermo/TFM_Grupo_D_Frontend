@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-view',
@@ -42,12 +43,29 @@ export class UserViewComponent implements OnInit {
   }
 
   async borrarUsuario(pId: number) {
-    const response = await this.administradoresService.delete(pId);
-    console.log(response);
-    localStorage.removeItem('token_user');
-    alert('Logout realizado correctamente.')
-    this.router.navigate(['/home']);
-    return response;
+    Swal.fire({
+      title: `¿Desea borrar el usuario ${this.myUser.nombre}?`,
+      text: "Si lo haces, ¡no podrás volver atrás!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#082147',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await this.administradoresService.delete(pId);
+        console.log(response);
+
+        Swal.fire(
+          '¡Eliminado!',
+          `El usuario ${this.myUser.nombre} ha sido borrado correctamente`,
+          'success'
+        )
+        localStorage.removeItem('token_user');
+        this.router.navigate(['/home']);
+        return response
+      }
+    })
   }
 
 }
