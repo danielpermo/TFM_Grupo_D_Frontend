@@ -40,6 +40,18 @@ export class ProfesoresService {
     return firstValueFrom(this.httpClient.put(`${this.baseUrl}`, pProfesor, httpOptions));
   }
 
+  deleteProfesor(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      }),
+      body: { borrado: 1 }
+    }
+    return firstValueFrom(
+      this.httpClient.delete<any>(`${this.baseUrl}/perfil`, httpOptions)
+    );
+  }
+
   getProfeAlum() {
     const httpOptions = {
       headers: new HttpHeaders({

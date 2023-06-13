@@ -57,6 +57,21 @@ export class UserViewComponent implements OnInit {
       confirmButtonText: 'Sí, borrar',
       cancelButtonText: 'Cancelar'
     }).then(async (result) => {
+      if (this.profile === 'PROFESOR') {
+        if (result.isConfirmed) {
+          const response = await this.profesoresService.deleteProfesor();
+          console.log(response);
+
+          Swal.fire(
+            '¡Eliminado!',
+            `El usuario ${this.myUser.nombre} ha sido borrado correctamente`,
+            'success'
+          )
+          localStorage.removeItem('token_user');
+          this.router.navigate(['/home']);
+          return response
+        }
+      }
       if (result.isConfirmed) {
         const response = await this.administradoresService.delete(pId);
         console.log(response);
