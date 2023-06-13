@@ -22,4 +22,5 @@ export interface Profesor {
     validado?: boolean;
     usuario_id?: number;
     imagen: string;
+    opinion: string;
 }
