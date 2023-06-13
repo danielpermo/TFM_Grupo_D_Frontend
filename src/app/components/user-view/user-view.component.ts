@@ -50,7 +50,8 @@ export class UserViewComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#082147',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, borrar'
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar'
     }).then(async (result) => {
       if (result.isConfirmed) {
         const response = await this.administradoresService.delete(pId);
