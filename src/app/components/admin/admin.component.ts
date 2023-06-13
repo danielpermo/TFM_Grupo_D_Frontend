@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -37,9 +38,28 @@ export class AdminComponent implements OnInit {
   }
 
   async borrarUsuario(pId: number) {
-    const response = await this.administradoresService.delete(pId);
-    console.log(response);
-    return response;
+    const user = await this.administradoresService.getById(pId);
+    Swal.fire({
+      title: `¿Desea borrar el usuario ${user.nombre}?`,
+      text: "Si lo haces, ¡no podrás volver atrás!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#082147',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const response = await this.administradoresService.delete(pId);
+        console.log(response);
+
+        Swal.fire(
+          '¡Eliminado!',
+          `El usuario ${user.nombre} ha sido borrado correctamente`,
+          'success'
+        )
+        return response
+      }
+    })
   }
 
   async validate(pId: number) {
