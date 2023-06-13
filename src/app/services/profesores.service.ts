@@ -108,5 +108,16 @@ export class ProfesoresService {
     return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/alumnos/${pAlumno}`, httpOptions));
   }
 
+  filtrarCiudad(pCiudad: string): Promise<any> {
+    return firstValueFrom(
+      this.httpClient.get(`http://localhost:3000/api/publica/ciudad/${pCiudad}`)
+    );
+  }
+
+  filtrarAsignatura(pAsignatura: string): Promise<any> {
+    return firstValueFrom(
+      this.httpClient.get(`http://localhost:3000/api/publica/asignatura/${pAsignatura}`)
+    );
+  }
 
 }

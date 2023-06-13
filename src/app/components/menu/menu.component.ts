@@ -35,7 +35,6 @@ export class MenuComponent {
           'success'
         )
         localStorage.removeItem('token_user');
-        alert('Logout realizado correctamente.')
         this.router.navigate(['/home']);
       }
     })
