@@ -81,7 +81,7 @@
         <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="item.impar != undefined">
       <div class="col-md-6">
         <div class="card opinion-card" style="height: 100%;">
           <div class="card-body d-flex align-items-center justify-content-center">
@@ -100,11 +100,11 @@
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <h5 class="card-title CardProfNombre">{{item.impar.nombre}} {{item.impar.apellidos}}</h5>
+                  <h5 class="card-title CardProfNombre">{{item.impar?.nombre}} {{item.impar?.apellidos}}</h5>
                   <!-- <p class="card-text">Edad: XX</p> -->
-                  <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
+                  <p class="card-text">Experiencia: {{item.impar?.experiencia}} años</p>
                   <ul class="card-list">
-                    <li *ngFor="let asginatura of item.impar.asignaturas">{{asginatura.nombre}}</li>
+                    <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
                 </div>
               </div>
@@ -112,10 +112,10 @@
           </div>
         </a>
       </div>
-    </div>
-    <div style="display: flex; justify-content: center; align-items: center">
-      <div>
-        <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
+      <div style="display: flex; justify-content: center; align-items: center">
+        <div>
+          <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
+        </div>
       </div>
     </div>
   </div>

@@ -18,18 +18,14 @@ export class AppComponent implements OnInit {
     if (token) {
       const tokenDecode: any = jwtDecode(token!);
       const userType = tokenDecode.usuario_rol;
-      console.log(userType);
       if (userType === 'profe') {
         this.profile = "Profesor";
-        console.log(this.profile);
         return this.profile;
       } else if (userType === 'alum') {
         this.profile = "Alumno";
-        console.log(this.profile);
         return this.profile;
       }
       this.profile = "Aministrador";
-      console.log(this.profile);
       return this.profile;
     }
     return this.profile = "";

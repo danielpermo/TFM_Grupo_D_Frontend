@@ -21,4 +21,10 @@ export class MisAlumnosComponent implements OnInit {
     return this.alumArr;
   }
 
+  async finalizarClaseAlumno(pAsignatura: number, pAlumno: number) {
+    const response = await this.profesoresService.finalizarClaseAlumno(pAsignatura, pAlumno);
+    console.log(response);
+    return response;
+  }
+
 }

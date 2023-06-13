@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import jwtDecode from 'jwt-decode';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-menu',
@@ -18,9 +18,26 @@ export class MenuComponent {
 
 
   onClickLogout() {
-    localStorage.removeItem('token_user');
-    alert('Logout realizado correctamente.')
-    this.router.navigate(['/home']);
+    Swal.fire({
+      title: `¿Seguro que desea salir de la sesión?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#082147',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Salir',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          '¡Su sesión ha finalizado!',
+          `Te esperamos`,
+          'success'
+        )
+        localStorage.removeItem('token_user');
+        alert('Logout realizado correctamente.')
+        this.router.navigate(['/home']);
+      }
+    })
   }
 
 

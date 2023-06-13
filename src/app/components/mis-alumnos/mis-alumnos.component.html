@@ -21,8 +21,9 @@
         <td>{{alumno.email}}</td>
         <td>{{alumno.telefono}}</td>
         <td>{{alumno.ciudad}}</td>
-        <td *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}}</td>
-        <td><button title="Eliminar Alumno" class="btnBorrar btn-unstyled fs-5">X</button></td>
+        <td *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}} <button title="Eliminar Alumno"
+            class="btnBorrar btn-unstyled fs-5 ms-5" (click)="finalizarClaseAlumno(asignatura.id, alumno.id)">X</button>
+        </td>
       </tr>
     </tbody>
   </table>
