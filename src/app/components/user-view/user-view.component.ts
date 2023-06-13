@@ -4,6 +4,7 @@ import jwtDecode from "jwt-decode";
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+// @ts-ignore
 import Swal from 'sweetalert2';
 
 @Component({

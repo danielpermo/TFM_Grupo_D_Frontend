@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
+// @ts-ignore
 import Swal from 'sweetalert2';
 
 
