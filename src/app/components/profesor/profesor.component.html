@@ -67,29 +67,32 @@
 
 
 
-    <div class="row mt-4">
-      <div class="col-md-12">
-        <h3 class="text-center">Asignaturas</h3>
-        <ul class="list-group" *ngFor="let asignatura of profesorObj.asignaturas">
-          <li class="list-group-item d-flex align-items-center">
-            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5"
-              (click)="deleteAsignatura(asignatura.asignatura_id)">X</button>
-            <span class="asignatura">{{asignatura.nombre}}</span>
-            <button class="btnCrear btn btn-primary d-flex align-items-end m-3"
-              (click)="crearClase(asignatura.asignatura_id)">Crear clase</button>
-            <button class="btnCrear btn btn-primary d-flex align-items-end m-3"
-              (click)="finalizarClase(asignatura.asignatura_id)">Finalizar clase</button>
-          </li>
-        </ul>
-      </div>
-    </div>
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h3 class="text-center">Asignaturas</h3>
     <div class="row">
-      <div class="col-md-12 text-center mt-3">
-        <button class="btnAnadir btn btn-primary fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir
-          Asignatura</button>
+      <div class="col-md-4" *ngFor="let asignatura of profesorObj.asignaturas">
+        <div class="card text-center position-relative">
+          <div class="card-body">
+            <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5 position-absolute top-0 end-0" (click)="deleteAsignatura(asignatura.asignatura_id)">X</button>
+            <h5 class="card-title asignatura">{{asignatura.nombre}}</h5>
+            <div class="d-flex align-items-center justify-content-center flex-column">
+              <button class="btnCrear btn btn-primary m-3" (click)="crearClase(asignatura.asignatura_id)">Crear clase</button>
+              <button class="btnCrear btn btn-primary m-3" (click)="finalizarClase(asignatura.asignatura_id)">Finalizar clase</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
+  </div>
+</div>
+    
+<div class="row">
+  <div class="col-md-12 text-center mt-3">
+    <button class="btnAnadir btn btn-primary fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir Asignatura</button>
+  </div>
+</div>
+    
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
