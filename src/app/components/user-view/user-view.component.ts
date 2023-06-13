@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from "jwt-decode";
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -15,6 +16,9 @@ export class UserViewComponent implements OnInit {
 
   myUser: any = {};
   profile: string = "";
+  pId!: number;
+
+  usuariosService = inject(UsuariosService);
 
   constructor(private router: Router, private profesoresService: ProfesoresService, private alumnosService: AlumnosService, private administradoresService: AdministradoresService) {
 
@@ -69,4 +73,9 @@ export class UserViewComponent implements OnInit {
     })
   }
 
+  getId() {
+    return this.pId = this.usuariosService.getId();
+  }
 }
+
+
