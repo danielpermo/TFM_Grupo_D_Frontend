@@ -16,6 +16,7 @@ export interface IAlumno {
     genero: string;
     latitud: number;
     longitud: number;
+    imagen: string;
     rol: string;
 
 }

@@ -46,7 +46,7 @@
                                         requerido
                                     </p>
                                 </div>
-                                <div class="col-6 mb-3">
+                                <div class="col-4 mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="email">*Email:</label>
                                     </div>
@@ -55,6 +55,17 @@
                                         requerido
                                     </p>
                                 </div>
+                                <div class="col-4 mb-3">
+                                    <div class="mb-2 w-100">
+                                        <label class="text-muted" for="imagen">*Imagen:</label>
+                                    </div>
+                                    <input type="text" class="form-control" id="imagen" formControlName="imagen">
+                                    <p class="error" *ngIf="checkControl('imagen', 'required')">(*) El campo es
+                                        requerido
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-2 mb-3">
                                     <div class="mb-2 w-100">
                                         <label class="text-muted" for="telefono">*Teléfono:</label>
@@ -64,9 +75,7 @@
                                         requerido
                                     </p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-8 mb-3">
+                                <div class="col-6 mb-3">
                                     <label class="mb-2 text-muted" for="direccion">*Dirección:</label>
                                     <input type="text" class="form-control" id="direccion" formControlName="direccion">
                                     <p class="error" *ngIf="checkControl('direccion', 'required')">(*) El campo es

@@ -289,8 +289,11 @@ export class RegistroComponent implements OnInit {
       console.log(response);
       alert('Usuario actualizado correctamente.');
       return response;
-    } else if (this.profile === 'alum') {
-
+    } else if (this.profile === 'Alumno') {
+      const response = await this.alumnosService.update(this.myUser.id, user);
+      console.log(response);
+      alert('Usuario actualizado correctamente.');
+      return response;
     }
   }
 
