@@ -58,7 +58,10 @@
                     <!-- <li>Asignatura 2</li>
                     <li>Asignatura 3</li> -->
                   </ul>
-                  <p class="card-text">Puntuación: {{item.par.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.par.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.
+                  </p>
+                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion |
+                    number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -106,7 +109,11 @@
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
-                  <p class="card-text">Puntuación: {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.impar.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.
+                  </p>
+                  <p class="card-text" *ngIf="item.impar.puntuacion != 'No valorado'">Puntuación:
+                    {{item.impar.puntuacion |
+                    number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
