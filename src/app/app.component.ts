@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { UsuariosService } from './services/usuarios.service';
 
@@ -7,29 +7,11 @@ import { UsuariosService } from './services/usuarios.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'TFM_Grupo_D';
   profile: string = "";
 
   constructor(private usuarioService: UsuariosService) { }
-
-  ngOnInit() {
-    const token = localStorage.getItem('token_user');
-    if (token) {
-      const tokenDecode: any = jwtDecode(token!);
-      const userType = tokenDecode.usuario_rol;
-      if (userType === 'profe') {
-        this.profile = "Profesor";
-        return this.profile;
-      } else if (userType === 'alum') {
-        this.profile = "Alumno";
-        return this.profile;
-      }
-      this.profile = "Aministrador";
-      return this.profile;
-    }
-    return this.profile = "";
-  }
 
   isLogged() {
     return this.usuarioService.isLogged()

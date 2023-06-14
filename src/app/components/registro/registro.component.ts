@@ -42,6 +42,9 @@ export class RegistroComponent implements OnInit {
       telefono: new FormControl("", [
         Validators.required
       ]),
+      imagen: new FormControl("", [
+        Validators.required
+      ]),
       direccion: new FormControl("", [
         Validators.required
       ]),
@@ -103,6 +106,9 @@ export class RegistroComponent implements OnInit {
           telefono: new FormControl(this.myUser?.telefono, [
             Validators.required
           ]),
+          imagen: new FormControl(this.myUser?.imagen, [
+            Validators.required
+          ]),
           direccion: new FormControl(this.myUser?.direccion, [
             Validators.required
           ]),
@@ -156,6 +162,9 @@ export class RegistroComponent implements OnInit {
           telefono: new FormControl(this.myUser?.telefono, [
             Validators.required
           ]),
+          imagen: new FormControl(this.myUser?.imagen, [
+            Validators.required
+          ]),
           direccion: new FormControl(this.myUser?.direccion, [
             Validators.required
           ]),
@@ -201,6 +210,9 @@ export class RegistroComponent implements OnInit {
             Validators.required
           ]),
           telefono: new FormControl(this.myUser?.telefono, [
+            Validators.required
+          ]),
+          imagen: new FormControl(this.myUser?.imagen, [
             Validators.required
           ]),
           direccion: new FormControl(this.myUser?.direccion, [
@@ -277,8 +289,11 @@ export class RegistroComponent implements OnInit {
       console.log(response);
       alert('Usuario actualizado correctamente.');
       return response;
-    } else if (this.profile === 'alum') {
-
+    } else if (this.profile === 'Alumno') {
+      const response = await this.alumnosService.update(this.myUser.id, user);
+      console.log(response);
+      alert('Usuario actualizado correctamente.');
+      return response;
     }
   }
 

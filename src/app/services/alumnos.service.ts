@@ -8,7 +8,7 @@ import { IAlumno } from '../interfaces/alumno';
 })
 export class AlumnosService {
 
-  private baseUrl: string = "http://localhost:3000/api/alumnos/";
+  private baseUrl: string = "http://localhost:3000/api/alumnos";
 
 
 
@@ -16,7 +16,7 @@ export class AlumnosService {
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`${this.baseUrl}/alumnos`)
+      this.httpClient.get(`${this.baseUrl}`)
     );
   }
 

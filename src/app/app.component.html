@@ -1,5 +1,5 @@
 <body>
-  <header class="container-fluid border-bottom shadow-sm mb-5 bg-body-tertiary">
+  <header class="container-fluid border-bottom shadow-sm mb-5">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-4 col-md-5 w-25 d-flex align-items-center">
@@ -9,7 +9,7 @@
           <h1 class="m-0 ml-md-auto"><a [routerLink]="['/home']" class="text-decoration-none logo">TeacherApp</a></h1>
         </div>
         <div class="col-2 d-flex align-items-center" *ngIf="isLogged()">
-          <p class="m-0">Perfil: {{profile}}</p>
+          <app-profile></app-profile>
         </div>
         <div class=" col-6 col-md-7 d-flex justify-content-end">
           <app-menu class="d-flex justify-content-end"></app-menu>
@@ -20,7 +20,7 @@
 
   <router-outlet></router-outlet>
 
-  <footer class="container-fluid border-top shadow-sm bg-body-tertiary py-0.5 mt-auto">
+  <footer class="container-fluid border-top shadow-sm py-0.5 mt-auto">
     <p class="m-0 text-center">&copy; 2023</p>
   </footer>
 </body>
