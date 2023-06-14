@@ -45,7 +45,8 @@
           <div class="card shadow" style="height: 100%;">
             <div class="row g-0">
               <div class="col-md-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
-                <img src = {{item.par.imagen}} alt="Foto del profesor" class="card-img" style="width: 200px; height: 200px; margin: -10px;">
+                <img src={{item.par.imagen}} alt="Foto del profesor" class="card-img"
+                  style="width: 200px; height: 200px; margin: -10px;">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -57,6 +58,7 @@
                     <!-- <li>Asignatura 2</li>
                     <li>Asignatura 3</li> -->
                   </ul>
+                  <p class="card-text">Puntuación: {{item.par.puntuacion | number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -93,7 +95,7 @@
           <div class="card shadow" style="height: 100%;">
             <div class="row g-0">
               <div class="col-md-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
-                <img src = {{item.impar.imagen}} alt="Foto del profesor" class="card-img"
+                <img src={{item.impar.imagen}} alt="Foto del profesor" class="card-img"
                   style="width: 200px; height: 200px; margin: -10px;">
               </div>
               <div class="col-md-8">
@@ -104,6 +106,7 @@
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
+                  <p class="card-text">Puntuación: {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>

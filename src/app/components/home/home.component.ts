@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
+    console.log(response);
     this.profesArr = response;
     this.profesArrPar = this.profesArr.filter((_, index) => index % 2 === 0);
     this.profesArrImp = this.profesArr.filter((_, index) => index % 2 === 1);
