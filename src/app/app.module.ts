@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -47,7 +48,8 @@ import { ValoracionesProfComponent } from './components/valoraciones-prof/valora
     ClasesComponent,
     ClasesViewComponent,
     CalificacionesComponent,
-    ValoracionesProfComponent
+    ValoracionesProfComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

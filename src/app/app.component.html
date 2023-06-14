@@ -9,7 +9,7 @@
           <h1 class="m-0 ml-md-auto"><a [routerLink]="['/home']" class="text-decoration-none logo">TeacherApp</a></h1>
         </div>
         <div class="col-2 d-flex align-items-center" *ngIf="isLogged()">
-          <p class="m-0">Perfil: {{profile}}</p>
+          <app-profile></app-profile>
         </div>
         <div class=" col-6 col-md-7 d-flex justify-content-end">
           <app-menu class="d-flex justify-content-end"></app-menu>
