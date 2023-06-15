@@ -61,3 +61,17 @@ h2 {
   padding: 15px;
   border-radius: 20px;
 }
+
+.ciudad,
+.asignatura {
+    width: 200px;
+    height: 40px; 
+    border-radius: 12px; 
+    padding: 5px;
+    border-style: none;
+    background-color: #e8e5ec;
+  }
+  
+.encuentraP {
+  font-size: 30px;
+}
