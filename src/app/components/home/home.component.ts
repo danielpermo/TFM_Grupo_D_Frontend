@@ -57,6 +57,7 @@ export class HomeComponent implements OnInit {
   async filtrar(pCiudad: string) {
     this.filtroArr = [];
     if (pCiudad === 'Todas') {
+      this.asignaturasActivate = false;
       return this.filtroArr = this.combinedArr;
     }
     const response = await this.profesoresService.getAllPublic();
