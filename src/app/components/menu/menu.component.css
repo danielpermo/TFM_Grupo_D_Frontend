@@ -45,6 +45,11 @@
     fill: white;
 }
 
+.bg-body-tertiary {
+    --bs-bg-opacity: 0;
+    background-color: rgba(var(--bs-tertiary-bg-rgb), var(--bs-bg-opacity)) !important;
+}
+
 /* text */
 .text {
     position: absolute;
@@ -90,7 +95,7 @@
     height: 80px;
     font-family: 'Pinyon Script', cursive;
     font-size: 3rem;
-  }
+}
 
 a {
     text-decoration: none;
@@ -98,11 +103,11 @@ a {
 }
 
 @media (max-width: 1200px) {
-h1 {
-      display: none;
-}
+    h1 {
+        display: none;
+    }
 
-nav {
+    nav {
         justify-content: right;
     }
 }
