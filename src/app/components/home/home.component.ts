@@ -15,9 +15,11 @@ export class HomeComponent implements OnInit {
   profesArrImp: Profesor[] = [];
   combinedArr: any = [];
   ciudadesArr: string[] = [];
+  filtroArr: any = [] = [];
+  filtradoCiudad: boolean = false;
+  asignaturasActivate: boolean = false;
 
   profesoresService = inject(ProfesoresService);
-
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
@@ -52,8 +54,40 @@ export class HomeComponent implements OnInit {
 
   }
 
-  filtrar(pCiudad: string) {
-    console.log(pCiudad);
+  async filtrar(pCiudad: string) {
+    this.filtroArr = [];
+    if (pCiudad === 'Todas') {
+      return this.filtroArr = this.combinedArr;
+    }
+    const response = await this.profesoresService.getAllPublic();
+    response.sort((a: { puntuacion: string; }, b: { puntuacion: string; }) => {
+      // Comprobar si a y b tienen la puntuación "No valorado"
+      if (a.puntuacion === "No valorado" && b.puntuacion === "No valorado") {
+        return 0;
+      }
+      if (a.puntuacion === "No valorado") {
+        return 1; // Mover 'a' al final
+      }
+      if (b.puntuacion === "No valorado") {
+        return -1; // Mover 'b' al final
+      }
+
+      // Ordenar por puntuación de mayor a menor
+      return Number(b.puntuacion) - Number(a.puntuacion);
+    });
+    const profesArr: any[] = response;
+    const profesFiltradoArr: any[] = profesArr.filter(profesor => profesor.ciudad === pCiudad);
+    const profesArrPar: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 0);
+    const profesArrImp: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 1);
+    const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
+    for (let i = 0; i < maxLength; i++) {
+      this.filtroArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
+      console.log(this.filtroArr);
+      this.filtradoCiudad = true;
+      this.asignaturasActivate = true;
+      return this.filtroArr;
+    }
+
   }
 
 }
