@@ -14,8 +14,10 @@ export class HomeComponent implements OnInit {
   profesArrPar: Profesor[] = [];
   profesArrImp: Profesor[] = [];
   combinedArr: any = [];
+  ciudadesArr: string[] = [];
 
   profesoresService = inject(ProfesoresService);
+
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
@@ -41,8 +43,18 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < maxLength; i++) {
       this.combinedArr.push({ par: this.profesArrPar[i], impar: this.profesArrImp[i] });
     }
+    const ciudadesSet = new Set<string>();
+    for (const profesor of this.profesArr) {
+      ciudadesSet.add(profesor.ciudad);
+    }
+    this.ciudadesArr = Array.from(ciudadesSet).sort();
+    this.ciudadesArr.unshift('Todas');
+
   }
 
+  filtrar(pCiudad: string) {
+    console.log(pCiudad);
+  }
 
 }
 

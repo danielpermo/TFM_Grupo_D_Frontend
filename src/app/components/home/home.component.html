@@ -35,6 +35,28 @@
 
   <h2 class="container text-center mt-5 mb-5">Nuestros profesores</h2>
 
+  <div class="container mb-5">
+    <div class="row justify-content-sm-center h-100">
+      <div class="col-xxl-12 col-xl-12 col-lg-10 col-md-9 col-sm-10">
+        <div class="mb-2 w-100 flex-row">
+          <p>Filtar por: </p>
+          <div class="container row">
+            <p class="m-0 p-0">Ciudad:</p>
+            <select class="ciudad col-2 mb-2" id="ciudad">
+              <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrar(ciudad)">{{ciudad}}</option>
+            </select>
+            <p class="m-0 p-0">Asignaturas:</p>
+            <select class="asignatura col-2" id="asignatura">
+              <option value="todas">Todas</option>
+              <option value="m">Asignatura</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <!-- Valoraciones profesores -->
   <div class="container" *ngFor="let item of combinedArr">
 
