@@ -1,5 +1,5 @@
-<body>
-  <!-- INFO HOME -->
+<!-- INFO HOME -->
+
   <div class="container mb-3">
     <h1 class="text-center fw-bold">Nos adaptamos a tu forma de aprender</h1>
     <hr/>
@@ -32,30 +32,31 @@
   <h2 class="container text-center mt-5 mb-5">Nuestros profesores</h2>
 
 <!-- FILTRO BUSQUEDA -->
-  <div class="container mb-5">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <div class="mb-2 d-flex justify-content-center">
-          <p class="encuentraP">Encuentra tu profesor/a ideal: </p>
+
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="mb-2 d-flex justify-content-center">
+        <p class="encuentraP">Encuentra tu profesor/a ideal:</p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <div class="w-ciudad" style="margin-right: 25px;">
+          <p class="m-0 p-0">Ciudad:</p>
+          <select class="ciudad mb-2 shadow-sm" id="ciudad">
+            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrar(ciudad)">{{ciudad}}</option>
+          </select>
         </div>
-        <div class="d-flex justify-content-center">
-          <div class="w-ciudad" style="margin-right: 25px;">
-            <p class="m-0 p-0">Ciudad:</p>
-            <select class="ciudad mb-2" id="ciudad">
-              <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrar(ciudad)">{{ciudad}}</option>
-            </select>
-          </div>
-          <div class="w-asignatura" *ngIf="asignaturasActivate === true">
-            <p class="m-0 p-0">Asignaturas:</p>
-            <select class="asignatura" id="asignatura">
-              <option value="todas">Todas</option>
-              <option value="m">Asignatura</option>
-            </select>
-          </div>
+        <div class="w-asignatura" *ngIf="asignaturasActivate === true">
+          <p class="m-0 p-0">Asignaturas:</p>
+          <select class="asignatura shadow-sm" id="asignatura">
+            <option value="todas">Todas</option>
+            <option value="m">Asignatura</option>
+          </select>
         </div>
       </div>
     </div>
   </div>
+</div>
 
 <!-- VALORACIONES PROFESORES -->
 
