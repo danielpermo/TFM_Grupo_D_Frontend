@@ -1,7 +1,3 @@
-a:hover {
-    color: #000000;
-}
-
 .nav-link {
     display: block;
     padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
@@ -12,12 +8,16 @@ a:hover {
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 }
 
+.nav-link:hover {
+    color: #000000;
+}
+
 .Btn {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -55,11 +55,13 @@ a:hover {
     font-size: 1.2em;
     font-weight: 600;
     transition-duration: .3s;
+
+    padding-right: 10px;
 }
 
 /* hover effect on button width */
 .Btn:hover {
-    width: 125px;
+    width: 170px;
     border-radius: 40px;
     transition-duration: .3s;
 }
@@ -81,4 +83,49 @@ a:hover {
 /* button click effect*/
 .Btn:active {
     transform: translate(2px, 2px);
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 3rem;
+  }
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+@media (max-width: 1200px) {
+h1 {
+      display: none;
+}
+
+nav {
+        justify-content: right;
+    }
+}
+
+.navbar-toggler {
+    background-color: white;
+    margin: 15px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 15px;
+}
+
+.text {
+    margin-left: 10px;
 }
