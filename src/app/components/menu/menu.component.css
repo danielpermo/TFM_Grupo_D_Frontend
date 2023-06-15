@@ -104,3 +104,8 @@ a:hover {
         justify-content: right;
     }
   }
+
+  .navbar-toggler {
+    background-color: white;
+    margin: 15px;
+  }
