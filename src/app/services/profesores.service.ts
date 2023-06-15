@@ -13,12 +13,12 @@ export class ProfesoresService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/profesores'
+    this.baseUrl = 'https://teachersapp.onrender.com/api/profesores'
   }
 
   getAllPublic(): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`http://localhost:3000/api/publica`)
+      this.httpClient.get(`https://teachersapp.onrender.com/api/publica`)
     );
   }
 
@@ -110,13 +110,13 @@ export class ProfesoresService {
 
   filtrarCiudad(pCiudad: string): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`http://localhost:3000/api/publica/ciudad/${pCiudad}`)
+      this.httpClient.get(`https://teachersapp.onrender.com/api/publica/ciudad/${pCiudad}`)
     );
   }
 
   filtrarAsignatura(pAsignatura: string): Promise<any> {
     return firstValueFrom(
-      this.httpClient.get(`http://localhost:3000/api/publica/asignatura/${pAsignatura}`)
+      this.httpClient.get(`https://teachersapp.onrender.com/api/publica/asignatura/${pAsignatura}`)
     );
   }
 

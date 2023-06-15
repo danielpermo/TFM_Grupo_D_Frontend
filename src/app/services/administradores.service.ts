@@ -10,7 +10,7 @@ export class AdministradoresService {
   private baseUrl: string;
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/administradores'
+    this.baseUrl = 'https://teachersapp.onrender.com/api/administradores'
   }
 
   getAllProfes(): Promise<any> {

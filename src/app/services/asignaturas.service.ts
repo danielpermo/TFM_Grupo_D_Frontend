@@ -11,7 +11,7 @@ export class AsignaturasService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/asignaturas'
+    this.baseUrl = 'https://teachersapp.onrender.com/api/asignaturas'
   }
 
   getAll(): Promise<any> {

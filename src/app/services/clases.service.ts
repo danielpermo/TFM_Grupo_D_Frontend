@@ -11,7 +11,7 @@ export class ClasesService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api'
+    this.baseUrl = 'https://teachersapp.onrender.com/api'
   }
 
   getAll(): Promise<any> {
