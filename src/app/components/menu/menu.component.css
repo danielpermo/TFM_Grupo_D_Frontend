@@ -92,40 +92,40 @@
     font-size: 3rem;
   }
 
-  a {
+a {
     text-decoration: none;
     color: #fff;
-  }
+}
 
-  @media (max-width: 768px) {
-    h1 {
+@media (max-width: 1200px) {
+h1 {
       display: none;
-    }
+}
 
-    nav {
+nav {
         justify-content: right;
     }
-  }
+}
 
-  .navbar-toggler {
+.navbar-toggler {
     background-color: white;
     margin: 15px;
-  }
+}
 
-  .navbar-nav {
+.navbar-nav {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
-  }
+}
 
-  .nav-item {
+.nav-item {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 15px;
-  }
+}
 
-  .text {
+.text {
     margin-left: 10px;
-  }
+}
