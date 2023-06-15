@@ -83,7 +83,6 @@ export class HomeComponent implements OnInit {
     const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
     for (let i = 0; i < maxLength; i++) {
       this.filtroArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
-      console.log(this.filtroArr);
       this.filtradoCiudad = true;
       this.asignaturasActivate = true;
       return this.filtroArr;
