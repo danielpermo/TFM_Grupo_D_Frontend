@@ -14,7 +14,7 @@ export class UsuariosService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.baseUrl = 'http://localhost:3000/api/usuarios'
+    this.baseUrl = 'https://teachersapp.onrender.com/api/usuarios'
   }
 
   getAll() {
