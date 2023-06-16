@@ -43,7 +43,6 @@ export class LoginComponent {
     const tokenDecode = jwtDecode<any>(token!);
     localStorage.setItem('token_user', token);
 
-    alert('Login realizado con éxito');
     if (tokenDecode.usuario_rol === 'admin') {
       return this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id, 'perfil']);
     }
