@@ -70,7 +70,7 @@
 
 <!-- VALORACIONES PROFESORES -->
 
-<div class="container" *ngIf="filtradoCiudad === false">
+<div class="container" *ngIf="filtrado === false">
   <div class="container" *ngFor="let item of combinedArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
@@ -150,7 +150,7 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="filtradoCiudad === true">
+<div class="container" *ngIf="filtrado === true && filtradoArr.length != 0">
   <div class="container" *ngFor="let item of filtradoArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
