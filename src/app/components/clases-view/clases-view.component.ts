@@ -74,29 +74,50 @@ export class ClasesViewComponent {
     try {
       const data: any[] = await this.clasesService.getAll();
       const usuarioLogadoId: number = this.usuariosService.getId();
-      const usuarios: any = this.usuariosService.getAll(); console.log(usuarios);
-      
-      
-      const profesores: any = await this.profesoresService.getAllPublic();     console.log(profesores);
+      const usuarios: any = this.usuariosService.getAll();
+      console.log(usuarios);
   
-    
-      this.clasesArr = data.map((clase: any) => {
-        const asignatura = this.asignaturasArr.find(
-          (asignatura: any) => asignatura.id === clase.asignatura_id
-        );
-
-        return {
-          ...clase,
-          asignatura_nombre: asignatura ? asignatura.nombre : '',
-          asignatura_rama: asignatura ? asignatura.rama : '',
-          estado_asignatura: clase.finalizado ? "Finalizado" : "En curso",
-          profesor: (asignatura.profesor_id===usuarios.id) ? usuarios.nombre : ''
-        };
-      }).filter((clase: any) => clase.alumno_id === usuarioLogadoId);
+      const profesores: any = await this.profesoresService.getAllPublic();
+      console.log(profesores);
+  
+      if (this.myUser.rol === 'alum') {
+        this.clasesArr = data
+          .map((clase: any) => {
+            const asignatura = this.asignaturasArr.find(
+              (asignatura: any) => asignatura.id === clase.asignatura_id
+            );
+  
+            return {
+              ...clase,
+              asignatura_nombre: asignatura ? asignatura.nombre : '',
+              asignatura_rama: asignatura ? asignatura.rama : '',
+              estado_asignatura: clase.finalizado ? 'Finalizado' : 'En curso',
+             // profesor: asignatura.profesor_id === usuarios.id ? usuarios.nombre : ''
+            };
+          })
+          .filter((clase: any) => clase.alumno_id === usuarioLogadoId);
+      } else if (this.myUser.rol === 'profe') {
+        this.clasesArr = data
+          .map((clase: any) => {
+            const asignatura = this.asignaturasArr.find(
+              (asignatura: any) => asignatura.id === clase.asignatura_id
+            );
+  
+            return {
+              ...clase,
+              asignatura_nombre: asignatura ? asignatura.nombre : '',
+              asignatura_rama: asignatura ? asignatura.rama : '',
+              estado_asignatura: clase.finalizado ? 'Finalizado' : 'En curso',
+              //profesor: clase.profesor_id === usuarioLogadoId ? usuarios.nombre : ''
+            };
+          })
+          .filter((clase: any) => clase.profesor_id === usuarioLogadoId);
+      }
     } catch (error) {
       console.error(error);
     }
   }
+  
 
 
 }

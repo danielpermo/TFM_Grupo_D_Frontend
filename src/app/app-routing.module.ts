@@ -13,7 +13,7 @@ import { roleGuard } from './guards/role.guard';
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { ClasesViewComponent } from './components/clases-view/clases-view.component';
 import { ClasesComponent } from './components/clases-component/clases-component';
-import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+import { ValoracionesComponent } from './components/valoraciones/valoraciones.component';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 
 const routes: Routes = [
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: "admin/:userId/perfil", component: UserViewComponent, canActivate: [loginGuard, roleGuard] },
   {
     path: "alum/:userId/clases", component: ClasesComponent, canActivate: [loginGuard], children: [
-      { path: "calificaciones", component: CalificacionesComponent, canActivate: [loginGuard] },
+      { path: "calificaciones", component: ValoracionesComponent, canActivate: [loginGuard] },
       { path: "misClases", component: ClasesViewComponent, canActivate: [loginGuard] }
     ]
   },
