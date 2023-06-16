@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -59,7 +60,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatCardModule
   ],
   exports: [],
   providers: [],

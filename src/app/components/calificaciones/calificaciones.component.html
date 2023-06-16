@@ -1,18 +1,16 @@
-<table class="container">
-    <thead>
-      <tr>
-        <th>Área</th>
-        <th>Asignatura</th>
-        <th>Evaluación</th>
-        <th>Calificación</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let clases of clasesArr">
-        <td class="text-center">{{clases.asignatura_rama}}</td>
-        <td class="text-center">{{clases.asignatura_nombre}}</td>
-        <td class="text-center">En espera..</td>
-        <td class="text-center">En espera..</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="container">
+  <br>
+  <br>
+  <div class="ttl">Mi experiencia</div>
+  <br>
+  <br>
+  <mat-card class="card" *ngFor="let clase of clasesArr">
+    <mat-card-content>
+      <div>{{clase.asignatura_nombre}}</div>
+      <div>Profesor</div>
+      <div>{{clase.opinion}}</div>
+    </mat-card-content>
+  </mat-card>
+
+  
+</div>
