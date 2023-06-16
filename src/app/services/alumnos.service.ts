@@ -8,7 +8,7 @@ import { IAlumno } from '../interfaces/alumno';
 })
 export class AlumnosService {
 
-  private baseUrl: string = "http://localhost:3000/api/alumnos";
+  private baseUrl: string = "https://teachersapp.onrender.com/api/alumnos";
 
 
 

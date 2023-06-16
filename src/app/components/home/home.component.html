@@ -1,35 +1,35 @@
 <!-- INFO HOME -->
 
-  <div class="container mb-3">
-    <h1 class="text-center fw-bold">Nos adaptamos a tu forma de aprender</h1>
-    <hr/>
-    <div class="container row text-center grid gap d-flex">
-      <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
-        <img src="../../../assets/profesor_en_clase.jpg" class="card-img-top" alt="Imagen profesora en clase" />
-        <div class="card-body">
-          <h5 class="card-title fs-3">Clases presenciales</h5>
-          <p class="card-text">
-            Clases en tu domicilio o el de tu profesor/a, en tu lugar de
-            trabajo, en una academia...
-          </p>
-          <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
-        </div>
+<div class="container mb-3">
+  <h1 class="text-center fw-bold">Nos adaptamos a tu forma de aprender</h1>
+  <hr />
+  <div class="container row text-center grid gap d-flex">
+    <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
+      <img src="../../../assets/profesor_en_clase.jpg" class="card-img-top" alt="Imagen profesora en clase" />
+      <div class="card-body">
+        <h5 class="card-title fs-3">Clases presenciales</h5>
+        <p class="card-text">
+          Clases en tu domicilio o el de tu profesor/a, en tu lugar de
+          trabajo, en una academia...
+        </p>
+        <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
       </div>
-      <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
-        <img src="../../../assets/laptop.jpg" class="card-img-top" alt="Imagen persona trabajando en un ordenador" />
-        <div class="card-body">
-          <h5 class="card-title fs-3">Clases online</h5>
-          <p class="card-text">
-            Mediante videoconferencia con un profesor/a online, a cualquier hora
-            y sin salir de casa
-          </p>
-          <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
-        </div>
+    </div>
+    <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
+      <img src="../../../assets/laptop.jpg" class="card-img-top" alt="Imagen persona trabajando en un ordenador" />
+      <div class="card-body">
+        <h5 class="card-title fs-3">Clases online</h5>
+        <p class="card-text">
+          Mediante videoconferencia con un profesor/a online, a cualquier hora
+          y sin salir de casa
+        </p>
+        <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
       </div>
     </div>
   </div>
+</div>
 
-  <h2 class="container text-center mt-5 mb-5">Nuestros profesores</h2>
+<h2 class="container text-center mt-5 mb-5">Nuestros profesores</h2>
 
 <!-- FILTRO BUSQUEDA -->
 
@@ -41,16 +41,26 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="w-ciudad" style="margin-right: 25px;">
-          <p class="m-0 p-0">Ciudad:</p>
-          <select class="ciudad mb-2 shadow-sm" id="ciudad">
-            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrar(ciudad)">{{ciudad}}</option>
+          <p class="m-0 p-0">Filtrar por:</p>
+          <select class="ciudad mb-2 shadow-sm" id="filtro">
+            <option value="todos" (click)="mostrarFiltro('todos')">Todos</option>
+            <option value="ciudad" (click)="mostrarFiltro('ciudad')">Ciudad</option>
+            <option value="asignaturas" (click)="mostrarFiltro('asignaturas')">Asignatura</option>
           </select>
         </div>
-        <div class="w-asignatura" *ngIf="asignaturasActivate === true">
+        <div class="w-ciudad" *ngIf="ciudadActivate === true" style="margin-right: 25px;">
+          <p class="m-0 p-0">Ciudad:</p>
+          <select class="ciudad mb-2 shadow-sm" id="ciudad">
+            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">{{ciudad}}
+            </option>
+          </select>
+        </div>
+        <div class="w-asignatura" *ngIf="asignaturasActivate === true" style="margin-right: 25px;">
           <p class="m-0 p-0">Asignaturas:</p>
-          <select class="asignatura shadow-sm" id="asignatura">
-            <option value="todas">Todas</option>
-            <option value="m">Asignatura</option>
+          <select class="ciudad mb-2 shadow-sm" id="asignatura">
+            <option [value]="asignatura.asinatura_id" *ngFor="let asignatura of asignaturasArr"
+              (click)="filtrarAsignatura(asignatura.asignatura_id)">
+              {{asignatura.nombre}}</option>
           </select>
         </div>
       </div>
@@ -60,7 +70,7 @@
 
 <!-- VALORACIONES PROFESORES -->
 
-<div class="container" *ngIf="filtradoCiudad === false">
+<div class="container" *ngIf="filtrado === false">
   <div class="container" *ngFor="let item of combinedArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
@@ -73,12 +83,14 @@
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
                   <h5 class="card-title CardProfNombre">{{item.par.nombre}} {{item.par.apellidos}}</h5>
+                  <p class="card-text">{{item.par.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.par.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
                   <p class="card-text" *ngIf="item.par.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion |
+                    number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -116,12 +128,14 @@
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
                   <h5 class="card-title CardProfNombre">{{item.impar?.nombre}} {{item.impar?.apellidos}}</h5>
+                  <p class="card-text">{{item.impar.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.impar?.experiencia}} años</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
                   <p class="card-text" *ngIf="item.impar.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="item.impar.puntuacion != 'No valorado'">Puntuación: {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.impar.puntuacion != 'No valorado'">Puntuación:
+                    {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -136,8 +150,8 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="filtradoCiudad === true">
-  <div class="container" *ngFor="let item of filtroArr">
+<div class="container" *ngIf="filtrado === true && filtradoArr.length != 0">
+  <div class="container" *ngFor="let item of filtradoArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <a class="EnlaceCardProf" [routerLink]="['/login']">
@@ -149,12 +163,14 @@
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
                   <h5 class="card-title CardProfNombre">{{item.par.nombre}} {{item.par.apellidos}}</h5>
+                  <p class="card-text">{{item.par.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.par.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
                   <p class="card-text" *ngIf="item.par.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion |
+                    number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -192,12 +208,14 @@
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
                   <h5 class="card-title CardProfNombre">{{item.impar?.nombre}} {{item.impar?.apellidos}}</h5>
+                  <p class="card-text">{{item.impar?.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.impar?.experiencia}} años</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
                   <p class="card-text" *ngIf="item.impar.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="item.impar.puntuacion != 'No valorado'">Puntuación: {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
+                  <p class="card-text" *ngIf="item.impar.puntuacion != 'No valorado'">Puntuación:
+                    {{item.impar.puntuacion | number:'01.0-2'}}/10</p>
                 </div>
               </div>
             </div>
@@ -212,4 +230,3 @@
     </div>
   </div>
 </div>
-
