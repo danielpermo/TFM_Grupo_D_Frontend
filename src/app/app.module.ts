@@ -17,7 +17,7 @@ import { MisAlumnosComponent } from './components/mis-alumnos/mis-alumnos.compon
 import { UserViewComponent } from './components/user-view/user-view.component';
 import { ClasesComponent } from './components/clases-component/clases-component';
 import { ClasesViewComponent } from './components/clases-view/clases-view.component';
-import { CalificacionesComponent } from './components/calificaciones/calificaciones.component';
+import { ValoracionesComponent } from './components/valoraciones/valoraciones.component';
 
 
 
@@ -48,7 +48,7 @@ import {MatCardModule} from '@angular/material/card';
     UserViewComponent,
     ClasesComponent,
     ClasesViewComponent,
-    CalificacionesComponent,
+    ValoracionesComponent,
     ValoracionesProfComponent,
     ProfileComponent
   ],
