@@ -1,19 +1,27 @@
 <div class="container">
   <br>
   <br>
+ <ng-container>
   <div class="ttl">Valoraciones</div>
   <br>
   <br>
   <ng-container *ngFor="let clase of clasesArr">
     <mat-card class="card" *ngIf="clase?.opinion">
-      <mat-card-content>
+      <mat-card-content class="matContainer">
+        <div class="cardContainer">
         <span>Asignatura:</span>
         <div>{{ clase.asignatura_nombre }}</div>
+        </div>
+        <div class="cardContainer">
         <span>Profesor:</span>
         <div>Profesor</div>
+        </div>
+       <div class="cardContainer">
         <span>Comentario:</span>
-        <div>{{ clase.opinion }}</div>
+        <div class="opinion">{{ clase.opinion }}</div>
+       </div>
       </mat-card-content>
     </mat-card>
   </ng-container>
+ </ng-container>
 </div>
