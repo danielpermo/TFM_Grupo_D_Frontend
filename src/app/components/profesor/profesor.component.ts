@@ -69,7 +69,6 @@ export class ProfesorComponent implements OnInit {
   }
 
   comprobarClase(pClase: number) {
-    console.log(pClase)
     if (pClase === 0) {
       return true;
     }
