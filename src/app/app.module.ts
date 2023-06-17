@@ -28,6 +28,12 @@ import { MatListModule } from '@angular/material/list';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import {MatCardModule} from '@angular/material/card';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 
 
 
@@ -50,7 +56,8 @@ import {MatCardModule} from '@angular/material/card';
     ClasesViewComponent,
     ValoracionesComponent,
     ValoracionesProfComponent,
-    ProfileComponent
+    ProfileComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,10 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     MatTableModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [],
   providers: [],
