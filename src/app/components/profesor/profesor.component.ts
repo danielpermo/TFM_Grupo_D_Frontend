@@ -43,7 +43,6 @@ export class ProfesorComponent implements OnInit {
       return alert('La asignatura ya estaba añadida.');
     }
     const response = await this.profesoresService.addAsignatura(this.asignaturaSeleccionada);
-    alert('Asignatura añadida.');
     window.location.reload();
     return response;
   }
@@ -51,7 +50,6 @@ export class ProfesorComponent implements OnInit {
   async deleteAsignatura(pAsignatura: number) {
     const response = await this.profesoresService.deleteAsignatura(pAsignatura)
     console.log(response);
-    alert('Asignatura eliminada.');
     window.location.reload();
     return response;
   }
