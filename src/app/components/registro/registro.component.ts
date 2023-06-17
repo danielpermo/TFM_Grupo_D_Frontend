@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CheckboxRequiredValidator, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import jwtDecode from 'jwt-decode';
 import { ProfesoresService } from 'src/app/services/profesores.service';
@@ -72,6 +72,9 @@ export class RegistroComponent implements OnInit {
       ]),
       asignaturas: new FormControl("", [
         Validators.required
+      ]),
+      privacidad: new FormControl(CheckboxRequiredValidator, [
+        Validators.requiredTrue
       ])
     }, []);
   }
