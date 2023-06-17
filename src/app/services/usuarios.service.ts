@@ -11,8 +11,6 @@ export class UsuariosService {
 
   private baseUrl: string;
 
-
-
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'https://teachersapp.onrender.com/api/usuarios'
   }
@@ -44,8 +42,6 @@ export class UsuariosService {
     return localStorage.getItem('token_user') ? true : false;
   }
 
-
-
   rol(pRol: string): boolean {
     const token = localStorage.getItem('token_user');
     const tokenDecode = jwtDecode<any>(token!);
@@ -60,37 +56,5 @@ export class UsuariosService {
     const tokenDecode = jwtDecode<any>(token!);
     return tokenDecode.usuario_id;
   }
-
-
-  // getById(pId: number): Promise<any> {
-  //   return Promise.resolve(this.usuarios.find(usuarios => usuarios.id === pId));
-  // }
-
-  // create(pUsuario: Usuario): Promise<Usuario> {
-  //   const newId = Number(this.usuarios.length + 1);
-  //   const newUsuario = { ...pUsuario, id: newId };
-  //   this.usuarios.push(newUsuario);
-  //   return Promise.resolve(newUsuario);
-  // }
-
-  // update(pUsuario: Usuario): Promise<Usuario> {
-  //   const index = this.usuarios.findIndex(usuarios => usuarios.id === pUsuario.id);
-  //   if (index !== -1) {
-  //     this.usuarios[index] = pUsuario;
-  //     return Promise.resolve(pUsuario);
-  //   } else {
-  //     return Promise.reject(`User with ID ${pUsuario.id} not found.`);
-  //   }
-  // }
-
-  // delete(pId: number): Promise<any> {
-  //   const index = this.usuarios.findIndex(usuarios => usuarios.id === pId);
-  //   if (index !== -1) {
-  //     this.usuarios.splice(index, 1);
-  //     return Promise.resolve();
-  //   } else {
-  //     return Promise.reject(`User with ID ${pId} not found.`);
-  //   }
-  // }
 }
 
