@@ -87,7 +87,10 @@ export class HomeComponent implements OnInit {
   }
 
   async filtrarCiudad(pCiudad: string) {
-    (pCiudad === 'Todas') ? this.filtradoCiudad = false : this.filtradoCiudad = true;
+    if(pCiudad === 'Todas') {
+      this.filtrado = false;
+      return this.filtradoCiudad = false;
+    }
     const response = await this.profesoresService.filtrarCiudad(pCiudad);
     response.sort((a: { puntuacion: string; }, b: { puntuacion: string; }) => {
       // Comprobar si a y b tienen la puntuación "No valorado"
@@ -122,14 +125,18 @@ export class HomeComponent implements OnInit {
       this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
     }
     this.filtradoCiudad = true;
-    console.log(this.filtradoArr)
+    this.filtrado = true;
     return this.filtradoArr;
 
   }
 
-  async filtrarAsignatura(pAsignatura: string) {
-    (pAsignatura === 'Todas') ? this.filtradoCiudad = false : this.filtradoCiudad = true;
+  async filtrarAsignatura(pAsignatura: any) {
+    if (pAsignatura === 0) {
+      this.filtrado = false;
+      return this.filtradoAsignatura = false;
+    }
     const response = await this.profesoresService.filtrarAsignatura(pAsignatura);
+    console.log(response)
     response.sort((a: { puntuacion: string; }, b: { puntuacion: string; }) => {
       // Comprobar si a y b tienen la puntuación "No valorado"
       if (a.puntuacion === "No valorado" && b.puntuacion === "No valorado") {
@@ -154,8 +161,7 @@ export class HomeComponent implements OnInit {
       this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
     }
     this.filtradoAsignatura = true;
-    this.filtrado = true
-    console.log(this.filtradoArr)
+    this.filtrado = true;
     return this.filtradoArr
   }
 
