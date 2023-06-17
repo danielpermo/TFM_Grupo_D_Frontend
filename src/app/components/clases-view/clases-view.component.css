@@ -1,6 +1,18 @@
-.container {
-    width: 80%;
-    margin-top: 3rem;
+.main{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.container,
+.container1 {
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    margin: 3rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: -1px 10px 20px 0px rgba(114, 113, 113, 0.62);
@@ -27,3 +39,40 @@ img {
     height: 20px;
 }
 
+.btnAp,
+.btnDelete,
+.btnValorar {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    color: black;
+    border-radius: 5px;
+}
+
+.btnAp:hover {
+    background-color: rgb(46, 191, 46);
+    color: white;
+}
+
+.btnDelete:hover {
+    background-color: rgba(221, 24, 24, 0.842);
+    color: white;
+}
+
+.btnValorar:hover {
+    background-color: rgb(29, 178, 236);
+    color: white;
+}
+
+td,
+th{
+    padding: 10px;
+    width: 10%;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
