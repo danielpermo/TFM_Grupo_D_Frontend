@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CheckboxRequiredValidator, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import jwtDecode from 'jwt-decode';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Router } from '@angular/router';
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +15,16 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  RegistroForm: FormGroup
-  rolSelected!: any
-  asignaturas: number[] = [];
+  RegistroForm: FormGroup;
+  rolSelected!: any;
+  asignaturasArr: any[] = [];
+  asignaturas: any[] = [];
   myUser: any = {};
   title: string = "REGISTRO";
   buttonName: string = "Regístrate";
   profile: string = "";
 
-  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router) {
+  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router, private asignaturasService: AsignaturasService) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -72,11 +74,16 @@ export class RegistroComponent implements OnInit {
       ]),
       asignaturas: new FormControl("", [
         Validators.required
+      ]),
+      privacidad: new FormControl(CheckboxRequiredValidator, [
+        Validators.requiredTrue
       ])
     }, []);
   }
 
   async ngOnInit() {
+    this.asignaturasArr = await this.asignaturasService.getAll();
+    console.log(this.asignaturasArr)
     const token = localStorage.getItem('token_user');
     if (token) {
       const tokenDecode: any = jwtDecode(token!);
@@ -98,9 +105,6 @@ export class RegistroComponent implements OnInit {
             Validators.required
           ]),
           email: new FormControl(this.myUser?.email, [
-            Validators.required
-          ]),
-          password: new FormControl("", [
             Validators.required
           ]),
           telefono: new FormControl(this.myUser?.telefono, [
@@ -156,9 +160,6 @@ export class RegistroComponent implements OnInit {
           email: new FormControl(this.myUser?.email, [
             Validators.required
           ]),
-          password: new FormControl("", [
-            Validators.required
-          ]),
           telefono: new FormControl(this.myUser?.telefono, [
             Validators.required
           ]),
@@ -204,9 +205,6 @@ export class RegistroComponent implements OnInit {
             Validators.required
           ]),
           email: new FormControl(this.myUser?.email, [
-            Validators.required
-          ]),
-          password: new FormControl("", [
             Validators.required
           ]),
           telefono: new FormControl(this.myUser?.telefono, [
@@ -278,7 +276,6 @@ export class RegistroComponent implements OnInit {
     if (response.fatal) {
       return alert(response.fatal);
     }
-    alert('Usuario registrado correctamente');
     this.router.navigate(['/login']);
   }
 
@@ -292,7 +289,6 @@ export class RegistroComponent implements OnInit {
     } else if (this.profile === 'Alumno') {
       const response = await this.alumnosService.update(this.myUser.id, user);
       console.log(response);
-      alert('Usuario actualizado correctamente.');
       return response;
     }
   }

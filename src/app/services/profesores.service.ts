@@ -61,6 +61,15 @@ export class ProfesoresService {
     return firstValueFrom(this.httpClient.get(`${this.baseUrl}/alumnos`, httpOptions));
   }
 
+  getProfeAlumById(pId: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/alumnos/${pId}`, httpOptions));
+  }
+
   addAsignatura(pAsignatura: number): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({

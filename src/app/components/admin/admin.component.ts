@@ -59,6 +59,7 @@ export class AdminComponent implements OnInit {
           `El usuario ${user.nombre} ha sido borrado correctamente`,
           'success'
         )
+
         return response
       }
     })

@@ -41,26 +41,26 @@
       </div>
       <div class="d-flex justify-content-center">
         <div class="w-ciudad" style="margin-right: 25px;">
-          <p class="m-0 p-0">Filtrar por:</p>
-          <select class="ciudad mb-2 shadow-sm" id="filtro">
-            <option value="todos" (click)="mostrarFiltro('todos')">Todos</option>
-            <option value="ciudad" (click)="mostrarFiltro('ciudad')">Ciudad</option>
-            <option value="asignaturas" (click)="mostrarFiltro('asignaturas')">Asignatura</option>
-          </select>
-        </div>
-        <div class="w-ciudad" *ngIf="ciudadActivate === true" style="margin-right: 25px;">
           <p class="m-0 p-0">Ciudad:</p>
-          <select class="ciudad mb-2 shadow-sm" id="ciudad">
-            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">{{ciudad}}
-            </option>
+          <select class="ciudad mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === false">
+            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
+              {{ciudad}}</option>
+          </select>
+          <select class="ciudad mb-2 shadow-sm" id="ciudad"  *ngIf="filtradoAsignatura === true">
+            <option value="ciudad" disabled>
+              Todas</option>
           </select>
         </div>
-        <div class="w-asignatura" *ngIf="asignaturasActivate === true" style="margin-right: 25px;">
+        <div class="w-asignatura" style="margin-right: 25px;">
           <p class="m-0 p-0">Asignaturas:</p>
-          <select class="ciudad mb-2 shadow-sm" id="asignatura">
-            <option [value]="asignatura.asinatura_id" *ngFor="let asignatura of asignaturasArr"
+          <select class="ciudad mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === false">
+            <option [value]="asignatura.nombre" *ngFor="let asignatura of asignaturasArr"
               (click)="filtrarAsignatura(asignatura.asignatura_id)">
               {{asignatura.nombre}}</option>
+          </select>
+          <select class="ciudad mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === true">
+            <option value="asignatura" disabled>
+              Todas</option>
           </select>
         </div>
       </div>
@@ -85,6 +85,7 @@
                   <h5 class="card-title CardProfNombre">{{item.par.nombre}} {{item.par.apellidos}}</h5>
                   <p class="card-text">{{item.par.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.par.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
@@ -130,6 +131,7 @@
                   <h5 class="card-title CardProfNombre">{{item.impar?.nombre}} {{item.impar?.apellidos}}</h5>
                   <p class="card-text">{{item.impar.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.impar?.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
@@ -150,7 +152,7 @@
     </div>
   </div>
 </div>
-<div class="container" *ngIf="filtrado === true && filtradoArr.length != 0">
+<div class="container" *ngIf="filtrado === true">
   <div class="container" *ngFor="let item of filtradoArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
@@ -165,6 +167,7 @@
                   <h5 class="card-title CardProfNombre">{{item.par.nombre}} {{item.par.apellidos}}</h5>
                   <p class="card-text">{{item.par.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.par.asignaturas">{{asginatura.nombre}}</li>
                   </ul>

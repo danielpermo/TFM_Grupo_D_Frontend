@@ -17,7 +17,11 @@ export class MisAlumnosComponent implements OnInit {
 
   async ngOnInit() {
     const response = await this.profesoresService.getProfeAlum();
+    if(response === 'No hay alumnos disponibles'){
+      return this.alumArr = [];
+    }
     this.alumArr = response;
+    console.log(this.alumArr)
     return this.alumArr;
   }
 
