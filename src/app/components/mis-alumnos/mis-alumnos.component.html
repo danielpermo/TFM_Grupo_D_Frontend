@@ -13,7 +13,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="alumArr.length != 0">
       <tr class="TrDatos" *ngFor="let alumno of alumArr">
         <td>{{alumno.nombre}}</td>
         <td>{{alumno.apellidos}}</td>
