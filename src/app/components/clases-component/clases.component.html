@@ -1,6 +1,15 @@
-<mat-nav-list class="menu">
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['misClases']">Mis clases</a>
-    <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['calificaciones']">Mis Valoraciones</a>
-</mat-nav-list>
+<ng-container *ngIf="myUser.rol === 'alum'">
+    <mat-nav-list class="menu">
+        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['misClases']">Mis clases</a>
+        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['calificaciones']">Mis Valoraciones</a>
+    </mat-nav-list>
+</ng-container>
+<ng-container *ngIf="myUser.rol === 'profe'">
+    <mat-nav-list class="menu">
+        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="['misClases']">Mis clases</a>
+        <a mat-list-item routerLinkActive="list-item-active" [routerLink]="'/profe/' + getId() + '/valoraciones'">Mis Valoraciones</a>
+    </mat-nav-list>
+</ng-container>
 <hr>
 <router-outlet></router-outlet>
+
