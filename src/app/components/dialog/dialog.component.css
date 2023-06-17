@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+}
+
+button {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 4px 10px;
+    color: black;
+    border-radius: 5px;
+}
+
+.btnSub:hover{
+    background-color: rgb(46, 191, 46);
+    color: white;
+}
+
+.btnCan:hover {
+    background-color: rgba(221, 24, 24, 0.842);
+    color: white;
+}
+
+h2{
+    padding: 0;
+    margin: 5px auto;
+}
+
