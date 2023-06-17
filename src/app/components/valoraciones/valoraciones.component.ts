@@ -19,6 +19,8 @@ export class ValoracionesComponent {
   profile: string = "";
   clase: any = {}; 
 
+  dataValoraciones: any[] = [[]];
+  clases: any[] = [];
   constructor(
     private asignaturasService: AsignaturasService,
     private clasesService: ClasesService,
@@ -59,52 +61,52 @@ export class ValoracionesComponent {
 
   async getClases() {
     try {
+
       const data: any[] = await this.clasesService.getAll();
       const usuarioLogadoId: number = this.usuariosService.getId();
-      const usuarios: any = this.usuariosService.getAll();
-      console.log(usuarios);
-  
+      const asig: any[] = await this.asignaturasService.getAll();
       const profesores: any = await this.profesoresService.getAllPublic();
-      console.log(profesores);
-  
+      this.dataValoraciones[1]=[];
+      this.dataValoraciones[2]=[];
+      this.dataValoraciones[3]=[];
+      this.dataValoraciones[4]=[];
+      this.dataValoraciones[5]=[];
       if (this.myUser.rol === 'alum') {
-        this.clasesArr = data
-          .map((clase: any) => {
-            const asignatura = this.asignaturasArr.find(
-              (asignatura: any) => asignatura.id === clase.asignatura_id
-            );
-  
-            return {
-              ...clase,
-              asignatura_nombre: asignatura ? asignatura.nombre : '',
-              asignatura_rama: asignatura ? asignatura.rama : '',
-              estado_asignatura: clase.finalizado ? 'Finalizado' : 'En curso',
-              opinion: clase.opinion ? clase.opinion : ''
-             // profesor: asignatura.profesor_id === usuarios.id ? usuarios.nombre : ''
-            };
+
+        data.forEach((clase) => {
+          if (clase.alumno_id===usuarioLogadoId){
+            this.dataValoraciones[0].push(clase);
+            this.dataValoraciones[1].push(clase.opinion);
+            this.dataValoraciones[2].push(clase.asignatura_id);
+            this.dataValoraciones[3].push(clase.profesor_id);
+          }}
+        )
+          this.clases=this.dataValoraciones[0];
+        profesores.forEach((element: any)=>{
+          this.clases.forEach((element2: any)=>{
+            if (element.id===element2.profesor_id){              
+              this.dataValoraciones[4].push((element.nombre+' '+  element.apellidos)); 
+            }        
           })
-          .filter((clase: any) => clase.alumno_id === usuarioLogadoId);
-      } else if (this.myUser.rol === 'profe') {
-        this.clasesArr = data
-          .map((clase: any) => {
-            const asignatura = this.asignaturasArr.find(
-              (asignatura: any) => asignatura.id === clase.asignatura_id
-            );
-  
-            return {
-              ...clase,
-              asignatura_nombre: asignatura ? asignatura.nombre : '',
-              asignatura_rama: asignatura ? asignatura.rama : '',
-              estado_asignatura: clase.finalizado ? 'Finalizado' : 'En curso',
-               opinion: clase.opinion ? clase.opinion : ''
-              //profesor: clase.profesor_id === usuarioLogadoId ? usuarios.nombre : ''
-            };
+        })
+
+        this.dataValoraciones[0].forEach((asignatura: any)=>{
+          asig.forEach((asigna)=>{
+            if(asignatura.asignatura_id===asigna.id){
+              this.dataValoraciones[5].push(asigna.nombre);
+            }
           })
-          .filter((clase: any) => clase.profesor_id === usuarioLogadoId);
-      }
-    } catch (error) {
-      console.error(error);
+        })
+
+        let i=0;
+        while ( i < this.dataValoraciones[0].length){
+          this.clasesArr[i]=Object.assign({}, [this.dataValoraciones[5][i], this.dataValoraciones[4][i], this.dataValoraciones[1][i]]); 
+          i++;
+        }
+        console.log(this.clasesArr);
     }
+    }catch (error) {
+      console.error(error);
   }
-  
+}
 }
