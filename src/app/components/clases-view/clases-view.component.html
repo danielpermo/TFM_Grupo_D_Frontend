@@ -12,18 +12,15 @@
   </thead>
   <tbody *ngIf="myUser.rol === 'alum'">
     <tr *ngFor="let clase of clasesArr">
-      <td class="text-center">{{clase.asignatura_nombre}}</td>
-      <td class="text-center">{{clase.profesor}}</td>
-      <td class="text-center" >{{clase.estado_asignatura}}</td>
+      <td class="text-center">{{clase[0]}}</td>
+      <td class="text-center">{{clase[1]}}</td>
+      <td class="text-center" >{{clase[2]}}</td>
     </tr>
   </tbody>
   <tbody *ngIf="myUser.rol === 'profe'">
     <tr *ngFor="let clase of clasesArr">
-      <td class="text-center">{{clase.asignatura_nombre}}</td>
-      <td class="text-center">{{clase.estado_asignatura}}</td>
+      <td class="text-center">{{clase[0]}}</td>
+      <td class="text-center">{{clase[1]}}</td>
     </tr>
   </tbody>
 </table>
-
-
-
