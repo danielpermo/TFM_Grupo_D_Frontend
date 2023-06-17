@@ -426,12 +426,13 @@
                                         <label class="text-muted" for="asignaturas">Asignaturas: (*)</label>
                                     </div>
                                     <div class="form-control row">
-                                        <label class="col-4">
-                                            <input type="checkbox" id="1" [checked]="asignaturas.includes(1)"
-                                                (change)="toggleCheckbox(1)">
-                                            Matemáticas
+                                        <label class="col-4" *ngFor="let asignatura of asignaturasArr">
+                                            <input type="checkbox" [id]="asignatura.id"
+                                                [checked]="asignaturas.includes(asignatura.id)"
+                                                (change)="toggleCheckbox(asignatura.id)">
+                                            {{asignatura.nombre}}
                                         </label>
-                                        <label class="col-4">
+                                        <!-- <label class="col-4">
                                             <input type="checkbox" id="2" [checked]="asignaturas.includes(2)"
                                                 (change)="toggleCheckbox(2)">
                                             Inglés
@@ -470,7 +471,7 @@
                                             <input type="checkbox" id="9" [checked]="asignaturas.includes(9)"
                                                 (change)="toggleCheckbox(9)">
                                             Francés
-                                        </label>
+                                        </label> -->
 
                                     </div>
                                     <p class="error" *ngIf="checkControl('asignaturas', 'required')">(*) El campo es

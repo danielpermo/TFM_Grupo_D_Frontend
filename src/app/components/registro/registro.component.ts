@@ -6,6 +6,7 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Router } from '@angular/router';
+import { AsignaturasService } from 'src/app/services/asignaturas.service';
 
 @Component({
   selector: 'app-registro',
@@ -14,15 +15,16 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  RegistroForm: FormGroup
-  rolSelected!: any
-  asignaturas: number[] = [];
+  RegistroForm: FormGroup;
+  rolSelected!: any;
+  asignaturasArr: any[] = [];
+  asignaturas: any[] = [];
   myUser: any = {};
   title: string = "REGISTRO";
   buttonName: string = "Regístrate";
   profile: string = "";
 
-  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router) {
+  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router, private asignaturasService: AsignaturasService) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -80,6 +82,8 @@ export class RegistroComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.asignaturasArr = await this.asignaturasService.getAll();
+    console.log(this.asignaturasArr)
     const token = localStorage.getItem('token_user');
     if (token) {
       const tokenDecode: any = jwtDecode(token!);
