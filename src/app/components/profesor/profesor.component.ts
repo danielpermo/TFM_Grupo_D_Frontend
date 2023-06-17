@@ -12,6 +12,7 @@ export class ProfesorComponent implements OnInit {
   profesorObj: any = {}
   asignaturas: any[] = [];
   asignaturaSeleccionada!: number;
+  claseCreada: boolean = false;
 
   constructor(private profesoresService: ProfesoresService, private asignaturasService: AsignaturasService) { }
 
@@ -24,6 +25,7 @@ export class ProfesorComponent implements OnInit {
   async getProfesor() {
     const response = await this.profesoresService.getProfesor();
     this.profesorObj = response;
+    console.log(this.profesorObj)
     return this.profesorObj;
   }
 
@@ -56,12 +58,23 @@ export class ProfesorComponent implements OnInit {
   async crearClase(pAsignatura: number) {
     const response = await this.profesoresService.crearClase(pAsignatura);
     console.log(response);
+    window.location.reload();
     return response;
   }
   async finalizarClase(pAsignatura: number) {
     const response = await this.profesoresService.finalizarClase(pAsignatura);
     console.log(response);
+    window.location.reload();
     return response;
   }
+
+  comprobarClase(pClase: number) {
+    console.log(pClase)
+    if (pClase === 0) {
+      return true;
+    }
+    return false;
+  }
+
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CheckboxRequiredValidator, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import jwtDecode from 'jwt-decode';
 import { ProfesoresService } from 'src/app/services/profesores.service';
@@ -72,6 +72,9 @@ export class RegistroComponent implements OnInit {
       ]),
       asignaturas: new FormControl("", [
         Validators.required
+      ]),
+      privacidad: new FormControl(CheckboxRequiredValidator, [
+        Validators.requiredTrue
       ])
     }, []);
   }
@@ -98,9 +101,6 @@ export class RegistroComponent implements OnInit {
             Validators.required
           ]),
           email: new FormControl(this.myUser?.email, [
-            Validators.required
-          ]),
-          password: new FormControl("", [
             Validators.required
           ]),
           telefono: new FormControl(this.myUser?.telefono, [
@@ -156,9 +156,6 @@ export class RegistroComponent implements OnInit {
           email: new FormControl(this.myUser?.email, [
             Validators.required
           ]),
-          password: new FormControl("", [
-            Validators.required
-          ]),
           telefono: new FormControl(this.myUser?.telefono, [
             Validators.required
           ]),
@@ -204,9 +201,6 @@ export class RegistroComponent implements OnInit {
             Validators.required
           ]),
           email: new FormControl(this.myUser?.email, [
-            Validators.required
-          ]),
-          password: new FormControl("", [
             Validators.required
           ]),
           telefono: new FormControl(this.myUser?.telefono, [
@@ -278,7 +272,6 @@ export class RegistroComponent implements OnInit {
     if (response.fatal) {
       return alert(response.fatal);
     }
-    alert('Usuario registrado correctamente');
     this.router.navigate(['/login']);
   }
 
@@ -292,7 +285,6 @@ export class RegistroComponent implements OnInit {
     } else if (this.profile === 'Alumno') {
       const response = await this.alumnosService.update(this.myUser.id, user);
       console.log(response);
-      alert('Usuario actualizado correctamente.');
       return response;
     }
   }

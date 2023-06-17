@@ -28,7 +28,7 @@ h1 {
 
 h2 {
   font-size: 4rem;
-  color: #7500c0; 
+  color: #7500c0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   transition: color 0.3s;
   margin-bottom: 20px;
@@ -64,14 +64,19 @@ h2 {
 
 .ciudad,
 .asignatura {
-    width: 200px;
-    height: 40px; 
-    border-radius: 12px; 
-    padding: 5px;
-    border-style: none;
-    background-color: #e8e5ec;
-  }
-  
+  width: 200px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 5px;
+  border-style: none;
+  background-color: #e8e5ec;
+}
+
 .encuentraP {
   font-size: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
 }
