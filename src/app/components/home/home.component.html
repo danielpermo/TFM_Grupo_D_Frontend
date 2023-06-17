@@ -40,26 +40,26 @@
         <p class="encuentraP">Encuentra tu profesor/a ideal:</p>
       </div>
       <div class="d-flex justify-content-center">
-        <div class="w-ciudad" style="margin-right: 25px;">
+        <!-- <div class="w-ciudad" style="margin-right: 25px;">
           <p class="m-0 p-0">Filtrar por:</p>
           <select class="ciudad mb-2 shadow-sm" id="filtro">
             <option value="todos" (click)="mostrarFiltro('todos')">Todos</option>
             <option value="ciudad" (click)="mostrarFiltro('ciudad')">Ciudad</option>
             <option value="asignaturas" (click)="mostrarFiltro('asignaturas')">Asignatura</option>
           </select>
-        </div>
-        <div class="w-ciudad" *ngIf="ciudadActivate === true" style="margin-right: 25px;">
+        </div> -->
+        <div class="w-ciudad" style="margin-right: 25px;">
           <p class="m-0 p-0">Ciudad:</p>
           <select class="ciudad mb-2 shadow-sm" id="ciudad">
-            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">{{ciudad}}
-            </option>
+            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
+              {{ciudad}}</option>
           </select>
         </div>
-        <div class="w-asignatura" *ngIf="asignaturasActivate === true" style="margin-right: 25px;">
+        <div class="w-asignatura" style="margin-right: 25px;">
           <p class="m-0 p-0">Asignaturas:</p>
           <select class="ciudad mb-2 shadow-sm" id="asignatura">
-            <option [value]="asignatura.asinatura_id" *ngFor="let asignatura of asignaturasArr"
-              (click)="filtrarAsignatura(asignatura.asignatura_id)">
+            <option [value]="asignatura.nombre" *ngFor="let asignatura of asignaturasArr"
+              (click)="filtrarAsignatura(asignatura.nombre)">
               {{asignatura.nombre}}</option>
           </select>
         </div>
@@ -131,6 +131,7 @@
                   <h5 class="card-title CardProfNombre">{{item.impar?.nombre}} {{item.impar?.apellidos}}</h5>
                   <p class="card-text">{{item.impar.ciudad}}</p>
                   <p class="card-text">Experiencia: {{item.impar?.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
                     <li *ngFor="let asginatura of item.impar?.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
