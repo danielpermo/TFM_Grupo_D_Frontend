@@ -1,65 +1,5 @@
 <section class="h-100 mt-2">
   <div class="container">
-    <!-- <div class="row">
-      <div class="col-md-6">
-        <h3>Mi Perfil</h3>
-        <hr>
-        <div class="form-group">
-          <label class="tituloDatos">Nombre:</label>
-          <p>{{profesorObj.nombre}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Apellidos:</label>
-          <p>{{profesorObj.apellidos}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Edad:</label>
-          <p>{{profesorObj.edad}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Experiencia:</label>
-          <p>{{profesorObj.experiencia}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Precio:</label>
-          <p>{{profesorObj.precio}}€</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Ciudad:</label>
-          <p>{{profesorObj.ciudad}}</p>
-        </div>
-        <h3>Contacto</h3>
-        <hr>
-        <div class="form-group">
-          <label class="tituloDatos">Teléfono:</label>
-          <p>{{profesorObj.telefono}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Email:</label>
-          <p>{{profesorObj.email}}</p>
-        </div>
-      </div>
-      <div class="col-md-6 privado">
-        <h3>Privado</h3>
-        <hr>
-        <div class="alert alert-info" style="background-color: #d9c8f1;">
-          Solo tú puedes ver estos datos.
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Username:</label>
-          <p>{{profesorObj.username}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">Dirección:</label>
-          <p>{{profesorObj.direccion}}</p>
-        </div>
-        <div class="form-group">
-          <label class="tituloDatos">DNI:</label>
-          <p>{{profesorObj.dni}}</p>
-        </div>
-      </div>
-    </div> -->
-
 
     <div class="row">
       <app-user-view></app-user-view>
@@ -78,10 +18,11 @@
                   (click)="deleteAsignatura(asignatura.asignatura_id)">X</button>
                 <h5 class="card-title asignatura">{{asignatura.nombre}}</h5>
                 <div class="d-flex align-items-center justify-content-center flex-column">
-                  <button class="btnCrear btn btn-primary m-3" (click)="crearClase(asignatura.asignatura_id)">Crear
+                  <button class="btnCrear btn btn-primary m-3" (click)="crearClase(asignatura.asignatura_id)"
+                    *ngIf="comprobarClase(asignatura.clase)">Crear
                     clase</button>
-                  <button class="btnCrear btn btn-primary m-3"
-                    (click)="finalizarClase(asignatura.asignatura_id)">Finalizar clase</button>
+                  <button class="btnCrear btn btn-primary m-3" (click)="finalizarClase(asignatura.asignatura_id)"
+                    *ngIf="!comprobarClase(asignatura.clase)">Finalizar clase</button>
                 </div>
               </div>
             </div>
