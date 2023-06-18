@@ -45,12 +45,6 @@ export class HomeComponent implements OnInit {
       return Number(b.puntuacion) - Number(a.puntuacion);
     });
     this.profesArr = response;
-    this.profesArrPar = this.profesArr.filter((_, index) => index % 2 === 0);
-    this.profesArrImp = this.profesArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(this.profesArrPar.length, this.profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.combinedArr.push({ par: this.profesArrPar[i], impar: this.profesArrImp[i] });
-    }
     const ciudadesSet = new Set<string>();
     for (const profesor of this.profesArr) {
       ciudadesSet.add(profesor.ciudad);
@@ -65,7 +59,8 @@ export class HomeComponent implements OnInit {
       }
     }
     this.asignaturasArr = Array.from(asignaturasSet).sort();
-    const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 }
+    const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 };
+    this.asignaturasArr = Array.from(asignaturasSet).sort();
     this.asignaturasArr.unshift(todas);
     return this.combinedArr;
   }
@@ -108,14 +103,9 @@ export class HomeComponent implements OnInit {
     this.filtradoArr = [];
     const profesArr: any[] = response;
     const profesFiltradoArr: any[] = profesArr.filter(profesor => profesor.ciudad === pCiudad);
-    const profesArrPar: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 0);
-    const profesArrImp: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
-    }
     this.filtradoCiudad = true;
     this.filtrado = true;
+    this.filtradoArr = profesFiltradoArr;
     return this.filtradoArr;
 
   }
@@ -143,14 +133,9 @@ export class HomeComponent implements OnInit {
     this.filtradoArr = [];
     const profesArr: any[] = response;
     const profesFiltradoArr: any[] = profesArr.filter(profesor => profesor.asignaturas.some((asignatura: any) => asignatura.asignatura_id === pAsignatura));
-    const profesArrPar: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 0);
-    const profesArrImp: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
-    }
     this.filtradoAsignatura = true;
     this.filtrado = true;
+    this.filtradoArr = profesFiltradoArr;
     return this.filtradoArr
   }
 
