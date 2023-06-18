@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   combinedArr: any = [];
   ciudadesArr: string[] = [];
   asignaturasArr: any[] = [];
+  asignaturasUnicas: any[] = [];
   filtradoArr: any[] = [];
   filtradoCiudad: boolean = false;
   filtradoAsignatura: boolean = false;
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   profesoresService = inject(ProfesoresService);
 
-  constructor(private viewportScroller: ViewportScroller) {}
+  constructor(private viewportScroller: ViewportScroller) { }
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
@@ -62,10 +63,14 @@ export class HomeComponent implements OnInit {
       }
     }
     this.asignaturasArr = Array.from(asignaturasSet).sort();
-    const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 };
-    this.asignaturasArr = Array.from(asignaturasSet).sort();
+    this.asignaturasArr = Object.values(
+      this.asignaturasArr.reduce((acc, obj) => {
+        acc[obj.asignatura_id] = { asignatura_id: obj.asignatura_id, nombre: obj.nombre };
+        return acc;
+      }, {})
+    );
+    const todas: any = { asignatura_id: 0, nombre: "Todas" };
     this.asignaturasArr.unshift(todas);
-    return this.combinedArr;
   }
 
   checkFiltradoCiudad(): boolean {
