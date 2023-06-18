@@ -41,14 +41,14 @@
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId()]">Mi perfil</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId()]">Profesores</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId() , 'profesor-list']">Profesores</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId() , 'clases']">Clases</a>
           </li>
-          <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
+          <!-- <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId() , 'valoraciones']">Valoraciones</a>
-          </li>
+          </li> -->
           <li class="nav-item" *ngIf="usuariosService.isLogged()">
             <a class="nav-link pe-auto" (click)="scrollToTop()" role="button" title="Logout" (click)="onClickLogout()">
               <button class="Btn" (click)="scrollToTop()">
