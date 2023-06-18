@@ -18,6 +18,10 @@
     box-shadow: -1px 10px 20px 0px rgba(114, 113, 113, 0.62);
 }
 
+.green-snackbar {
+    background: rgb(65, 252, 134);
+    color: white;
+}
 
 th {
     background-color:    #d0b8fc !important;

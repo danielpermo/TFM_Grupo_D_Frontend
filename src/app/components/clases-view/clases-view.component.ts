@@ -6,9 +6,9 @@ import { AsignaturasService } from 'src/app/services/asignaturas.service';
 import { ClasesService } from 'src/app/services/clases.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -17,7 +17,6 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./clases-view.component.css']
 })
 export class ClasesViewComponent {
-
 
   asignaturasArr: any[] = [];
   clasesArr: any[] = [];
@@ -38,7 +37,8 @@ export class ClasesViewComponent {
     private usuariosService: UsuariosService,
     private profesoresService: ProfesoresService,
     private alumnosService: AlumnosService,
-    private dialog: MatDialog){}
+    private dialog: MatDialog,
+    private snack: MatSnackBar){}
 
   async ngOnInit() {
     this.getAsignaturas();
@@ -78,7 +78,6 @@ export class ClasesViewComponent {
       const asig: any[] = await this.asignaturasService.getAll();
       const profesores: any = await this.profesoresService.getAllPublic();
       const clasesActivas: any[] =await this.clasesService.getClasesActivas();
-      console.log(clasesActivas);
       this.loggedUser=usuarioLogadoId;
 
       if (this.myUser.rol === 'alum') {
@@ -177,29 +176,32 @@ export class ClasesViewComponent {
      }
   }
 
-  apuntarse(event: any, asignatura: number, profesor: number, arr:any[][], alumno_id: number): void {
-    var profesor_id: number=0;
-    var asignatura_id: number=0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i][0]===asignatura && arr[i][1]===profesor) 
-      profesor_id=arr[i][4];
-      asignatura_id=arr[i][5];
-    }
+  apuntarse( asignatura: number, profesor: number): void {
+   try{
     const inscripcion = {
-      profesor_id: profesor_id,
-      asignatura_id: asignatura_id,
-      alumno_id: alumno_id
+      profesor_id: profesor,
+      asignatura_id: asignatura
     };
+    
     this.clasesService.create(inscripcion)
     .then(response => {
-      console.log('Registration successful:', response);
-      // Refresh the enrolled classes table
-      this.getClases();
+      if (response===null){
+        console.log('Registration successful:', 200);
+        this.snack.open('Cambios guardados correctamente', 'Aceptar', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+        this.recargar();
+      }
+      else{
+        console.log('Registration was not successful, try again:', response.status);
+      }
     })
-    .catch(error => {
-      console.error('Registration failed:', error);
-    });
+   }
+   catch (error) {
+    console.error('Registration failed:', error);
   }
+}
 
   eliminarse(event: any, clase_id: number, alumno_id: number): void {
    
@@ -226,5 +228,19 @@ export class ClasesViewComponent {
   
     dialogRef.afterClosed().subscribe(result => { 
     });
+  }
+
+  recargar(): void{
+    this.asignaturasArr = [];
+    this.clasesArr = [];
+    this.noclasesArr = [];
+    this.finalizada = "";
+    this.InformacionClases = [[],[],[],[],[],[],[]];
+    this.clases = [];
+    this.rowObj = {};
+    this.noClase = [[],[],[],[],[],[]];
+    this.noClases = [];
+
+    this.getClases();
   }
 }
