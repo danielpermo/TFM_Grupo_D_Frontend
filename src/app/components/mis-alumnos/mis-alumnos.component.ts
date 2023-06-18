@@ -21,6 +21,7 @@ export class MisAlumnosComponent implements OnInit {
       return this.alumArr = [];
     }
     this.alumArr = response;
+    console.log(this.alumArr)
     return this.alumArr;
   }
 
