@@ -90,57 +90,65 @@ export class ClasesViewComponent {
             this.InformacionClases[4].push(clase.asignatura_id);
             this.InformacionClases[5].push(clase.profesor_id);
             this.InformacionClases[6].push(clase.id);
+
+            profesores.forEach((profe:any)=>{
+              if(profe.id===clase.profesor_id){
+                this.InformacionClases[1].push(profe.nombre + ' ' + profe.apellidos);
+              }
+            })
+
+            asig.forEach((asigna)=>{
+              //Nombre de Asignaturas a las que el usuario está apuntado 
+              this.InformacionClases[0].forEach((asignatura: any)=>{
+                if(asignatura.asignatura_id===asigna.id && !(this.InformacionClases[2].includes(asigna.nombre)) ){
+                  this.InformacionClases[2].push(asigna.nombre);
+                }
+              })
+            })
+
           }
         })
-
         //Clases en las que el usuario no está apuntado y tiene oportunidad de apuntarse
         clasesActivas.forEach((nuevaclase) => {
           data.forEach((clase) => {
             if(!(this.InformacionClases[4].includes(clase.asignatura_id))&& clase.asignatura_id === nuevaclase.asignatura_id && !(this.noClase[4].includes(clase.asignatura_id))){
-            this.noClase[0].push(clase);
-            this.noClase[4].push(clase.asignatura_id);
-            this.noClase[5].push(clase.profesor_id);
-          }})})
-
-        this.clases=this.InformacionClases[0];
-        this.noClases=this.noClase[0];
+              this.noClase[0].push(clase);
+              this.noClase[4].push(clase.asignatura_id);
+              this.noClase[5].push(clase.profesor_id);
+            
+            //Nombre de profesores de asignaturas
+            profesores.forEach((profe:any)=>{
+              if(profe.id===clase.profesor_id){
+                this.noClase[1].push(profe.nombre + ' ' + profe.apellidos);
+                this.noClase[3].push(profe.precio); 
+              }
+            });
+            //Nombres de asignatuaras
+            asig.forEach((asigna)=>{
+              //Nombre de Asignaturas a las que el usuario está apuntado 
+              this.noClase[0].forEach((noAsignatura: any)=>{
+                if(asigna.id===clase.asignatura_id && !(this.noClase[2].includes(asigna.nombre))){
+                  this.noClase[2].push(asigna.nombre);
+                }
+              })
+            })
+          }})
+        })
         
-         //Profesores de las clases a las que el usuario está apuntado
-        profesores.forEach((element: any)=>{
-          this.clases.forEach((element2: any)=>{
-            if (element.id===element2.profesor_id){              
-              this.InformacionClases[1].push((element.nombre+' '+  element.apellidos)); 
-            }        
-          })
-          //Profesores de las clases a las que el usuario NO está apuntado
-          this.noClases.forEach((element2: any)=>{
-            if (element.id===element2.profesor_id){              
-              this.noClase[1].push(element.nombre+' '+element.apellidos);
-              this.noClase[3].push(element.precio); 
-            }       
-          })
-        })
-
-        asig.forEach((asigna)=>{
-          //Nombre de Asignaturas a las que el usuario está apuntado 
-          this.InformacionClases[0].forEach((asignatura: any)=>{
-            if(asignatura.asignatura_id===asigna.id){
-              this.InformacionClases[2].push(asigna.nombre);
-            }
-          })
-          //Nombre de Asignaturas a las que el usuario NO está apuntado
-          this.noClase[0].forEach((noAsignatura: any)=>{
-            if(noAsignatura.asignatura_id===asigna.id){
-              this.noClase[2].push(asigna.nombre);
-            }
-          })
-        })
-
+        
         //Asignación a objeto para ngfor HTML, clases que cursa el usuario
         let i=0;
+        var estado='Finalizado'
         while ( i < this.InformacionClases[0].length){
-          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[2][i],this.InformacionClases[1][i],this.InformacionClases[3] ? 'En curso' : 'Finalizado',this.InformacionClases[4][i],this.InformacionClases[5][i],this.InformacionClases[6][i]]); 
-          i++;
+          
+          if(this.InformacionClases[3][i]===1){
+            estado='Finalizado';
+          }
+          else{
+            estado='En curso';
+          }
+          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[2][i],this.InformacionClases[1][i],estado,this.InformacionClases[4][i],this.InformacionClases[5][i],this.InformacionClases[6][i]]); 
+                    i++;
         }
 
         //Asignación a objeto para ngfor HTML, clases que NO cursa el usuario
@@ -182,7 +190,8 @@ export class ClasesViewComponent {
       profesor_id: profesor,
       asignatura_id: asignatura
     };
-    
+    console.log(inscripcion);
+
     this.clasesService.create(inscripcion)
     .then(response => {
       if (response===null){
@@ -197,19 +206,30 @@ export class ClasesViewComponent {
         console.log('Registration was not successful, try again:', response.status);
       }
     })
+
    }
    catch (error) {
     console.error('Registration failed:', error);
   }
 }
 
-  eliminarse(event: any, clase_id: number, alumno_id: number): void {
-   
-    this.clasesService.delete(clase_id)
+  eliminarse(profesorId: number, asignaturaId: number, alumnoId: number): void {
+    
+    const jotason = {
+      profesorId: profesorId,
+      asignaturaId: asignaturaId,
+      alumnoId: alumnoId
+    }
+    this.clasesService.delete(jotason)
     .then(response => {
-      console.log('Registration successful:', response);
+      if(response.changedRows===0){
+        console.log('Already finished:');
+      }
+      else{
+        console.log('Succesfully removed from the class:');
+      }
       // Refresh the enrolled classes table
-      this.getClases();
+      this.recargar();
     })
     .catch(error => {
       console.error('Registration failed:', error);

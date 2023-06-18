@@ -48,13 +48,15 @@ export class ClasesService {
     );
   }
 
-  delete(idclase: number): Promise<any> {
+  delete(info_delete: any): Promise<any> {
+    console.log(info_delete);
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_user')!
       })
     };
-    return firstValueFrom(this.httpClient.delete(`${this.baseUrl}/clases/${idclase}`, httpOptions));
+    console.log(`${this.baseUrl}/clases/delete/${info_delete.profesorId}/${info_delete.asignaturaId}/${info_delete.alumnoId}`,info_delete, httpOptions);
+    return firstValueFrom(this.httpClient.put(`${this.baseUrl}/clases/delete/${info_delete.profesorId}/${info_delete.asignaturaId}/${info_delete.alumnoId}`,info_delete, httpOptions));
   }
 
   valorar(idclase: number,comentario: string): Promise<any> {
