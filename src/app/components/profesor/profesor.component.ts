@@ -25,7 +25,6 @@ export class ProfesorComponent implements OnInit {
   async getProfesor() {
     const response = await this.profesoresService.getProfesor();
     this.profesorObj = response;
-    console.log(this.profesorObj)
     return this.profesorObj;
   }
 
