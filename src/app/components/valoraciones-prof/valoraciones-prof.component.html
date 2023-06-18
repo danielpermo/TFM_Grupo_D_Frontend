@@ -31,7 +31,7 @@
       <!-- Boton redireccón a Mis Alumnos -->
     </div>
     <div class="container d-flex justify-content-center align-items-center">
-      <a class="btn btn-primary fs-4" [routerLink]="['../misAlumnos']">Mis Alumnos</a>
+      <a class="btn btn-primary fs-4" (click)="scrollToTop()" [routerLink]="['../misAlumnos']">Mis Alumnos</a>
     </div>
   </div>
 </section>

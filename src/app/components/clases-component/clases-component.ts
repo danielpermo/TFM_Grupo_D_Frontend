@@ -3,6 +3,7 @@ import jwtDecode from 'jwt-decode';
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-clases-component',
@@ -17,12 +18,12 @@ export class ClasesComponent {
   usuariosService = inject(UsuariosService);
 
   constructor(
+    private viewportScroller: ViewportScroller,
     private profesoresService: ProfesoresService,
     private alumnosService: AlumnosService
-    ){}
+  ) { }
 
   async ngOnInit() {
-
     this.getId();
 
     const token = localStorage.getItem('token_user');
@@ -44,5 +45,9 @@ export class ClasesComponent {
 
   getId() {
     return this.pId = this.usuariosService.getId();
+  }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }
