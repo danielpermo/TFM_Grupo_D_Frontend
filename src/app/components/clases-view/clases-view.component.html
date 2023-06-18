@@ -50,7 +50,7 @@
           <td class="text-center">{{op[1]}}</td>
           <td class="text-center" >{{op[2]}}</td>
           <td>
-            <button class="btnAp" (click)="apuntarse($event, op[0], op[1], noclasesArr, loggedUser)">
+            <button class="btnAp" (click)="apuntarse(op[3].asignatura_id, op[3].profesor_id)">
               Inscribirme
             </button>
             
