@@ -37,15 +37,17 @@ export class ClasesService {
   }
   
   create(values: any): Promise<any> {
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_user')!
       })
     }
     return firstValueFrom(
-      this.httpClient.post<any>(`${this.baseUrl}/clases/`, values, httpOptions)
+      this.httpClient.post<any>(`${this.baseUrl}/alumnos/NuevaClase`,values, httpOptions)
     );
   }
+
   delete(idclase: number): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
