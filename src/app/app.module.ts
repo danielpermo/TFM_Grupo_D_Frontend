@@ -33,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ProfesorListComponent } from './components/profesor-list/profesor-list.component';
 
 
 
@@ -58,7 +59,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ValoracionesComponent,
     ValoracionesProfComponent,
     ProfileComponent,
-    DialogComponent
+    DialogComponent,
+    ProfesorListComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ import { ClasesViewComponent } from './components/clases-view/clases-view.compon
 import { ClasesComponent } from './components/clases-component/clases-component';
 import { ValoracionesComponent } from './components/valoraciones/valoraciones.component';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
+import { ProfesorListComponent } from './components/profesor-list/profesor-list.component';
+
 
 const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: '/home' },
@@ -36,6 +38,7 @@ const routes: Routes = [
       { path: "misClases", component: ClasesViewComponent, canActivate: [loginGuard] }
     ]
   },
+  { path: "alum/:userId/profesor-list", component: ProfesorListComponent, canActivate: [loginGuard,] },
   { path: "**", component: C404Component }
 ];
 
