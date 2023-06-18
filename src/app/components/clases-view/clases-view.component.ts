@@ -77,6 +77,8 @@ export class ClasesViewComponent {
       const usuarioLogadoId: number = this.usuariosService.getId();
       const asig: any[] = await this.asignaturasService.getAll();
       const profesores: any = await this.profesoresService.getAllPublic();
+      const clasesActivas: any[] =await this.clasesService.getClasesActivas();
+      
       this.InformacionClases[1]=[];
       this.InformacionClases[2]=[];
       this.InformacionClases[3]=[];
@@ -89,7 +91,7 @@ export class ClasesViewComponent {
       this.noClase[4]=[];
       this.noClase[5]=[];
       this.loggedUser=usuarioLogadoId;
-
+      
       if (this.myUser.rol === 'alum') {   
         data.forEach((clase) => {
           if (clase.alumno_id===usuarioLogadoId){
@@ -101,12 +103,15 @@ export class ClasesViewComponent {
           
           }
           else{
-            this.noClase[0].push(clase);
-            this.noClase[4].push(clase.asignatura_id);
-            this.noClase[5].push(clase.profesor_id);
-            
+              if(!(this.noClase[4].includes(clase.asignatura_id) || clase.asignatura_id===null)){
+                this.noClase[0].push(clase);
+                this.noClase[4].push(clase.asignatura_id);
+                this.noClase[5].push(clase.profesor_id);
+              }
+                 
           }
         })
+
         this.clases=this.InformacionClases[0];
         this.noClases=this.noClase[0];
 
@@ -117,6 +122,7 @@ export class ClasesViewComponent {
             }        
           })
         })
+        console.log(this.noClases);
         profesores.forEach((element: any)=>{
           this.noClases.forEach((element2: any)=>{
             if (element.id===element2.profesor_id){              
@@ -156,6 +162,7 @@ export class ClasesViewComponent {
           this.noclasesArr[i]=Object.assign({}, [this.noClase[2][i],this.noClase[1][i],this.noClase[3][i],this.noClase[0][i],this.noClase[4][i],this.noClase[5][i]]); 
           i++;
         }
+      console.log("Array final",this.noclasesArr);
 
       } else if (this.myUser.rol === 'profe') {
         data.forEach((clase) => {
@@ -173,8 +180,8 @@ export class ClasesViewComponent {
           })
         })
         let i=0;
-        while ( i < this.InformacionClases[0].length){
-          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[1][i],this.InformacionClases[3] ? 'En curso' : 'Finalizado']); 
+        while ( i <= this.InformacionClases[0].length){
+          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[1][i],this.InformacionClases[3] ? 'Finalizado' : 'En curso']); 
           i++;
         }
       }
