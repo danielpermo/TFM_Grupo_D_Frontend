@@ -23,6 +23,14 @@ export class ClasesService {
     return firstValueFrom(this.httpClient.get(`${this.baseUrl}/clases`, httpOptions));
   }
 
+  getClasesActivas(): Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_user')!
+      })
+    }
+    return firstValueFrom(this.httpClient.get(`${this.baseUrl}/alumnos/clasesActivas`, httpOptions));
+  }
 
   getById(pId: any): Promise<any> {
     return firstValueFrom(this.httpClient.get(`${this.baseUrl}/${pId}`));
