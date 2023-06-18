@@ -17,9 +17,10 @@ export class ProfesoresService {
   }
 
   getAllPublic(): Promise<any> {
-    return firstValueFrom(
+    const response = firstValueFrom(
       this.httpClient.get(`https://teachersapp.onrender.com/api/publica`)
-    );
+    )
+    return response;
   }
 
   getProfesor(): Promise<any> {

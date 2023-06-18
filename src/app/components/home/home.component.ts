@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
     this.asignaturasArr = Array.from(asignaturasSet).sort();
     const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 }
     this.asignaturasArr.unshift(todas);
-
+    return this.combinedArr;
   }
 
   checkFiltradoCiudad(): boolean {
