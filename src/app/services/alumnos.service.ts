@@ -35,7 +35,7 @@ export class AlumnosService {
         'Authorization': localStorage.getItem('token_user')!
       })
     }
-    return lastValueFrom(this.httpClient.get<IAlumno>(`${this.baseUrl}/profesores`, httpOptions))
+    return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}/profesores`, httpOptions))
   }
 
   update(pId: number, pAlumno: any): Promise<IAlumno> {

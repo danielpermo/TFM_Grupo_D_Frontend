@@ -3,6 +3,8 @@ import { Profesor } from 'src/app/interfaces/profesor';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ProfesoresService } from 'src/app/services/profesores.service';
 import { ViewportScroller } from '@angular/common';
+import { UsuariosService } from 'src/app/services/usuarios.service';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-home',
@@ -26,8 +28,12 @@ export class HomeComponent implements OnInit {
   asignatura: string = "";
   asignaturasActivate: boolean = false;
   ciudadActivate: boolean = false;
+  token: any = localStorage.getItem('token_user');
+  tokenDecode: any = jwtDecode(this.token!);
+  pId: number = this.tokenDecode.usuario_id;
 
   profesoresService = inject(ProfesoresService);
+  usuariosService = inject(UsuariosService);
 
   constructor(private viewportScroller: ViewportScroller) { }
 
