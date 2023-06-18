@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
+    console.log(response);
     response.sort((a: { puntuacion: string; }, b: { puntuacion: string; }) => {
       // Comprobar si a y b tienen la puntuación "No valorado"
       if (a.puntuacion === "No valorado" && b.puntuacion === "No valorado") {

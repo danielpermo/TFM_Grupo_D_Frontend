@@ -15,17 +15,6 @@ export class UsuariosService {
     this.baseUrl = 'https://teachersapp.onrender.com/api/usuarios'
   }
 
-  getAll() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token_user')!
-      })
-    }
-    return firstValueFrom(
-      this.httpClient.get<any>(this.baseUrl, httpOptions)
-    );
-  }
-
   login(pUser: Usuario): Promise<any> {
     return firstValueFrom(
       this.httpClient.post<Usuario>(`${this.baseUrl}/login`, pUser)
