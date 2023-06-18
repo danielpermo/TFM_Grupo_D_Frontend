@@ -7,6 +7,7 @@ import { ProfesoresService } from 'src/app/services/profesores.service';
 // @ts-ignore
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import Swal from 'sweetalert2';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-user-view',
@@ -21,9 +22,13 @@ export class UserViewComponent implements OnInit {
 
   usuariosService = inject(UsuariosService);
 
-  constructor(private router: Router, private profesoresService: ProfesoresService, private alumnosService: AlumnosService, private administradoresService: AdministradoresService) {
-
-  }
+  constructor(
+    private router: Router,
+    private viewportScroller: ViewportScroller,
+    private profesoresService: ProfesoresService,
+    private alumnosService: AlumnosService,
+    private administradoresService: AdministradoresService
+  ) { }
 
   async ngOnInit() {
     const token = localStorage.getItem('token_user');
@@ -70,7 +75,7 @@ export class UserViewComponent implements OnInit {
           )
           localStorage.removeItem('token_user');
           this.router.navigate(['/home']);
-          return response
+          return response;
         }
       }
       if (result.isConfirmed) {
@@ -84,14 +89,16 @@ export class UserViewComponent implements OnInit {
         )
         localStorage.removeItem('token_user');
         this.router.navigate(['/home']);
-        return response
+        return response;
       }
-    })
+    });
   }
 
   getId() {
     return this.pId = this.usuariosService.getId();
   }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 }
-
-

@@ -11,47 +11,47 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item" *ngIf="!usuariosService.isLogged()">
-            <a class="nav-link" [routerLink]="['/registro']">Registro</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/registro']">Registro</a>
           </li>
           <li class="nav-item" *ngIf="!usuariosService.isLogged()">
-            <a class="nav-link" [routerLink]="['/login']">Login</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/login']">Login</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
-            <a class="nav-link" [routerLink]="['/admin', getId(), 'perfil']">Mi perfil</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/admin', getId(), 'perfil']">Mi perfil</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
-            <a class="nav-link" [routerLink]="['/admin', getId() ,'alumnos']">Alumnos</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/admin', getId() ,'alumnos']">Alumnos</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('admin')">
-            <a class="nav-link" [routerLink]="['/admin', getId() ,'profesores']">Profesores</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/admin', getId() ,'profesores']">Profesores</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-            <a class="nav-link" [routerLink]="['/profe', getId()]">Mi perfil</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/profe', getId()]">Mi perfil</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-            <a class="nav-link" [routerLink]="['/alum',  getId() , 'clases']">Clases</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum',  getId() , 'clases']">Clases</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-            <a class="nav-link" [routerLink]="'/profe/' + getId() + '/misAlumnos'">Mis alumnos</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="'/profe/' + getId() + '/misAlumnos'">Mis alumnos</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
-            <a class="nav-link" [routerLink]="'/profe/' + getId() + '/valoraciones'">Mis valoraciones</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="'/profe/' + getId() + '/valoraciones'">Mis valoraciones</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-            <a class="nav-link" [routerLink]="['/alum', getId()]">Mi perfil</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId()]">Mi perfil</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-            <a class="nav-link" [routerLink]="['/alum', getId()]">Profesores</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId()]">Profesores</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-            <a class="nav-link" [routerLink]="['/alum', getId() , 'clases']">Clases</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId() , 'clases']">Clases</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('alum')">
-            <a class="nav-link" [routerLink]="['/alum', getId() , 'valoraciones']">Valoraciones</a>
+            <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum', getId() , 'valoraciones']">Valoraciones</a>
           </li>
           <li class="nav-item" *ngIf="usuariosService.isLogged()">
-            <a class="nav-link pe-auto" role="button" title="Logout" (click)="onClickLogout()">
-              <button class="Btn">
+            <a class="nav-link pe-auto" (click)="scrollToTop()" role="button" title="Logout" (click)="onClickLogout()">
+              <button class="Btn" (click)="scrollToTop()">
                 <div class="sign">
                   <svg viewBox="0 0 512 512">
                     <path

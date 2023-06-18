@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Profesor } from 'src/app/interfaces/profesor';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,8 @@ export class HomeComponent implements OnInit {
 
   profesoresService = inject(ProfesoresService);
 
+  constructor(private viewportScroller: ViewportScroller) {}
+
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
     response.sort((a: { puntuacion: string; }, b: { puntuacion: string; }) => {
@@ -45,12 +48,6 @@ export class HomeComponent implements OnInit {
       return Number(b.puntuacion) - Number(a.puntuacion);
     });
     this.profesArr = response;
-    this.profesArrPar = this.profesArr.filter((_, index) => index % 2 === 0);
-    this.profesArrImp = this.profesArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(this.profesArrPar.length, this.profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.combinedArr.push({ par: this.profesArrPar[i], impar: this.profesArrImp[i] });
-    }
     const ciudadesSet = new Set<string>();
     for (const profesor of this.profesArr) {
       ciudadesSet.add(profesor.ciudad);
@@ -65,9 +62,10 @@ export class HomeComponent implements OnInit {
       }
     }
     this.asignaturasArr = Array.from(asignaturasSet).sort();
-    const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 }
+    const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 };
+    this.asignaturasArr = Array.from(asignaturasSet).sort();
     this.asignaturasArr.unshift(todas);
-
+    return this.combinedArr;
   }
 
   checkFiltradoCiudad(): boolean {
@@ -108,16 +106,10 @@ export class HomeComponent implements OnInit {
     this.filtradoArr = [];
     const profesArr: any[] = response;
     const profesFiltradoArr: any[] = profesArr.filter(profesor => profesor.ciudad === pCiudad);
-    const profesArrPar: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 0);
-    const profesArrImp: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
-    }
     this.filtradoCiudad = true;
     this.filtrado = true;
+    this.filtradoArr = profesFiltradoArr;
     return this.filtradoArr;
-
   }
 
   async filtrarAsignatura(pAsignatura: any) {
@@ -143,17 +135,13 @@ export class HomeComponent implements OnInit {
     this.filtradoArr = [];
     const profesArr: any[] = response;
     const profesFiltradoArr: any[] = profesArr.filter(profesor => profesor.asignaturas.some((asignatura: any) => asignatura.asignatura_id === pAsignatura));
-    const profesArrPar: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 0);
-    const profesArrImp: any[] = profesFiltradoArr.filter((_, index) => index % 2 === 1);
-    const maxLength = Math.max(profesArrPar.length, profesArrImp.length);
-    for (let i = 0; i < maxLength; i++) {
-      this.filtradoArr.push({ par: profesArrPar[i], impar: profesArrImp[i] });
-    }
     this.filtradoAsignatura = true;
     this.filtrado = true;
+    this.filtradoArr = profesFiltradoArr;
     return this.filtradoArr
   }
 
-
-
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 }

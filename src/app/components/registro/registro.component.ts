@@ -7,6 +7,7 @@ import { AdministradoresService } from 'src/app/services/administradores.service
 import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Router } from '@angular/router';
 import { AsignaturasService } from 'src/app/services/asignaturas.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-registro',
@@ -24,7 +25,7 @@ export class RegistroComponent implements OnInit {
   buttonName: string = "Regístrate";
   profile: string = "";
 
-  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router, private asignaturasService: AsignaturasService) {
+  constructor(private usuariosService: UsuariosService, private alumnosService: AlumnosService, private profesoresService: ProfesoresService, private administradoresService: AdministradoresService, private router: Router, private asignaturasService: AsignaturasService, private viewportScroller: ViewportScroller) {
     this.RegistroForm = new FormGroup({
       nombre: new FormControl("", [
         Validators.required
@@ -297,5 +298,8 @@ export class RegistroComponent implements OnInit {
     return (token) ? true : false;
   }
 
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 
 }

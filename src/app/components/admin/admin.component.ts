@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
 // @ts-ignore
 import Swal from 'sweetalert2';
-
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -15,7 +15,11 @@ export class AdminComponent implements OnInit {
   profesArr: any[] = [];
   alumnosArr: any[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private administradoresService: AdministradoresService) { }
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private viewportScroller: ViewportScroller,
+    private administradoresService: AdministradoresService
+  ) { }
 
   ngOnInit() {
     this.getProfes();
@@ -78,4 +82,7 @@ export class AdminComponent implements OnInit {
     return response;
   }
 
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 }

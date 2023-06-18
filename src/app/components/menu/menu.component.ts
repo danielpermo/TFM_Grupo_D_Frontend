@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 // @ts-ignore
 import Swal from 'sweetalert2';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
@@ -17,6 +18,7 @@ export class MenuComponent {
   router = inject(Router);
   token: any = localStorage.getItem('token_user');
 
+  constructor(private viewportScroller: ViewportScroller){ }
 
   onClickLogout() {
     Swal.fire({
@@ -43,5 +45,9 @@ export class MenuComponent {
 
   getId() {
     return this.pId = this.usuariosService.getId();
+  }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 }
