@@ -89,7 +89,6 @@ export class ValoracionesComponent {
             }        
           })
         })
-
         this.dataValoraciones[0].forEach((asignatura: any)=>{
           asig.forEach((asigna)=>{
             if(asignatura.asignatura_id===asigna.id){
@@ -97,13 +96,11 @@ export class ValoracionesComponent {
             }
           })
         })
-
         let i=0;
         while ( i < this.dataValoraciones[0].length){
           this.clasesArr[i]=Object.assign({}, [this.dataValoraciones[5][i], this.dataValoraciones[4][i], this.dataValoraciones[1][i]]); 
           i++;
         }
-        console.log(this.clasesArr);
     }
     }catch (error) {
       console.error(error);
