@@ -25,10 +25,10 @@ export class ClasesViewComponent {
   finalizada: string = "";
   myUser: any = {};
   profile: string = "";
-  InformacionClases: any[] = [[]];
+  InformacionClases: any[] = [[],[],[],[],[],[],[]];
   clases: any[] = [];
   rowObj: any = {};
-  noClase: any[] = [[]];
+  noClase: any[] = [[],[],[],[],[],[]];
   noClases:any[] = [];
   loggedUser: number = 0;
 
@@ -78,21 +78,12 @@ export class ClasesViewComponent {
       const asig: any[] = await this.asignaturasService.getAll();
       const profesores: any = await this.profesoresService.getAllPublic();
       const clasesActivas: any[] =await this.clasesService.getClasesActivas();
-      
-      this.InformacionClases[1]=[];
-      this.InformacionClases[2]=[];
-      this.InformacionClases[3]=[];
-      this.InformacionClases[4]=[];
-      this.InformacionClases[5]=[];
-      this.InformacionClases[6]=[];
-      this.noClase[1]=[];
-      this.noClase[2]=[];
-      this.noClase[3]=[];
-      this.noClase[4]=[];
-      this.noClase[5]=[];
+      console.log(clasesActivas);
       this.loggedUser=usuarioLogadoId;
-      
-      if (this.myUser.rol === 'alum') {   
+
+      if (this.myUser.rol === 'alum') {
+
+        //Clases en las que el usuario está apuntado   
         data.forEach((clase) => {
           if (clase.alumno_id===usuarioLogadoId){
             this.InformacionClases[0].push(clase);
@@ -101,24 +92,28 @@ export class ClasesViewComponent {
             this.InformacionClases[5].push(clase.profesor_id);
             this.InformacionClases[6].push(clase.id);
           }
-          else{
-              if(!(this.noClase[4].includes(clase.asignatura_id) || clase.asignatura_id===null)){
-                this.noClase[0].push(clase);
-                this.noClase[4].push(clase.asignatura_id);
-                this.noClase[5].push(clase.profesor_id);
-              }    
-          }
         })
+
+        //Clases en las que el usuario no está apuntado y tiene oportunidad de apuntarse
+        clasesActivas.forEach((nuevaclase) => {
+          data.forEach((clase) => {
+            if(clase.asignatura_id === nuevaclase.asignatura_id && !(this.noClase[4].includes(clase.asignatura_id))){
+            this.noClase[0].push(clase);
+            this.noClase[4].push(clase.asignatura_id);
+            this.noClase[5].push(clase.profesor_id);
+          }})})
+
         this.clases=this.InformacionClases[0];
         this.noClases=this.noClase[0];
+        
+         //Profesores de las clases a las que el usuario está apuntado
         profesores.forEach((element: any)=>{
           this.clases.forEach((element2: any)=>{
             if (element.id===element2.profesor_id){              
               this.InformacionClases[1].push((element.nombre+' '+  element.apellidos)); 
             }        
           })
-        })
-        profesores.forEach((element: any)=>{
+          //Profesores de las clases a las que el usuario NO está apuntado
           this.noClases.forEach((element2: any)=>{
             if (element.id===element2.profesor_id){              
               this.noClase[1].push(element.nombre+' '+element.apellidos);
@@ -126,25 +121,30 @@ export class ClasesViewComponent {
             }       
           })
         })
-        this.InformacionClases[0].forEach((asignatura: any)=>{
-          asig.forEach((asigna)=>{
+
+        asig.forEach((asigna)=>{
+          //Nombre de Asignaturas a las que el usuario está apuntado 
+          this.InformacionClases[0].forEach((asignatura: any)=>{
             if(asignatura.asignatura_id===asigna.id){
               this.InformacionClases[2].push(asigna.nombre);
             }
           })
-        })
-        this.noClase[0].forEach((asignatura: any)=>{
-          asig.forEach((asigna)=>{
-            if(asignatura.asignatura_id===asigna.id){
+          //Nombre de Asignaturas a las que el usuario NO está apuntado
+          this.noClase[0].forEach((noAsignatura: any)=>{
+            if(noAsignatura.asignatura_id===asigna.id){
               this.noClase[2].push(asigna.nombre);
             }
           })
         })
+
+        //Asignación a objeto para ngfor HTML, clases que cursa el usuario
         let i=0;
         while ( i < this.InformacionClases[0].length){
           this.clasesArr[i]=Object.assign({}, [this.InformacionClases[2][i],this.InformacionClases[1][i],this.InformacionClases[3] ? 'En curso' : 'Finalizado',this.InformacionClases[4][i],this.InformacionClases[5][i],this.InformacionClases[6][i]]); 
           i++;
         }
+
+        //Asignación a objeto para ngfor HTML, clases que NO cursa el usuario
         i=0;
         while ( i < this.noClase[2].length){
           this.noclasesArr[i]=Object.assign({}, [this.noClase[2][i],this.noClase[1][i],this.noClase[3][i],this.noClase[0][i],this.noClase[4][i],this.noClase[5][i]]); 
@@ -166,8 +166,8 @@ export class ClasesViewComponent {
           })
         })
         let i=0;
-        while ( i <= this.InformacionClases[0].length){
-          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[1][i],this.InformacionClases[3] ? 'Finalizado' : 'En curso']); 
+        while ( i < this.InformacionClases[0].length){
+          this.clasesArr[i]=Object.assign({}, [this.InformacionClases[1][i],this.InformacionClases[3] ?  'En curso':'Finalizado']); 
           i++;
         }
       }
