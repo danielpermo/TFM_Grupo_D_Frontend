@@ -18,6 +18,9 @@ import { UserViewComponent } from './components/user-view/user-view.component';
 import { ClasesComponent } from './components/clases-component/clases-component';
 import { ClasesViewComponent } from './components/clases-view/clases-view.component';
 import { ValoracionesComponent } from './components/valoraciones/valoraciones.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -25,10 +28,8 @@ import { ValoracionesComponent } from './components/valoraciones/valoraciones.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
-import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
-import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -71,7 +72,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatCardModule,
     MatDialogModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSnackBarModule
   ],
   exports: [],
   providers: [],
