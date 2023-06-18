@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Profesor } from 'src/app/interfaces/profesor';
 import { Usuario } from 'src/app/interfaces/usuario';
 import { ProfesoresService } from 'src/app/services/profesores.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,8 @@ export class HomeComponent implements OnInit {
   ciudadActivate: boolean = false;
 
   profesoresService = inject(ProfesoresService);
+
+  constructor(private viewportScroller: ViewportScroller) {}
 
   async ngOnInit() {
     const response = await this.profesoresService.getAllPublic();
@@ -67,7 +70,6 @@ export class HomeComponent implements OnInit {
     this.asignaturasArr = Array.from(asignaturasSet).sort();
     const todas: any = { asignatura_id: 0, nombre: "Todas", clase: 0 }
     this.asignaturasArr.unshift(todas);
-
   }
 
   checkFiltradoCiudad(): boolean {
@@ -117,7 +119,6 @@ export class HomeComponent implements OnInit {
     this.filtradoCiudad = true;
     this.filtrado = true;
     return this.filtradoArr;
-
   }
 
   async filtrarAsignatura(pAsignatura: any) {
@@ -151,9 +152,10 @@ export class HomeComponent implements OnInit {
     }
     this.filtradoAsignatura = true;
     this.filtrado = true;
-    return this.filtradoArr
+    return this.filtradoArr;
   }
 
-
-
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
+  }
 }

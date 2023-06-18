@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import jwtDecode from "jwt-decode";
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent {
 
   UserForm: FormGroup
 
-  constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsuariosService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private usuariosService: UsuariosService, private router: Router, private viewportScroller: ViewportScroller) {
     this.UserForm = new FormGroup({
       email: new FormControl("", [
         Validators.required
@@ -47,6 +48,10 @@ export class LoginComponent {
       return this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id, 'perfil']);
     }
     return this.router.navigate([`/${tokenDecode.usuario_rol}`, tokenDecode.usuario_id]);
+  }
+
+  scrollToTop() {
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
 }
