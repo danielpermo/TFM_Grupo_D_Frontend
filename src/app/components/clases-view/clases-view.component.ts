@@ -150,7 +150,7 @@ export class ClasesViewComponent {
           this.clasesArr[i]=Object.assign({}, [this.InformacionClases[2][i],this.InformacionClases[1][i],estado,this.InformacionClases[4][i],this.InformacionClases[5][i],this.InformacionClases[6][i]]); 
                     i++;
         }
-
+        console.log(this.clasesArr);
         //Asignación a objeto para ngfor HTML, clases que NO cursa el usuario
         i=0;
         while ( i < this.noClase[2].length){
@@ -236,16 +236,16 @@ export class ClasesViewComponent {
     });
   }
 
-  valorar(event: any, clase_id: number,alumno_id: number): void {
-    this.openDialog(clase_id);
+  valorar(profesorId:number,loggedUser: number,asignaturaId:number): void {
+    this.openDialog(profesorId,loggedUser,asignaturaId);
   }
 
-  openDialog(claseId: number): void {
+  openDialog(profesor_id: number,alumno_id: number,asignatura_id: number): void {
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '600px', 
-      data: { claseId }
+      data: { profesor_id,alumno_id,asignatura_id }
     });
-  
+    console.log(dialogRef);
     dialogRef.afterClosed().subscribe(result => { 
     });
   }

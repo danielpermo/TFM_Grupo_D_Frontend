@@ -33,6 +33,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 
@@ -73,7 +74,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule
   ],
   exports: [],
   providers: [],

@@ -101,6 +101,7 @@ export class ValoracionesComponent {
           this.clasesArr[i]=Object.assign({}, [this.dataValoraciones[5][i], this.dataValoraciones[4][i], this.dataValoraciones[1][i]]); 
           i++;
         }
+        console.log(this.clasesArr);
     }
     }catch (error) {
       console.error(error);

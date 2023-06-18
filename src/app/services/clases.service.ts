@@ -55,16 +55,16 @@ export class ClasesService {
         'Authorization': localStorage.getItem('token_user')!
       })
     };
-    console.log(`${this.baseUrl}/clases/delete/${info_delete.profesorId}/${info_delete.asignaturaId}/${info_delete.alumnoId}`,info_delete, httpOptions);
     return firstValueFrom(this.httpClient.put(`${this.baseUrl}/clases/delete/${info_delete.profesorId}/${info_delete.asignaturaId}/${info_delete.alumnoId}`,info_delete, httpOptions));
   }
 
-  valorar(idclase: number,comentario: string): Promise<any> {
+  valorar(info_valorar: any): Promise<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token_user')!
       })
     };
-    return firstValueFrom(this.httpClient.post(`${this.baseUrl}/clases/${idclase}${comentario}`, httpOptions));
+    console.log("Ruta:",`${this.baseUrl}/alumnos/ActualizarCase/`,"Datos a enviar valoración:",info_valorar,httpOptions);
+    return firstValueFrom(this.httpClient.put(`${this.baseUrl}/alumnos/ActualizarClase/`,info_valorar, httpOptions));
   }
 }
