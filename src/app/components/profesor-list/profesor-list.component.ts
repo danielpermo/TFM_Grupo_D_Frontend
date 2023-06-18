@@ -18,7 +18,7 @@ export class ProfesorListComponent implements OnInit {
 
   async ngOnInit() {
 
-    const response = await this.alumnosService.getalumno(this.tokenDecode.usuario_id);
+    const response = await this.alumnosService.getAlumProfes();
     console.log(response);
 
   }
