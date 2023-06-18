@@ -21,6 +21,7 @@ import { ValoracionesComponent } from './components/valoraciones/valoraciones.co
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ProfesorListComponent } from './components/profesor-list/profesor-list.component';
 
 
 
@@ -59,7 +60,8 @@ import {MatRadioModule} from '@angular/material/radio';
     ValoracionesComponent,
     ValoracionesProfComponent,
     ProfileComponent,
-    DialogComponent
+    DialogComponent,
+    ProfesorListComponent
   ],
   imports: [
     BrowserModule,
