@@ -46,7 +46,7 @@
             <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
               {{ciudad}}</option>
           </select>
-          <select class="ciudad mb-2 shadow-sm" id="ciudad"  *ngIf="filtradoAsignatura === true">
+          <select class="ciudad mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === true">
             <option value="ciudad" disabled>
               Todas</option>
           </select>
