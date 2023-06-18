@@ -96,7 +96,7 @@ export class ClasesViewComponent {
         //Clases en las que el usuario no está apuntado y tiene oportunidad de apuntarse
         clasesActivas.forEach((nuevaclase) => {
           data.forEach((clase) => {
-            if(clase.asignatura_id === nuevaclase.asignatura_id && !(this.noClase[4].includes(clase.asignatura_id))){
+            if(!(this.InformacionClases[4].includes(clase.asignatura_id))&& clase.asignatura_id === nuevaclase.asignatura_id && !(this.noClase[4].includes(clase.asignatura_id))){
             this.noClase[0].push(clase);
             this.noClase[4].push(clase.asignatura_id);
             this.noClase[5].push(clase.profesor_id);
