@@ -71,26 +71,27 @@
 <!-- VALORACIONES PROFESORES -->
 
 <div class="container" *ngIf="filtrado === false">
-  <div class="container" *ngFor="let profe of combinedArr">
+  <div class="container" *ngFor="let item of profesArr">
     <div class="row">
       <div class="col-md-6 col-sm-12">
         <a class="EnlaceCardProf" [routerLink]="['/login']">
           <div class="card shadow" style="height: 100%;">
             <div class="row g-0">
               <div class="col-md-4 col-sm-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
-                <img [src]="profe.par.imagen" alt="Foto del profesor" class="card-img img-fluid">
+                <img [src]="item.imagen" alt="Foto del profesor" class="card-img img-fluid">
               </div>
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
-                  <h5 class="card-title CardProfNombre">{{profe.par.nombre}} {{profe.par.apellidos}}</h5>
-                  <p class="card-text">{{profe.par.ciudad}}</p>
-                  <p class="card-text">Experiencia: {{profe.par.experiencia}} años</p>
+                  <h5 class="card-title CardProfNombre">{{item.nombre}} {{item.apellidos}}</h5>
+                  <p class="card-text">{{item.ciudad}}</p>
+                  <p class="card-text">Experiencia: {{item.experiencia}} años</p>
                   <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
-                    <li *ngFor="let asginatura of profe.par.asignaturas">{{asginatura.nombre}}</li>
+                    <li *ngFor="let asginatura of item.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
-                  <p class="card-text" *ngIf="profe.par.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="profe.par.puntuacion != 'No valorado'">Puntuación: {{profe.par.puntuacion
+                  <p class="card-text" *ngIf="item.puntuacion.toString() === 'No valorado'">Puntuación: Sin
+                    puntuaciones.</p>
+                  <p class="card-text" *ngIf="item.puntuacion.toString() != 'No valorado'">Puntuación: {{item.puntuacion
                     |
                     number:'01.0-2'}}/10</p>
                 </div>
@@ -102,7 +103,7 @@
       <div class="col-md-6 col-sm-12">
         <div class="card opinion-card" style="height: 100%;">
           <div class="card-body d-flex align-items-center justify-content-center">
-            <p class="card-text">"{{profe.par.opinion}}"</p>
+            <p class="card-text">"{{item.opinion}}"</p>
           </div>
         </div>
       </div>
@@ -112,7 +113,7 @@
         <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
       </div>
     </div>
-    <div class="row" *ngIf="profe.impar != undefined">
+    <!-- <div class="row" *ngIf="profe.impar != undefined">
       <div class="col-md-6 col-sm-12">
         <div class="card opinion-card" style="height: 100%;">
           <div class="card-body d-flex align-items-center justify-content-center">
@@ -151,7 +152,7 @@
           <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 <div class="container" *ngIf="filtrado === true">
@@ -162,19 +163,19 @@
           <div class="card shadow" style="height: 100%;">
             <div class="row g-0">
               <div class="col-md-4 col-sm-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
-                <img [src]="item.par.imagen" alt="Foto del profesor" class="card-img img-fluid">
+                <img [src]="item.imagen" alt="Foto del profesor" class="card-img img-fluid">
               </div>
               <div class="col-md-8 col-sm-8">
                 <div class="card-body">
-                  <h5 class="card-title CardProfNombre">{{item.par.nombre}} {{item.par.apellidos}}</h5>
-                  <p class="card-text">{{item.par.ciudad}}</p>
-                  <p class="card-text">Experiencia: {{item.par.experiencia}} años</p>
+                  <h5 class="card-title CardProfNombre">{{item.nombre}} {{item.apellidos}}</h5>
+                  <p class="card-text">{{item.ciudad}}</p>
+                  <p class="card-text">Experiencia: {{item.experiencia}} años</p>
                   <p class="card-text">Asignaturas:</p>
                   <ul class="card-list">
-                    <li *ngFor="let asginatura of item.par.asignaturas">{{asginatura.nombre}}</li>
+                    <li *ngFor="let asginatura of item.asignaturas">{{asginatura.nombre}}</li>
                   </ul>
-                  <p class="card-text" *ngIf="item.par.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
-                  <p class="card-text" *ngIf="item.par.puntuacion != 'No valorado'">Puntuación: {{item.par.puntuacion |
+                  <p class="card-text" *ngIf="item.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
+                  <p class="card-text" *ngIf="item.puntuacion != 'No valorado'">Puntuación: {{item.puntuacion |
                     number:'01.0-2'}}/10</p>
                 </div>
               </div>
@@ -185,7 +186,7 @@
       <div class="col-md-6 col-sm-12">
         <div class="card opinion-card" style="height: 100%;">
           <div class="card-body d-flex align-items-center justify-content-center">
-            <p class="card-text">"{{item.par.opinion}}"</p>
+            <p class="card-text">"{{item.opinion}}"</p>
           </div>
         </div>
       </div>
@@ -195,7 +196,7 @@
         <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
       </div>
     </div>
-    <div class="row" *ngIf="item.impar != undefined">
+    <!-- <div class="row" *ngIf="item.impar != undefined">
       <div class="col-md-6 col-sm-12">
         <div class="card opinion-card" style="height: 100%;">
           <div class="card-body d-flex align-items-center justify-content-center">
@@ -232,6 +233,6 @@
           <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
