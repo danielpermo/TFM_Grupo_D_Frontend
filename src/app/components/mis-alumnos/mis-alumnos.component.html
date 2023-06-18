@@ -10,7 +10,7 @@
         <th>Teléfono</th>
         <th>Ciudad</th>
         <th>Asignatura</th>
-        <th></th>
+        <th>Finalizar clase</th>
       </tr>
     </thead>
     <tbody *ngIf="alumArr.length != 0">
@@ -21,8 +21,11 @@
         <td>{{alumno.email}}</td>
         <td>{{alumno.telefono}}</td>
         <td>{{alumno.ciudad}}</td>
-        <td *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}} <button title="Eliminar Alumno"
-            class="btnBorrar btn-unstyled fs-5 ms-5" (click)="finalizarClaseAlumno(asignatura.id, alumno.id)">X</button>
+        <td *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}}
+        </td>
+        <td *ngFor="let asignatura of alumno.asignaturas">
+          <button title="Eliminar Alumno" class="btnBorrar btn-unstyled fs-5 ms-5"
+            (click)="finalizarClaseAlumno(asignatura.id, alumno.id)">X</button>
         </td>
       </tr>
     </tbody>

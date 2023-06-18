@@ -83,7 +83,6 @@ export class RegistroComponent implements OnInit {
 
   async ngOnInit() {
     this.asignaturasArr = await this.asignaturasService.getAll();
-    console.log(this.asignaturasArr)
     const token = localStorage.getItem('token_user');
     if (token) {
       const tokenDecode: any = jwtDecode(token!);
