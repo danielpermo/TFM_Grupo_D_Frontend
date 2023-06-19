@@ -40,33 +40,32 @@
 
 <div class="container mb-5">
   <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="col-md-6">
       <div class="mb-2 d-flex justify-content-center">
         <p class="encuentraP">Encuentra tu profesor/a ideal:</p>
       </div>
-      <div class="d-flex justify-content-center">
-        <div class="w-ciudad" style="margin-right: 25px;">
-          <p class="m-0 p-0">Ciudad:</p>
-          <select class="ciudad mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === false">
-            <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
-              {{ciudad}}</option>
-          </select>
-          <select class="ciudad mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === true">
-            <option value="ciudad" disabled>
-              Todas</option>
-          </select>
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="card border-0 shadow mb-3" style="flex: 1; margin-right: 10px;">
+          <div class="card-body">
+            <h5 class="card-title">Busca en tu ciudad:</h5>
+            <select class="ciudad form-select mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === false">
+              <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
+                {{ciudad}}
+              </option>
+            </select>
+          </div>
         </div>
-        <div class="w-asignatura" style="margin-right: 25px;">
-          <p class="m-0 p-0">Asignaturas:</p>
-          <select class="ciudad mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === false">
-            <option [value]="asignatura.nombre" *ngFor="let asignatura of asignaturasArr"
-              (click)="filtrarAsignatura(asignatura.asignatura_id)">
-              {{asignatura.nombre}}</option>
-          </select>
-          <select class="ciudad mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === true">
-            <option value="asignatura" disabled>
-              Todas</option>
-          </select>
+
+        <div class="card border-0 shadow mb-3" style="flex: 1; margin-left: 10px;">
+          <div class="card-body">
+            <h5 class="card-title">Busca asignaturas:</h5>
+            <select class="asignatura form-select mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === false">
+              <option [value]="asignatura.nombre" *ngFor="let asignatura of asignaturasArr"
+                (click)="filtrarAsignatura(asignatura.asignatura_id)">
+                {{asignatura.nombre}}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
