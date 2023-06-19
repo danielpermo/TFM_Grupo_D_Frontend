@@ -1,5 +1,5 @@
 <div class="main">
-  <table class="container">
+  <table class="container" >
     <thead>
       <tr *ngIf="myUser.rol === 'alum'">
         <th>Asignatura</th>
@@ -7,21 +7,22 @@
         <th>Estado</th>
         <th>Acciones</th>
       </tr>
-    </thead>
-    <tbody *ngIf="myUser.rol === 'alum'">
-      <tr *ngFor="let clase of clasesArr">
-        <td class="text-center">{{clase[0]}}</td>
-        <td class="text-center">{{clase[1]}}</td>
-        <td class="text-center">{{clase[2]}}</td>
-        <td class="text-center">
-          <div class="btns">
-            <button class="btnDelete" (click)="eliminarse(clase[4], clase[3], loggedUser)">Eliminar</button>
-            <button class="btnValorar" (click)="valorar(clase[4], loggedUser, clase[3])">Dejar valoración</button>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-    <thead>
+      <tbody *ngIf="myUser.rol === 'alum'">
+        <tr *ngFor="let clase of clasesArr">
+          <td class="text-center">{{clase[0]}}</td>
+          <td class="text-center">{{clase[1]}}</td>
+          <td class="text-center" >{{clase[2]}}</td>
+          <td class="text-center" >
+            <div class="btns">
+              <button class="btnDelete" (click)="eliminarse( clase[4],clase[3], loggedUser)"
+              >Eliminar</button>
+              <button class="btnValorar" (click)="valorar(clase[4],loggedUser,clase[3])"
+              >Dejar valoración</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <thead>
       <tr *ngIf="myUser.rol === 'profe'">
         <th>Asignatura</th>
         <th>Estado</th>
@@ -30,11 +31,11 @@
     <tbody *ngIf="myUser.rol === 'profe'">
       <tr *ngFor="let clase of clasesArr">
         <td class="text-center">{{clase[0]}}</td>
-        <td class="text-center">{{clase[1]}}</td>
+        <td class="text-center">{{clase[3]}}</td>
       </tr>
     </tbody>
   </table>
-
+  
   <table class="container1">
     <thead>
       <tr *ngIf="myUser.rol === 'alum'">
@@ -43,16 +44,18 @@
         <th>Precio</th>
         <th>Acciones</th>
       </tr>
-    </thead>
-    <tbody *ngIf="myUser.rol === 'alum'">
-      <tr *ngFor="let op of noclasesArr">
-        <td class="text-center">{{op[0]}}</td>
-        <td class="text-center">{{op[1]}}</td>
-        <td class="text-center">{{op[2]}}</td>
-        <td>
-          <button class="btnAp" (click)="apuntarse(op[3].asignatura_id, op[3].profesor_id)">Inscribirme</button>
-        </td>
-      </tr>
-    </tbody>
+      <tbody *ngIf="myUser.rol === 'alum'">
+        <tr *ngFor="let op of noclasesArr">
+          <td class="text-center">{{op[0]}}</td>
+          <td class="text-center">{{op[1]}}</td>
+          <td class="text-center" >{{op[2]}}</td>
+          <td>
+            <button class="btnAp" (click)="apuntarse(op[3].asignatura_id, op[3].profesor_id)">
+              Inscribirme
+            </button>
+            
+          </td>
+        </tr>
+      </tbody>
   </table>
 </div>

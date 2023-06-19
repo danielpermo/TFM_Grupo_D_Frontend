@@ -28,9 +28,9 @@
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/profe', getId()]">Mi perfil</a>
           </li>
-          <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
+          <!-- <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="['/alum',  getId() , 'clases']">Clases</a>
-          </li>
+          </li> -->
           <li class="nav-item" *ngIf="usuariosService.isLogged() && usuariosService.rol('profe')">
             <a class="nav-link" (click)="scrollToTop()" [routerLink]="'/profe/' + getId() + '/misAlumnos'">Mis alumnos</a>
           </li>
