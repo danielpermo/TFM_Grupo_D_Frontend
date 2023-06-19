@@ -5,29 +5,48 @@
         </div>
         <div class="card mb-3">
             <div class="row g-0">
-                <div class="col-12 col-md-6 col-xl-6 border-end border-primary text-center d-flex justify-content-center align-items-center">
-                    <img src="{{myUser.imagen}}" class="rounded-circle mx-auto img-fluid center-content my-3" alt="Imagen del usuario">
+                <div
+                    class="col-12 col-md-6 col-xl-6 border-end border-primary text-center d-flex justify-content-center align-items-center">
+                    <img src="{{myUser.imagen}}" class="rounded-circle mx-auto img-fluid center-content my-3"
+                        alt="Imagen del usuario">
                 </div>
                 <div class="col-12 col-md-6 col-xl-6">
                     <div class="card-body">
                         <h2 class="card-title">{{myUser.nombre}}</h2>
                         <h2 class="card-title">{{myUser.apellidos}}</h2>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Edad:</strong> {{myUser.edad}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Nombre usuario:</strong> {{myUser.username}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Email:</strong> {{myUser.email}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Teléfono:</strong> {{myUser.telefono}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>DNI:</strong> {{myUser.dni}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted" *ngIf="myUser.rol === 'profe'"><strong>Experiencia:</strong> {{myUser.experiencia}}</small></p>
-                        <p class="card-text m-0" *ngIf="myUser.rol === 'profe'"><small class="text-muted"><strong>Precio:</strong> {{myUser.precio}} €</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Dirección:</strong> {{myUser.direccion}}</small></p>
-                        <p class="card-text m-0"><small class="text-muted"><strong>Ciudad:</strong> {{myUser.ciudad}}</small></p>
-                        <div class="btn-group mt-4 d-flex justify-content-between" role="group" aria-label="Basic outlined example" *ngIf="myUser.rol != 'admin'">
-                            <button type="button" (click)="scrollToTop()" class="btnCrear btn btn-primary align-items-end m-3" (click)="borrarUsuario(myUser.id)">Eliminar</button>
-                            <button type="button" (click)="scrollToTop()" class="btnCrear btn btn-primary align-items-end m-3" [routerLink]="['/update', myUser.id]">Editar perfil</button>
-                            <button type="button" (click)="scrollToTop()" class="btnCrear btn btn-primary align-items-end m-3" [routerLink]="['/alum', getId(), 'clases', 'misClases']">Clases</button>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Edad:</strong>
+                                {{myUser.edad}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Nombre usuario:</strong>
+                                {{myUser.username}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Email:</strong>
+                                {{myUser.email}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Teléfono:</strong>
+                                {{myUser.telefono}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>DNI:</strong> {{myUser.dni}}</small>
+                        </p>
+                        <p class="card-text m-0"><small class="text-muted"
+                                *ngIf="myUser.rol === 'profe'"><strong>Experiencia:</strong>
+                                {{myUser.experiencia}}</small></p>
+                        <p class="card-text m-0" *ngIf="myUser.rol === 'profe'"><small
+                                class="text-muted"><strong>Precio:</strong> {{myUser.precio}} €</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Dirección:</strong>
+                                {{myUser.direccion}}</small></p>
+                        <p class="card-text m-0"><small class="text-muted"><strong>Ciudad:</strong>
+                                {{myUser.ciudad}}</small></p>
+                        <div class="btn-group mt-4 d-flex justify-content-between" role="group"
+                            aria-label="Basic outlined example" *ngIf="myUser.rol != 'admin'">
+                            <button type="button" (click)="scrollToTop()"
+                                class="btnCrear btn btn-primary align-items-end m-3"
+                                (click)="borrarUsuario(myUser.id)">Eliminar</button>
+                            <button type="button" (click)="scrollToTop()"
+                                class="btnCrear btn btn-primary align-items-end m-3"
+                                [routerLink]="['/update', myUser.id]">Editar perfil</button>
                         </div>
-                        <div class="mt-4 d-flex justify-content-between" role="group" aria-label="Basic outlined example" *ngIf="myUser.rol === 'admin'">
-                            <button type="button" (click)="scrollToTop()" class="btnCrear btn btn-primary align-items-end m-3" [routerLink]="['/update', myUser.id]">Editar perfil</button>
+                        <div class="mt-4 d-flex justify-content-between" role="group"
+                            aria-label="Basic outlined example" *ngIf="myUser.rol === 'admin'">
+                            <button type="button" (click)="scrollToTop()"
+                                class="btnCrear btn btn-primary align-items-end m-3"
+                                [routerLink]="['/update', myUser.id]">Editar perfil</button>
                         </div>
                     </div>
                 </div>
