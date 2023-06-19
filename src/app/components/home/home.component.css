@@ -80,3 +80,16 @@ p {
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+.card-body select {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
