@@ -11,6 +11,7 @@ export class ProfesorListComponent implements OnInit {
 
   token: any = localStorage.getItem('token_user');
   tokenDecode: any = jwtDecode(this.token!);
+  profesArr: any[] = [];
 
   constructor(private alumnosService: AlumnosService) {
 
@@ -19,7 +20,8 @@ export class ProfesorListComponent implements OnInit {
   async ngOnInit() {
 
     const response = await this.alumnosService.getAlumProfes();
-    console.log(response);
+    this.profesArr = response;
+    console.log(this.profesArr);
 
   }
 
