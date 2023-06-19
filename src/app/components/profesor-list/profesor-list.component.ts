@@ -21,8 +21,6 @@ export class ProfesorListComponent implements OnInit {
 
     const response = await this.alumnosService.getAlumProfes();
     this.profesArr = response;
-    console.log(this.profesArr);
-
   }
 
 }
