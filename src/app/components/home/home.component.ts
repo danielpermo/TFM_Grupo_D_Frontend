@@ -28,9 +28,6 @@ export class HomeComponent implements OnInit {
   asignatura: string = "";
   asignaturasActivate: boolean = false;
   ciudadActivate: boolean = false;
-  token: any = localStorage.getItem('token_user');
-  tokenDecode: any = jwtDecode(this.token!);
-  pId: number = this.tokenDecode.usuario_id;
 
   profesoresService = inject(ProfesoresService);
   usuariosService = inject(UsuariosService);
