@@ -29,12 +29,16 @@ import { ProfesorListComponent } from './components/profesor-list/profesor-list.
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
-import { MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatCardModule} from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environments';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { CiudadViewComponent } from './components/ciudad-view/ciudad-view.component';
 
 
 
@@ -61,7 +65,9 @@ import {MatRadioModule} from '@angular/material/radio';
     ValoracionesProfComponent,
     ProfileComponent,
     DialogComponent,
-    ProfesorListComponent
+    ProfesorListComponent,
+    MapaComponent,
+    CiudadViewComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +83,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatInputModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatRadioModule
+    MatRadioModule,
+    AgmCoreModule.forRoot(environment.googleMaps)
   ],
   exports: [],
   providers: [],

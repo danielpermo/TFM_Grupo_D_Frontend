@@ -16,6 +16,8 @@ import { ClasesComponent } from './components/clases-component/clases-component'
 import { ValoracionesComponent } from './components/valoraciones/valoraciones.component';
 import { ValoracionesProfComponent } from './components/valoraciones-prof/valoraciones-prof.component';
 import { ProfesorListComponent } from './components/profesor-list/profesor-list.component';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { CiudadViewComponent } from './components/ciudad-view/ciudad-view.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: "home", component: HomeComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
+  { path: "mapa", component: MapaComponent },
+  { path: "ciudad/:code", component: CiudadViewComponent },
   { path: "update/:userId", component: RegistroComponent, canActivate: [loginGuard] },
   { path: "alum/:userId", component: AlumnoComponent, canActivate: [loginGuard] },
   { path: "profe/:userId", component: ProfesorComponent, canActivate: [loginGuard] },
