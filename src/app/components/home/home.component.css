@@ -1,0 +1,96 @@
+.w-teacher-header {
+  border: 1px solid black;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.w-teacher {
+  border: 1px solid #cecece;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #ba94ec;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: #ba94ec;
+  border: none;
+  font-weight: 650;
+}
+
+.btn:hover {
+  background-color: #7500c0;
+}
+
+h2 {
+  font-size: 4rem;
+  color: #ba94ec;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+/* Cards de las valoraciones */
+
+.opinion-card {
+  border: none;
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  color: #ba94ec;
+  font-weight: bold;
+  text-shadow: 1px 1px 1.5px rgba(165, 164, 164, 0.5);
+}
+
+.EnlaceCardProf {
+  text-decoration: none;
+  color: inherit;
+}
+
+.CardProfNombre {
+  color: #7500c0;
+  font-weight: bold;
+}
+
+.card-img {
+  padding: 15px;
+  border-radius: 20px;
+}
+
+.ciudad,
+.asignatura {
+  width: 200px;
+  height: 40px;
+  border-radius: 12px;
+  padding: 5px;
+  border-style: none;
+  background-color: #e8e5ec;
+}
+
+.encuentraP {
+  font-size: 30px;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.card-body select {
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}

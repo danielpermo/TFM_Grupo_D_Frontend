@@ -1,0 +1,14 @@
+.error {
+  color: red;
+  font-size: 10px;
+}
+
+.btn {
+  background-color: #7500c0;
+  border: none;
+  font-weight: 650;
+}
+
+.btn:hover {
+  background-color: #ba94ec;
+}

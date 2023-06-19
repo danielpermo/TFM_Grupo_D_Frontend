@@ -1,0 +1,31 @@
+header {
+  background-color: #7941c0;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  font-family: 'Pinyon Script', cursive;
+  font-size: 3rem;
+}
+
+footer {
+  background-color: #cbb5e7;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  justify-content: center;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-bottom: 100px;
+}

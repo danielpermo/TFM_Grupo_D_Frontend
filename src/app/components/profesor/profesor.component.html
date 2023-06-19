@@ -1,0 +1,66 @@
+<section class="h-100 mt-2">
+  <div class="container">
+
+    <div class="row">
+      <app-user-view></app-user-view>
+    </div>
+
+
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <h3 class="text-center">Asignaturas</h3>
+        <div class="row">
+          <div class="col-md-4" *ngFor="let asignatura of profesorObj.asignaturas">
+            <div class="card text-center position-relative">
+              <div class="card-body">
+                <button title="Eliminar asignatura" class="btnBorrar btn-unstyled fs-5 position-absolute top-0 end-0"
+                  (click)="deleteAsignatura(asignatura.asignatura_id)">X</button>
+                <h5 class="card-title asignatura">{{asignatura.nombre}}</h5>
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                  <button class="btnCrear btn btn-primary m-3" (click)="crearClase(asignatura.asignatura_id)"
+                    *ngIf="comprobarClase(asignatura.clase)">Crear
+                    clase</button>
+                  <button class="btnCrear btn btn-primary m-3" (click)="finalizarClase(asignatura.asignatura_id)"
+                    *ngIf="!comprobarClase(asignatura.clase)">Finalizar clase</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center mt-3">
+        <button class="btnAnadir btn btn-primary fs-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Añadir
+          Asignatura</button>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Selecciona las asignaturas:</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-2 w-100 flex-row">
+              <select class="form-select" id="asignatura" [(ngModel)]="asignaturaSeleccionada">
+                <option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">{{asignatura.nombre}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+              (click)="aceptarSeleccion()">Aceptar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,172 @@
+<!-- INFO HOME -->
+
+<div class="container mb-3">
+  <h1 class="text-center fw-bold">Nos adaptamos a tu forma de aprender</h1>
+  <hr />
+  <div class="container row text-center grid gap d-flex">
+    <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
+      <img src="../../../assets/profesor_en_clase.jpg" class="card-img-top" alt="Imagen profesora en clase" />
+      <div class="card-body">
+        <h5 class="card-title fs-3">Clases presenciales</h5>
+        <p class="card-text">
+          Clases en tu domicilio o el de tu profesor/a, en tu lugar de
+          trabajo, en una academia...
+        </p>
+        <!-- <div class="mt-3">
+          <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
+        </div> -->
+      </div>
+    </div>
+    <div class="card col-sm-7 col-md-5 mx-auto p-2 shadow bg-body-tertiary rounded">
+      <img src="../../../assets/laptop.jpg" class="card-img-top" alt="Imagen persona trabajando en un ordenador" />
+      <div class="card-body">
+        <h5 class="card-title fs-3">Clases online</h5>
+        <p class="card-text">
+          Mediante videoconferencia con un profesor/a online, a cualquier hora
+          y sin salir de casa
+        </p>
+        <!-- <div class="mt-3">
+          <a class="btn btn-primary fs-4" [routerLink]="['/login']">Entrar</a>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h2 class="container text-center mt-5 mb-5">Nuestros profesores</h2>
+
+<app-mapa></app-mapa>
+
+<!-- FILTRO BUSQUEDA -->
+
+<div class="container mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="mb-2 d-flex justify-content-center">
+        <p class="encuentraP">Encuentra tu profesor/a ideal:</p>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="card border-0 mb-3" style="flex: 1; margin-right: 10px;">
+          <div class="card-body">
+            <h5 class="card-title">Busca en tu ciudad:</h5>
+            <select class="ciudad form-select mb-2 shadow-sm" id="ciudad" *ngIf="filtradoAsignatura === false">
+              <option [value]="ciudad" *ngFor="let ciudad of ciudadesArr" (click)="filtrarCiudad(ciudad)">
+                {{ciudad}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card border-0 mb-3" style="flex: 1; margin-left: 10px;">
+          <div class="card-body">
+            <h5 class="card-title">Busca asignaturas:</h5>
+            <select class="asignatura form-select mb-2 shadow-sm" id="asignatura" *ngIf="filtradoCiudad === false">
+              <option [value]="asignatura.nombre" *ngFor="let asignatura of asignaturasArr"
+                (click)="filtrarAsignatura(asignatura.asignatura_id)">
+                {{asignatura.nombre}}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALORACIONES PROFESORES -->
+
+<div class="container" *ngIf="filtrado === false">
+  <div class="container" *ngFor="let item of profesArr">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <!-- <a class="EnlaceCardProf" [routerLink]="['/login']"> -->
+          <div class="card shadow" style="height: 100%;">
+            <div class="row g-0">
+              <div class="col-md-4 col-sm-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
+                <img [src]="item.imagen" alt="Foto del profesor" class="card-img img-fluid">
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <div class="card-body">
+                  <h5 class="card-title CardProfNombre">{{item.nombre}} {{item.apellidos}}</h5>
+                  <p class="card-text">{{item.ciudad}}</p>
+                  <p class="card-text">Experiencia: {{item.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
+                  <ul class="card-list">
+                    <li *ngFor="let asginatura of item.asignaturas">{{asginatura.nombre}}</li>
+                  </ul>
+                  <p class="card-text" *ngIf="item.puntuacion.toString() === 'No valorado'">Puntuación: Sin
+                    puntuaciones.</p>
+                  <p class="card-text" *ngIf="item.puntuacion.toString() != 'No valorado'">Puntuación: {{item.puntuacion
+                    |
+                    number:'01.0-2'}}/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </a> -->
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="card opinion-card" style="height: 100%;">
+          <div class="card-body d-flex align-items-center justify-content-center">
+            <p class="card-text">"{{item.opinion}}"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <div>
+        <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="container" *ngIf="filtrado === true">
+  <div class="container" *ngFor="let item of filtradoArr">
+    <div class="row">
+      <div class="col-md-6 col-sm-12">
+        <!-- <a class="EnlaceCardProf" [routerLink]="['/login']"> -->
+          <div class="card shadow" style="height: 100%;">
+            <div class="row g-0">
+              <div class="col-md-4 col-sm-4 d-flex align-items-center justify-content-center" style="padding: 10px;">
+                <img [src]="item.imagen" alt="Foto del profesor" class="card-img img-fluid">
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <div class="card-body">
+                  <h5 class="card-title CardProfNombre">{{item.nombre}} {{item.apellidos}}</h5>
+                  <p class="card-text">{{item.ciudad}}</p>
+                  <p class="card-text">Experiencia: {{item.experiencia}} años</p>
+                  <p class="card-text">Asignaturas:</p>
+                  <ul class="card-list">
+                    <li *ngFor="let asginatura of item.asignaturas">{{asginatura.nombre}}</li>
+                  </ul>
+                  <p class="card-text" *ngIf="item.puntuacion === 'No valorado'">Puntuación: Sin puntuaciones.</p>
+                  <p class="card-text" *ngIf="item.puntuacion != 'No valorado'">Puntuación: {{item.puntuacion |
+                    number:'01.0-2'}}/10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- </a> -->
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="card opinion-card" style="height: 100%;">
+          <div class="card-body d-flex align-items-center justify-content-center">
+            <p class="card-text">"{{item.opinion}}"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center">
+      <div>
+        <img class="rounded-circle" src="../../../assets/logo_copia.jpg" alt="" style="width: 12mm; margin: 50px 0;">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container d-flex justify-content-center align-items-center" style="margin-bottom: 125px;">
+  <a class="btn btn-primary fs-4" (click)="scrollToTop()">Volver arriba</a>
+</div>

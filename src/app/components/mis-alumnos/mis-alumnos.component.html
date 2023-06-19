@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Mis Alumnos</h2>
+  <table class="table">
+    <thead>
+      <tr class="w-100">
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Ciudad</th>
+        <th>Asignaturas</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="alumArr.length != 0">
+      <tr class="TrDatos" *ngFor="let alumno of alumArr">
+        <td>{{alumno.nombre}}</td>
+        <td>{{alumno.apellidos}}</td>
+        <td>{{alumno.edad}}</td>
+        <td>{{alumno.email}}</td>
+        <td>{{alumno.telefono}}</td>
+        <td>{{alumno.ciudad}}</td>
+        <td>
+          <p class="m-0 p-0" *ngFor="let asignatura of alumno.asignaturas">{{asignatura.nombre}}
+            <button *ngIf="asignatura.finalizado === 0" title="Eliminar Alumno" class="btnBorrar btn-unstyled fs-5 ms-3"
+              (click)="finalizarClaseAlumno(asignatura.id, alumno.id)">X
+            </button>
+            <span *ngIf="asignatura.finalizado === 1"> - Finalizada</span>
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container" *ngIf="alumArr.length === 0">
+    <p class="TrDatos m-0 p-0 d-flex justify-content-center">
+      No hay alumnos disponibles
+    </p>
+  </div>
+</div>

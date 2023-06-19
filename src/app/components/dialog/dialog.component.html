@@ -1,0 +1,34 @@
+<div class="container">
+  <form class="container" [formGroup]="form">
+    <div class="ttl">
+      <h2>Enviar valoración</h2>
+    </div>
+    <div style="text-align: center;">
+      <h3>★★★★★</h3>
+    </div>
+    <div class="valorar">
+     <br>
+    <label for="subscribeNews">Valora del 1 al 10, siendo 1 muy malo y 10 muy bueno</label>
+    <br>
+    <mat-radio-group aria-label="Select an option" formControlName="rating">
+      <mat-radio-button [value]="1">1</mat-radio-button>
+      <mat-radio-button [value]="2">2</mat-radio-button>
+      <mat-radio-button [value]="3">3</mat-radio-button>
+      <mat-radio-button [value]="4">4</mat-radio-button>
+      <mat-radio-button [value]="5">5</mat-radio-button>
+      <mat-radio-button [value]="6">6</mat-radio-button>
+      <mat-radio-button [value]="7">7</mat-radio-button>
+      <mat-radio-button [value]="8">8</mat-radio-button>
+      <mat-radio-button [value]="9">9</mat-radio-button>
+      <mat-radio-button [value]="10">10</mat-radio-button>
+    </mat-radio-group>
+    </div>
+    <mat-form-field class="matForm">
+      <textarea matInput placeholder="Describe tu experiencia.." formControlName="comment"></textarea>
+    </mat-form-field>
+    <div class="btns">
+      <button class="btnSub" mat-button (click)="enviarFormulario()">Enviar</button>
+      <button class="btnCan" mat-button (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>
