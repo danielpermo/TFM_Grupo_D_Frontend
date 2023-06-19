@@ -3,34 +3,34 @@
       <!-- Lista de Cards con las valoraciones -->
       <h2>Mis Profesores</h2>
       <hr />
-      <div class="row">
+      <div class="row" *ngFor="let profesor of profesArr">
         <div class="col-12">
           <div class="card mb-3 shadow" style="width: 100%">
             <div class="row no-gutters">
               <div class="col-md-2 d-flex align-items-center justify-content-center">
-                <img src="https://xsgames.co/randomusers/assets/avatars/male/13.jpg" alt="Foto del profesor" class="card-img rounded-circle" />
+                <img src={{profesor.imagen}} alt="Foto del profesor" class="card-img rounded-circle" />
               </div>
               <div class="col-md-8">
                 <div class="card-body p-4"> <!-- Agregado el padding -->
-                  <h5 class="card-title">Profesor Fesor</h5>
-                  <p class="cards-text">12 años de experiencia</p>
+                  <h5 class="card-title"> {{profesor.nombre}}</h5>
+                  <p class="cards-text">{{profesor.experiencia}}  años de experiencia</p>
                   <div class="row">
                     <div class="col-md-4">
-                      <p class="cards-text text-purple">Teléfono: <span>678678678</span></p>
+                      <p class="cards-text text-purple">Teléfono: <span>{{profesor.telefono}}</span></p>
                     </div>
                     <div class="col-md-4">
-                      <p class="cards-text text-purple">Email: <span>correo@correo.com</span></p>
+                      <p class="cards-text text-purple">Email: <span>{{profesor.correo}}</span></p>
                     </div>
                     <div class="col-md-4">
-                      <p class="cards-text text-purple">Ciudad: <span>Valencia</span></p>
+                      <p class="cards-text text-purple">Ciudad: <span>{{profesor.ciudad}}</span></p>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col-md-4">
-                      <p class="cards-text text-purple">Dirección: <span>C/ Calle 1234</span></p>
+                      <p class="cards-text text-purple">Dirección: <span>{{profesor.direccion}}</span></p>
                     </div>
                     <div class="col-md-4">
-                      <p class="cards-text text-purple">Precio: <span>12€</span></p>
+                      <p class="cards-text text-purple">Precio: <span>{{profesor.precio}}  €</span></p>
                     </div>
                   </div>
                   <ul class="custom-list">
