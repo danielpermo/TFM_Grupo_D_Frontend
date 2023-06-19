@@ -37,6 +37,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environments';
+import { MapaComponent } from './components/mapa/mapa.component';
+import { CiudadViewComponent } from './components/ciudad-view/ciudad-view.component';
 
 
 
@@ -63,7 +65,9 @@ import { environment } from 'src/environments/environments';
     ValoracionesProfComponent,
     ProfileComponent,
     DialogComponent,
-    ProfesorListComponent
+    ProfesorListComponent,
+    MapaComponent,
+    CiudadViewComponent
   ],
   imports: [
     BrowserModule,
